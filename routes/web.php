@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 use App\Http\Controllers\ConnectController;
-Route::get('/login', [ConnectController::class, 'getLogin']); 
+Route::get('/login', [ConnectController::class, 'getLogin']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
