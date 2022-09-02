@@ -20,7 +20,7 @@ Route::get('/', function () {
 use App\Http\Controllers\ConnectController;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', [ConnectController::class, 'getLogin']); 
+Route::get('/welcome', [ConnectController::class, 'getLogin']); 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
