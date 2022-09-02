@@ -13,7 +13,7 @@ class qrv_clientesController extends Controller
      */
     public function index()
     {
-        //
+        return view('client.index');
     }
 
     /**

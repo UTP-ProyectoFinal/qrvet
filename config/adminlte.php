@@ -335,7 +335,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Medico',
-                    'url'  => '#',
+                    'url'  => 'qrv_clientes',
                 ]
             ],
         ],
