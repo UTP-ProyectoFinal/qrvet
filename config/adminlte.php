@@ -300,7 +300,7 @@ return [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-
+        /*
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
@@ -328,7 +328,76 @@ return [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
+        ],*/
+        [
+            'text' => 'USUARIOS',
+            'icon' => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Medico',
+                    'url'  => '#',
+                ]
+            ],
         ],
+        [
+            'text' => 'INGRESO',
+            'icon' => 'fa fa-fw fa-lock',
+            'submenu' => [
+                [
+                    'text' => 'Atenciones',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Clientes',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Mascotas',
+                    'url'  => '#',
+                ],
+        ],
+        ],
+        [
+            'text' => 'CONFIGURACIONES',
+            'icon' => 'fa fa-fw fa-tools',
+            'submenu' => [
+                [
+                    'text' => 'Alergias',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Medicamentos',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Diagnosticos',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Vacunas',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Procedimientos',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Razas',
+                    'url'  => '#',
+                ],
+        ],
+        ],
+        [
+            'text' => 'MONITOREO',
+            'icon' => 'fa fa-fw fa-chart-line',
+            'submenu' => [
+                [
+                    'text' => 'Graficos',
+                    'url'  => '#',
+                ]
+            ],
+        ],
+        /*
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
@@ -382,9 +451,9 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
-    ],
-
+        ],*/
+    ], 
+    
     /*
     |--------------------------------------------------------------------------
     | Menu Filters
