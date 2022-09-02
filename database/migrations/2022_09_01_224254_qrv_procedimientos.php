@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('n_procedimientos');
             $table->string('v_nombre');
             $table->string('v_apuntes');
-            $table->string('n_notifica');
+            $table->integer('n_notifica');
 //Falta foraneas
 
         });    }

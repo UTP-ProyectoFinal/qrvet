@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('n_vacuna');
             $table->string('v_nombre');
             $table->string('v_apuntes');
-            $table->string('n_expira');
+            $table->integer('n_expira');
             //Falta foraneas
         });
     }

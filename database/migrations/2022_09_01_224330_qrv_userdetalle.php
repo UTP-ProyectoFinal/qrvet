@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('v_apellidos');
             $table->string('v_telefono');
             $table->string('v_codcolegio');
-            $table->string('n_estatus');
+            $table->boolean('n_estatus');
             //falta clave foranea
         });
     }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('v_identifica');
             $table->string('v_nombre');
             $table->string('v_apellido');
-            $table->string('d_fecnaci');
+            $table->date('d_fecnaci');
 // falta foraneas
         });    }
 

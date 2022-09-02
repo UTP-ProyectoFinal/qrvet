@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('qrv_atenciones', function (Blueprint $table) {
             $table->id('n_atencion');
             $table->string('v_motivo');
-            $table->string('n_peso');
-            $table->string('n_temp');
-            $table->string('n_frecresp');
-            $table->string('n_freccard');
+            $table->integer('n_peso');
+            $table->integer('n_temp');
+            $table->integer('n_frecresp');
+            $table->integer('n_freccard');
             $table->string('v_detdiagnos');
             $table->string('v_detproced');
 // Falta foraneas

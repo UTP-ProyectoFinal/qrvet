@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('v_nomclin');
             $table->string('v_pais');
             $table->string('v_ciuomun');
-
         });    }
 
     /**

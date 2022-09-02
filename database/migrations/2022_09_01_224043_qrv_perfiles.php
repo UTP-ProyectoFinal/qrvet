@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('qrv_perfiles', function (Blueprint $table) {
             $table->id('n_perfil');
             $table->string('v_apuntes');
-
         });
     }
 
