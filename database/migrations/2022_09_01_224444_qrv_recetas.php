@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_recetas', function (Blueprint $table) {
-            $table->id();
+            $table->id('n_receta');
+            $table->string('n_cantidad');
+            $table->string('v_dosis');
+//falta foraneas
         });
     }
 

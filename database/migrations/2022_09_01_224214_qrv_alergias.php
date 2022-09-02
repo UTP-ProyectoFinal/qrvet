@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_alergias', function (Blueprint $table) {
-            $table->id();
+            $table->id('n_alergia');
+            $table->string('v_nombre');
+            $table->string('v_apuntes');
+//falta foraneas
         });    }
 
     /**

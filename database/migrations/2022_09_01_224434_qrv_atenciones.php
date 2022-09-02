@@ -14,7 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_atenciones', function (Blueprint $table) {
-            $table->id();
+            $table->id('n_atencion');
+            $table->string('v_motivo');
+            $table->string('n_peso');
+            $table->string('n_temp');
+            $table->string('n_frecresp');
+            $table->string('n_freccard');
+            $table->string('v_detdiagnos');
+            $table->string('v_detproced');
+// Falta foraneas
         });
     }
 

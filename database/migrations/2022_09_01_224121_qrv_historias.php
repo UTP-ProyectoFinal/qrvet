@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_historias', function (Blueprint $table) {
-            $table->id();
+            $table->id('n_historia');
+//Falta foraneas
+
         });    }
 
     /**

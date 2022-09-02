@@ -14,7 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_vacunas', function (Blueprint $table) {
-            $table->id();
+            $table->id('n_vacuna');
+            $table->string('v_nombre');
+            $table->string('v_apuntes');
+            $table->string('n_expira');
+            //Falta foraneas
         });
     }
 

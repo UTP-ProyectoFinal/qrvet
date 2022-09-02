@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_razas', function (Blueprint $table) {
-            $table->id();
+            $table->id('n_razas');
+            $table->string('v_nombre');
+            $table->string('v_apuntes');
+            // Falta clave foraneas
         });
     }
 
