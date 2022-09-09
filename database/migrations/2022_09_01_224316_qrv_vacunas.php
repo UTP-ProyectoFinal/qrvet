@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('v_nombre');
             $table->string('v_apuntes');
             $table->integer('n_expira');
-            //Falta foraneas
+            //Foraneas
+            $table->foreign('a_n_iduser')->references('id')->on('users');
+
         });
     }
 

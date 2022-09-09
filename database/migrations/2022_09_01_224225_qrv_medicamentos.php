@@ -17,7 +17,10 @@ return new class extends Migration
             $table->id('n_medica');
             $table->string('v_nombre');
             $table->string('v_apuntes');
-// falta foraneas
+            //Foraneas
+            $table->foreign('a_n_iduser')->references('id')->on('users');
+
+
         });    }
 
     /**

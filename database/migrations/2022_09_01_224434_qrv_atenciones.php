@@ -22,7 +22,11 @@ return new class extends Migration
             $table->integer('n_freccard');
             $table->string('v_detdiagnos');
             $table->string('v_detproced');
-// Falta foraneas
+            // Foraneas
+            $table->foreign('n_historia')->references('n_historia')->on('qrv_historias');
+            $table->foreign('n_diagnos')->references('n_diagnos')->on('qrv_diagnosticos');
+            $table->foreign('n_procedimiento')->references('n_procedimiento')->on('qrv_procedimientos');
+
         });
     }
 

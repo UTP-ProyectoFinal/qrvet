@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('qrv_historias_has_alergias', function (Blueprint $table) {
             $table->id('n_hist_aler');
-            //Falta foraaneas
+            //Foraaneas
+            $table->foreign('n_historia')->references('n_historia')->on('qrv_historias');
+            $table->foreign('n_alergia')->references('n_alergia')->on('qrv_alergias');
+
+
         });
     }
 

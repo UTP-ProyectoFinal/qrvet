@@ -20,7 +20,10 @@ return new class extends Migration
             $table->string('v_telefono');
             $table->string('v_codcolegio');
             $table->boolean('n_estatus');
-            //falta clave foranea
+            //Foraneas
+            $table->foreign('n_perfil')->references('n_perfil')->on('qrv_perfiles');
+            $table->foreign('n_clinica')->references('n_clinica')->on('qrv_clinicas');
+
         });
     }
 

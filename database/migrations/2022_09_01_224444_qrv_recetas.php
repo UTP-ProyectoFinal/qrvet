@@ -17,7 +17,10 @@ return new class extends Migration
             $table->id('n_receta');
             $table->string('n_cantidad');
             $table->string('v_dosis');
-//falta foraneas
+            //Foraneas
+            $table->foreign('n_medica')->references('n_medica')->on('qrv_medicamentos');
+            $table->foreign('n_atencion')->references('n_atencion')->on('qrv_atenciones');
+
         });
     }
 

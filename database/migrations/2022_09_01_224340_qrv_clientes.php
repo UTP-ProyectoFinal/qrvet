@@ -21,7 +21,9 @@ return new class extends Migration
             $table->string('v_correo');
             $table->string('v_telefono');
             $table->string('v_telfijo');
-// falta foraneas
+            //Foraneas
+            $table->foreign('n_tipodoc')->references('n_tipodoc')->on('qrv_tipodoc');
+
         });
     }
 
