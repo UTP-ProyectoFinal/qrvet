@@ -4,6 +4,9 @@
 
 @section('content_header')
     <h1>Medicos</h1>
+    <div class="alineado">
+        <a href="{{route('qrv_clientes.create')}}" class="btn btn-info">Nuevo Medico</a>
+    </div>
 @stop
 
 @section('content')
