@@ -19,13 +19,13 @@ return new class extends Migration
             $table->string('v_nombre');
             $table->string('v_apellido');
             $table->date('d_fecnaci');
-            $table->unsignedBigInteger('n_sexo');
-            $table->unsignedBigInteger('n_raza');
-            $table->unsignedBigInteger('n_cliente');
+            $table->unsignedBigInteger('n_sexo')->constrained();
+            $table->unsignedBigInteger('n_raza')->constrained();
+            $table->unsignedBigInteger('n_cliente')->constrained();
 
             // Foraneas
             $table->foreign('n_sexo')->references('n_sexo')->on('qrv_sexo');
-            $table->foreign('n_raza')->references('n_raza')->on('qrv_raza');
+            $table->foreign('n_raza')->references('n_raza')->on('qrv_razas');
             $table->foreign('n_cliente')->references('n_cliente')->on('qrv_clientes');
 
         });    }

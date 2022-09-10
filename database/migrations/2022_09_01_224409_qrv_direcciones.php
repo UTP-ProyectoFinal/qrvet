@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('v_depart');
             $table->string('v_ciudad');
             $table->string('v_pais');
-            $table->unsignedBigInteger('n_cliente');
+            $table->unsignedBigInteger('n_cliente')->constrained();
 
             //Foraneas
             $table->foreign('n_cliente')->references('n_cliente')->on('qrv_clientes');

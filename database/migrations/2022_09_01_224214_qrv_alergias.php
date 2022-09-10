@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('n_alergia');
             $table->string('v_nombre');
             $table->string('v_apuntes');
-            $table->unsignedBigInteger('a_n_iduser');
+            $table->unsignedBigInteger('a_n_iduser')->constrained();
 
             //Foraneas
             $table->foreign('a_n_iduser')->references('id')->on('users');

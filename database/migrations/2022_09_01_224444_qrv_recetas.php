@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id('n_receta');
             $table->string('n_cantidad');
             $table->string('v_dosis');
-            $table->unsignedBigInteger('n_medica');
-            $table->unsignedBigInteger('n_atencion');
+            $table->unsignedBigInteger('n_medica')->constrained();
+            $table->unsignedBigInteger('n_atencion')->constrained();
 
             //Foraneas
             $table->foreign('n_medica')->references('n_medica')->on('qrv_medicamentos');

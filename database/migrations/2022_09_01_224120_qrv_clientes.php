@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migratition
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -21,7 +21,7 @@ return new class extends Migratition
             $table->string('v_correo');
             $table->string('v_telefono');
             $table->string('v_telfijo');
-            $table->unsignedBigInteger('n_tipodoc');
+            $table->unsignedBigInteger('n_tipodoc')->constrained();
 
             //Foraneas
             $table->foreign('n_tipodoc')->references('n_tipodoc')->on('qrv_tipodoc');

@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('qrv_historias', function (Blueprint $table) {
             $table->id('n_historia');
-            $table->unsignedBigInteger('n_cliente');
-            $table->unsignedBigInteger('n_paciente');
-            $table->unsignedBigInteger('n_vacuna');
+            $table->unsignedBigInteger('n_cliente')->constrained();
+            $table->unsignedBigInteger('n_paciente')->constrained();
+            $table->unsignedBigInteger('n_vacuna')->constrained();
 
             //Foraneas
             $table->foreign('n_cliente')->references('n_cliente')->on('qrv_clientes');
