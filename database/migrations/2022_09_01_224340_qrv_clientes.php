@@ -14,7 +14,7 @@ return new class extends Migratition
     public function up()
     {
         Schema::create('qrv_clientes', function (Blueprint $table) {
-            $table->id('n_clientes');
+            $table->id('n_cliente');
             $table->string('n_documento');
             $table->string('v_nombre');
             $table->string('v_apellido');
