@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_especies', function (Blueprint $table) {
-            $table->id();
+            $table->id('n_especies');
+            $table->string('v_decripc');
+
         });    }
 
     /**

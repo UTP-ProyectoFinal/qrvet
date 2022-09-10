@@ -14,7 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_medicamentos', function (Blueprint $table) {
-            $table->id();
+            $table->id('n_medica');
+            $table->string('v_nombre');
+            $table->string('v_apuntes');
+            //Foraneas
+            $table->foreign('a_n_iduser')->references('id')->on('users');
+
+
         });    }
 
     /**

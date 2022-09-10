@@ -14,14 +14,16 @@ return new class extends Migratition
     public function up()
     {
         Schema::create('qrv_clientes', function (Blueprint $table) {
-            $table->id();
-            $table->integer('nrocliente');
-            $table->string('nombre',20);
-            $table->string('apellido',20);
-            $table->string('email',20);
-            $table->string('telefono',20);
-            $table->string('telfijo',20);
-            $table->integer('tipodoc');
+            $table->id('n_clientes');
+            $table->string('n_documento');
+            $table->string('v_nombre');
+            $table->string('v_apellido');
+            $table->string('v_correo');
+            $table->string('v_telefono');
+            $table->string('v_telfijo');
+            //Foraneas
+            $table->foreign('n_tipodoc')->references('n_tipodoc')->on('qrv_tipodoc');
+
         });
     }
 

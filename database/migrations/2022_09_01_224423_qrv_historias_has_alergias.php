@@ -14,7 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_historias_has_alergias', function (Blueprint $table) {
-            $table->id();
+            $table->id('n_hist_aler');
+            //Foraaneas
+            $table->foreign('n_historia')->references('n_historia')->on('qrv_historias');
+            $table->foreign('n_alergia')->references('n_alergia')->on('qrv_alergias');
+
+
         });
     }
 

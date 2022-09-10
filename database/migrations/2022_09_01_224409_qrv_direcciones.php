@@ -14,7 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_direcciones', function (Blueprint $table) {
-            $table->id();
+            $table->id('n_direccion');
+            $table->string('v_nombre');
+            $table->string('v_calle');
+            $table->string('v_distrito');
+            $table->string('v_depart');
+            $table->string('v_ciudad');
+            $table->string('v_pais');
+            //Foraneas
+            $table->foreign('n_cliente')->references('n_cliente')->on('qrv_clientes');
+
         });
     }
 
