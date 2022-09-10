@@ -21,6 +21,8 @@ return new class extends Migratition
             $table->string('v_correo');
             $table->string('v_telefono');
             $table->string('v_telfijo');
+            $table->unsignedBigInteger('n_tipodoc');
+
             //Foraneas
             $table->foreign('n_tipodoc')->references('n_tipodoc')->on('qrv_tipodoc');
 

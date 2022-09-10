@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id('n_diagnos');
             $table->string('v_nombre');
             $table->string('v_apuntes');
+            $table->unsignedBigInteger('a_n_iduser');
+
             //Foraneas
             $table->foreign('a_n_iduser')->references('id')->on('users');
 

@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id('n_razas');
             $table->string('v_nombre');
             $table->string('v_apuntes');
+            $table->unsignedBigInteger('n_especie');
+            $table->unsignedBigInteger('a_n_iduser');
+
             // Foraneas
             $table->foreign('n_especie')->references('n_especie')->on('qrv_especies');
             $table->foreign('a_n_iduser')->references('id')->on('users');

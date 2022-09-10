@@ -3,38 +3,50 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>MedicosTIA</h1>
+    <h1>Medicos</h1>
 @stop
 
 @section('content')
     <table class="table">
-        <caption>List of users</caption>
+        <caption>Lista de usuarios</caption>
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Estatus</th>
+                <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <th scope="row">1</th>
                 <td>Christian</td>
-                <td>Yaquelin</td>
-                <td>@vilcax98</td>
+                <td>Vilcapoma</td>
+                <td>974677444</td>
+                <td>1</td>
             </tr>
             <tr>
                 <th scope="row">2</th>
-                <td>Samir</td>
-                <td>Hello</td>
-                <td>@building</td>
+                <td>Yaquelin</td>
+                <td>Jimenez</td>
+                <td>92164878</td>
+                <td>1</td>
             </tr>
             <tr>
                 <th scope="row">3</th>
-                <td>Welcome</td>
-                <td>Hiii</td>
-                <td>@integrador2</td>
+                <td>Samir</td>
+                <td>Poma</td>
+                <td>948437583</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td><i class="fa-light fa-pen-to-square"></i> <i class="fa-regular fa-trash"></i></td>
+                <td>Poma</td>
+                <td>948437583</td>
+                <td>1</td>
             </tr>
         </tbody>
     </table>
