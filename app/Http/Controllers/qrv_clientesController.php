@@ -23,7 +23,7 @@ class qrv_clientesController extends Controller
      */
     public function create()
     {
-        //
+          return view('client.create');                                          
     }
 
     /**
