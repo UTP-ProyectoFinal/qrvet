@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('qrv_vacunas', function (Blueprint $table) {
-            $table->id('n_vacuna');
+        Schema::create('qrv_razas', function (Blueprint $table) {
+            $table->id('n_raza');
             $table->string('v_nombre');
             $table->string('v_apuntes');
-            $table->integer('n_expira');
-            //Foraneas
+            $table->unsignedBigInteger('n_especie')->constrained('qrv_especies');
+            $table->unsignedBigInteger('a_n_iduser')->constrained('users');
+
+            // Foraneas
+            $table->foreign('n_especie')->references('n_especie')->on('qrv_especies');
             $table->foreign('a_n_iduser')->references('id')->on('users');
 
         });
@@ -31,7 +34,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qrv_vacunas');
+        Schema::dropIfExists('qrv_razas');
 
     }
 };

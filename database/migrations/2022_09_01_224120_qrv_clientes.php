@@ -14,13 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_clientes', function (Blueprint $table) {
-            $table->id('n_clientes');
+            $table->id('n_cliente');
             $table->string('n_documento');
             $table->string('v_nombre');
             $table->string('v_apellido');
             $table->string('v_correo');
             $table->string('v_telefono');
             $table->string('v_telfijo');
+            $table->unsignedBigInteger('n_tipodoc')->constrained();
+
             //Foraneas
             $table->foreign('n_tipodoc')->references('n_tipodoc')->on('qrv_tipodoc');
 

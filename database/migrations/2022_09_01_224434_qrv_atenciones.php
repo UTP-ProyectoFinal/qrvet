@@ -22,6 +22,10 @@ return new class extends Migration
             $table->integer('n_freccard');
             $table->string('v_detdiagnos');
             $table->string('v_detproced');
+            $table->unsignedBigInteger('n_historia')->constrained();
+            $table->unsignedBigInteger('n_diagnos')->constrained();
+            $table->unsignedBigInteger('n_procedimiento')->constrained();
+
             // Foraneas
             $table->foreign('n_historia')->references('n_historia')->on('qrv_historias');
             $table->foreign('n_diagnos')->references('n_diagnos')->on('qrv_diagnosticos');
