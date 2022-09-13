@@ -31,7 +31,11 @@
                 <td>974677444</td>
                 <td>Club Pet</td>
                 <td>Activo</td>
-                <td><i class="fa fa-edit"></i> <i class="fa fa-trash"></i></td>
+                <td>
+                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
+
+                    <i class="fa fa-trash"></i>
+                </td>
             </tr>
             <tr>
                 <th scope="row">2</th>
@@ -40,7 +44,11 @@
                 <td>92164878</td>
                 <td>Club Pet</td>
                 <td>Activo</td>
-                <td><i class="fa fa-edit"></i> <i class="fa fa-trash"></i></td>
+                <td>
+                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
+
+                    <i class="fa fa-trash"></i>
+                </td>
             </tr>
             <tr>
                 <th scope="row">3</th>
@@ -49,7 +57,11 @@
                 <td>948437583</td>
                 <td>Club Pet</td>
                 <td>Activo</td>
-                <td><i class="fa fa-edit"></i> <i class="fa fa-trash"></i></td>
+                <td>
+                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
+
+                    <i class="fa fa-trash"></i>
+                </td>
             </tr>
 
         </tbody>

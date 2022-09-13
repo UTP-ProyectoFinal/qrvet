@@ -23,7 +23,19 @@ class qrv_clientesController extends Controller
      */
     public function create()
     {
-          return view('client.create');                                          
+          return view('client.create');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        return view('client.edit',1);
+
     }
 
     /**
@@ -48,16 +60,7 @@ class qrv_clientesController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
