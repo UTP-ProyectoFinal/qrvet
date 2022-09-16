@@ -26,3 +26,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('qrv_clientes', 'App\Http\Controllers\qrv_clientesController');
+Route::resource('qrv_client', 'App\Http\Controllers\qrv_clientController');

@@ -349,7 +349,7 @@ return [
                 ],
                 [
                     'text' => 'Clientes',
-                    'url'  => '#',
+                    'url'  => 'qrv_client',
                 ],
                 [
                     'text' => 'Mascotas',
