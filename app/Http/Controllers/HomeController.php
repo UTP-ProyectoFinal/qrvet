@@ -25,4 +25,13 @@ class HomeController extends Controller
     {
         return view('admin.dashboard');
     }
+    public function validarqr(Request $request){
+        $qr=$request->qr_code;
+        $data='123';
+        if($qr==$data){
+            return response()->json(['statuss'=>200,]);
+    }else {
+        return response()->json(['statuss'=>400,]);
+    }
+}
 }
