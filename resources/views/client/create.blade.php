@@ -26,14 +26,24 @@
     <div class="row">
         <div class="col">
             <label for="name" class="form-label">Teléfono</label>
-            <input type="text" class="form-control" placeholder="Teléfono" aria-label="Teléfono">
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-phone-alt"></i></div>
+                </div>
+                <input type="text" class="form-control" placeholder="Teléfono" aria-label="Teléfono">
+            </div>
             @error('name')
             <p class="text-danger form-text">{{ $message }}</p>
             @enderror
         </div>
         <div class="col">
             <label for="name" class="form-label">Código de Colegio</label>
-            <input type="text" class="form-control" placeholder="Código de Colegio" aria-label="Código de Colegio">
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="far fa-address-card"></i></div>
+                </div>
+                <input type="text" class="form-control" placeholder="Código de Colegio" aria-label="Código de Colegio">
+            </div>
             @error('name')
             <p class="text-danger form-text">{{ $message }}</p>
             @enderror
@@ -43,15 +53,22 @@
         <div class="row">
             <div class="col">
                 <label for="name" class="form-label">Correo electrónico</label>
-                <input type="text" class="form-control" placeholder="Correo electrónico" aria-label="Correo electrónico">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">@</div>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Correo electrónico" aria-label="Correo electrónico">
+                </div>
                 @error('name')
                 <p class="text-danger form-text">{{ $message }}</p>
                 @enderror
             </div>
             <div class="col">
                 <label for="name" class="form-label">Contraseña</label>
-                <input type="text" class="form-control" placeholder="Contraseña" aria-label="Contraseña">
-                @error('name')
+                <input type="password" id="inputPassword5"  placeholder="Contraseña" class="form-control" aria-describedby="passwordHelpBlock">
+                <small id="passwordHelpBlock" class="form-text text-muted">
+                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                </small>                @error('name')
                 <p class="text-danger form-text">{{ $message }}</p>
                 @enderror
             </div>
