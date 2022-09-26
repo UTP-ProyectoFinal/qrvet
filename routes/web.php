@@ -28,3 +28,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('qrv_clientes', 'App\Http\Controllers\qrv_clientesController');
 
 Route::resource('Alergias', 'App\Http\Controllers\AlergiasController');
+
+Route::resource('Medicamentos', 'App\Http\Controllers\MedicamentosController');
+
