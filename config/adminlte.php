@@ -375,7 +375,7 @@ return [
                 ],
                 [
                     'text' => 'Vacunas',
-                    'url'  => '#',
+                    'url'  => 'Vacunas',
                 ],
                 [
                     'text' => 'Procedimientos',
