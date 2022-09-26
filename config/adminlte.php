@@ -379,7 +379,7 @@ return [
                 ],
                 [
                     'text' => 'Procedimientos',
-                    'url'  => '#',
+                    'url'  => 'Procedimientos',
                 ],
                 [
                     'text' => 'Razas',

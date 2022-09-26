@@ -35,3 +35,6 @@ Route::resource('Diagnosticos', 'App\Http\Controllers\DiagnosticosController');
 
 Route::resource('Vacunas', 'App\Http\Controllers\VacunasController');
 
+Route::resource('Procedimientos', 'App\Http\Controllers\ProcedimientosController');
+
+
