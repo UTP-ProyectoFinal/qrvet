@@ -37,4 +37,7 @@ Route::resource('Vacunas', 'App\Http\Controllers\VacunasController');
 
 Route::resource('Procedimientos', 'App\Http\Controllers\ProcedimientosController');
 
+Route::resource('Razas', 'App\Http\Controllers\RazasController');
+
+
 
