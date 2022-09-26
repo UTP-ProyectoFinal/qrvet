@@ -20,9 +20,11 @@ Route::get('/', function () {
 use App\Http\Controllers\ConnectController;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/welcome', [ConnectController::class, 'getLogin']); 
+Route::get('/welcome', [ConnectController::class, 'getLogin']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('qrv_clientes', 'App\Http\Controllers\qrv_clientesController');
+
+Route::resource('Alergias', 'App\Http\Controllers\AlergiasController');

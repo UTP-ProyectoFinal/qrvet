@@ -363,7 +363,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Alergias',
-                    'url'  => '#',
+                    'url'  => 'Alergias',
                 ],
                 [
                     'text' => 'Medicamentos',
@@ -452,8 +452,8 @@ return [
             'icon_color' => 'cyan',
             'url'        => '#',
         ],*/
-    ], 
-    
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Menu Filters
