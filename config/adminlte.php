@@ -363,27 +363,27 @@ return [
             'submenu' => [
                 [
                     'text' => 'Alergias',
-                    'url'  => '#',
+                    'url'  => 'Alergias',
                 ],
                 [
                     'text' => 'Medicamentos',
-                    'url'  => '#',
+                    'url'  => 'Medicamentos',
                 ],
                 [
                     'text' => 'Diagnosticos',
-                    'url'  => '#',
+                    'url'  => 'Diagnosticos',
                 ],
                 [
                     'text' => 'Vacunas',
-                    'url'  => '#',
+                    'url'  => 'Vacunas',
                 ],
                 [
                     'text' => 'Procedimientos',
-                    'url'  => '#',
+                    'url'  => 'Procedimientos',
                 ],
                 [
                     'text' => 'Razas',
-                    'url'  => '#',
+                    'url'  => 'Razas',
                 ],
         ],
         ],
@@ -452,8 +452,8 @@ return [
             'icon_color' => 'cyan',
             'url'        => '#',
         ],*/
-    ], 
-    
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Menu Filters

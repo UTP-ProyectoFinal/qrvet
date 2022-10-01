@@ -20,11 +20,24 @@ Route::get('/', function () {
 use App\Http\Controllers\ConnectController;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/welcome', [ConnectController::class, 'getLogin']); 
+Route::get('/welcome', [ConnectController::class, 'getLogin']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('qrv_clientes', 'App\Http\Controllers\qrv_clientesController');
-Route::resource('qrv_client', 'App\Http\Controllers\qrv_clientController');
-Route::post('/validarqr', [App\Http\Controllers\HomeController::class, 'validarqr'])->name('validarqr');
+
+Route::resource('Alergias', 'App\Http\Controllers\AlergiasController');
+
+Route::resource('Medicamentos', 'App\Http\Controllers\MedicamentosController');
+
+Route::resource('Diagnosticos', 'App\Http\Controllers\DiagnosticosController');
+
+Route::resource('Vacunas', 'App\Http\Controllers\VacunasController');
+
+Route::resource('Procedimientos', 'App\Http\Controllers\ProcedimientosController');
+
+Route::resource('Razas', 'App\Http\Controllers\RazasController');
+
+
+

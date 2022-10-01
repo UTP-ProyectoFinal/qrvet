@@ -4,19 +4,19 @@
     <h1>Crear Medico</h1>
 @stop
 @section('content')
-<form action="{{ route('qrv_clientes.store') }}" method="POST">
+<form method="POST">
     <div class="container">
     <div class="row">
         <div class="col">
             <label for="name" class="form-label">Nombres</label>
-            <input type="text" name="nombre" class="form-control" placeholder="Nombres" aria-label="Nombres">
+            <input type="text" class="form-control" placeholder="Nombres" aria-label="Nombres">
             @error('name')
             <p class="text-danger form-text">{{ $message }}</p>
             @enderror
         </div>
         <div class="col">
             <label for="name" class="form-label">Apellidos</label>
-            <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" aria-label="Apellidos">
+            <input type="text" class="form-control" placeholder="Apellidos" aria-label="Apellidos">
             @error('name')
             <p class="text-danger form-text">{{ $message }}</p>
             @enderror
@@ -30,25 +30,20 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-phone-alt"></i></div>
                 </div>
-                <input type="text" name="telefono" class="form-control" placeholder="Teléfono" aria-label="Teléfono">
+                <input type="text" class="form-control" placeholder="Teléfono" aria-label="Teléfono">
             </div>
-
             @error('name')
             <p class="text-danger form-text">{{ $message }}</p>
             @enderror
         </div>
         <div class="col">
             <label for="name" class="form-label">Código de Colegio</label>
-<<<<<<< HEAD
-            <input type="text" name="codigocolegio" class="form-control" placeholder="Código de Colegio" aria-label="Código de Colegio">
-=======
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="far fa-address-card"></i></div>
                 </div>
                 <input type="text" class="form-control" placeholder="Código de Colegio" aria-label="Código de Colegio">
             </div>
->>>>>>> origin/yjimenez
             @error('name')
             <p class="text-danger form-text">{{ $message }}</p>
             @enderror
@@ -58,31 +53,22 @@
         <div class="row">
             <div class="col">
                 <label for="name" class="form-label">Correo electrónico</label>
-<<<<<<< HEAD
-                <input type="text" name="correo" class="form-control" placeholder="Correo electrónico" aria-label="Correo electrónico">
-=======
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <div class="input-group-text">@</div>
                     </div>
                     <input type="text" class="form-control" placeholder="Correo electrónico" aria-label="Correo electrónico">
                 </div>
->>>>>>> origin/yjimenez
                 @error('name')
                 <p class="text-danger form-text">{{ $message }}</p>
                 @enderror
             </div>
             <div class="col">
                 <label for="name" class="form-label">Contraseña</label>
-<<<<<<< HEAD
-                <input type="text" name="contrasena" class="form-control" placeholder="Contraseña" aria-label="Contraseña">
-                @error('name')
-=======
                 <input type="password" id="inputPassword5"  placeholder="Contraseña" class="form-control" aria-describedby="passwordHelpBlock">
                 <small id="passwordHelpBlock" class="form-text text-muted">
                     Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                 </small>                @error('name')
->>>>>>> origin/yjimenez
                 <p class="text-danger form-text">{{ $message }}</p>
                 @enderror
             </div>
@@ -91,7 +77,7 @@
     <div class="row">
         <div class="col">
             <label for="name" class="form-label">Clinica</label>
-            <select class="form-control" name="clinica" id="exampleFormControlSelect1">
+            <select class="form-control" id="exampleFormControlSelect1">
                 <option>Seleccionar una clinica</option>
                 <option>2</option>
                 <option>3</option>
@@ -104,7 +90,7 @@
         </div>
         <div class="col">
             <label for="name" class="form-label">Perfil</label>
-                <select class="form-control" name="perfil" id="exampleFormControlSelect1">
+                <select class="form-control" id="exampleFormControlSelect1">
                     <option>Seleccionar una perfil</option>
                     <option>2</option>
                     <option>3</option>
