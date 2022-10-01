@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\qrv_clientes;
 use Illuminate\Http\Request;
 
 class qrv_clientesController extends Controller
@@ -46,7 +47,16 @@ class qrv_clientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'apellidos' => 'required',
+            'telefono' => 'required',
+            'correo' => 'required',
+        ]);
+        return 'ok';
+
+        $client=qrv_clientes::create($request->all());
+        return redirect()->route('client.index');
     }
 
     /**

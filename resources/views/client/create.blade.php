@@ -4,19 +4,19 @@
     <h1>Crear Medico</h1>
 @stop
 @section('content')
-<form method="POST">
+<form action="{{ route('qrv_clientes.store') }}" method="POST">
     <div class="container">
     <div class="row">
         <div class="col">
             <label for="name" class="form-label">Nombres</label>
-            <input type="text" class="form-control" placeholder="Nombres" aria-label="Nombres">
+            <input type="text" name="nombre" class="form-control" placeholder="Nombres" aria-label="Nombres">
             @error('name')
             <p class="text-danger form-text">{{ $message }}</p>
             @enderror
         </div>
         <div class="col">
             <label for="name" class="form-label">Apellidos</label>
-            <input type="text" class="form-control" placeholder="Apellidos" aria-label="Apellidos">
+            <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" aria-label="Apellidos">
             @error('name')
             <p class="text-danger form-text">{{ $message }}</p>
             @enderror
@@ -26,14 +26,14 @@
     <div class="row">
         <div class="col">
             <label for="name" class="form-label">Teléfono</label>
-            <input type="text" class="form-control" placeholder="Teléfono" aria-label="Teléfono">
+            <input type="text" name="telefono" class="form-control" placeholder="Teléfono" aria-label="Teléfono">
             @error('name')
             <p class="text-danger form-text">{{ $message }}</p>
             @enderror
         </div>
         <div class="col">
             <label for="name" class="form-label">Código de Colegio</label>
-            <input type="text" class="form-control" placeholder="Código de Colegio" aria-label="Código de Colegio">
+            <input type="text" name="codigocolegio" class="form-control" placeholder="Código de Colegio" aria-label="Código de Colegio">
             @error('name')
             <p class="text-danger form-text">{{ $message }}</p>
             @enderror
@@ -43,14 +43,14 @@
         <div class="row">
             <div class="col">
                 <label for="name" class="form-label">Correo electrónico</label>
-                <input type="text" class="form-control" placeholder="Correo electrónico" aria-label="Correo electrónico">
+                <input type="text" name="correo" class="form-control" placeholder="Correo electrónico" aria-label="Correo electrónico">
                 @error('name')
                 <p class="text-danger form-text">{{ $message }}</p>
                 @enderror
             </div>
             <div class="col">
                 <label for="name" class="form-label">Contraseña</label>
-                <input type="text" class="form-control" placeholder="Contraseña" aria-label="Contraseña">
+                <input type="text" name="contrasena" class="form-control" placeholder="Contraseña" aria-label="Contraseña">
                 @error('name')
                 <p class="text-danger form-text">{{ $message }}</p>
                 @enderror
@@ -60,7 +60,7 @@
     <div class="row">
         <div class="col">
             <label for="name" class="form-label">Clinica</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" name="clinica" id="exampleFormControlSelect1">
                 <option>Seleccionar una clinica</option>
                 <option>2</option>
                 <option>3</option>
@@ -73,7 +73,7 @@
         </div>
         <div class="col">
             <label for="name" class="form-label">Perfil</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <select class="form-control" name="perfil" id="exampleFormControlSelect1">
                     <option>Seleccionar una perfil</option>
                     <option>2</option>
                     <option>3</option>

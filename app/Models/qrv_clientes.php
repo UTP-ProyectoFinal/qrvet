@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class qrv_clientes extends Model
 {
     use HasFactory;
+    protected $fillable=['nombre','apellidos','telefono','correo'];
 }
