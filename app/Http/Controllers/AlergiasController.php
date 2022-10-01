@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alergias;
 use Illuminate\Http\Request;
 
 class AlergiasController extends Controller
@@ -14,6 +15,7 @@ class AlergiasController extends Controller
     public function index()
     {
         return view('alergias.index');
+
     }
 
     /**
@@ -24,17 +26,6 @@ class AlergiasController extends Controller
     public function create()
     {
         return view('alergias.create');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view('alergias.edit');
 
     }
 
@@ -52,24 +43,34 @@ class AlergiasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Alergias  $alergias
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Alergias $alergias)
     {
         //
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Alergias  $alergias
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Alergias $alergias)
+    {
+        return view('alergias.edit');
 
+    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Alergias  $alergias
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Alergias $alergias)
     {
         //
     }
@@ -77,10 +78,10 @@ class AlergiasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Alergias  $alergias
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Alergias $alergias)
     {
         //
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Procedimientos;
 use Illuminate\Http\Request;
 
 class ProcedimientosController extends Controller
@@ -14,6 +15,7 @@ class ProcedimientosController extends Controller
     public function index()
     {
         return view('procedimientos.index');
+
     }
 
     /**
@@ -24,17 +26,6 @@ class ProcedimientosController extends Controller
     public function create()
     {
         return view('procedimientos.create');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view('procedimientos.edit');
 
     }
 
@@ -52,24 +43,34 @@ class ProcedimientosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Procedimientos  $procedimientos
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Procedimientos $procedimientos)
     {
         //
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Procedimientos  $procedimientos
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Procedimientos $procedimientos)
+    {
+        return view('procedimientos.edit');
 
+    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Procedimientos  $procedimientos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Procedimientos $procedimientos)
     {
         //
     }
@@ -77,10 +78,10 @@ class ProcedimientosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Procedimientos  $procedimientos
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Procedimientos $procedimientos)
     {
         //
     }

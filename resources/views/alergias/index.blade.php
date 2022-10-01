@@ -5,7 +5,7 @@
 @section('content_header')
     <h1>Alergias</h1>
     <div class="alineado">
-        <a href="{{route('Alergias.create')}}" class="btn btn-info">Nueva Alergia</a>
+        <a href="{{route('Alergias.create')}}" class="btn btn-info">Nuevo Diagnostico</a>
     </div>
 @stop
 
@@ -28,7 +28,7 @@
                 <td>Dermatitis a causa de un componente de los alimentos</td>
                 <td>Cristian</td>
                 <td>
-                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
+                    <a href="{{route('Alergias.create')}}"><i class="fa fa-edit"></i></a>
 
                     <i class="fa fa-trash"></i>
                 </td>
@@ -39,7 +39,7 @@
                 <td>Alergia al ambiente, polen, moho, etc.</td>
                 <td>Samir</td>
                 <td>
-                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
+                    <a href="{{route('Alergias.create')}}"><i class="fa fa-edit"></i></a>
 
                     <i class="fa fa-trash"></i>
                 </td>

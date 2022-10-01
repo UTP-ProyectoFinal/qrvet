@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Razas;
 use Illuminate\Http\Request;
 
 class RazasController extends Controller
@@ -14,6 +15,7 @@ class RazasController extends Controller
     public function index()
     {
         return view('razas.index');
+
     }
 
     /**
@@ -24,18 +26,6 @@ class RazasController extends Controller
     public function create()
     {
         return view('razas.create');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view('razas.edit');
-
     }
 
     /**
@@ -52,24 +42,33 @@ class RazasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Razas  $razas
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Razas $razas)
     {
         //
     }
 
-
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Razas  $razas
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Razas $razas)
+    {
+        return view('razas.edit');
+    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Razas  $razas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Razas $razas)
     {
         //
     }
@@ -77,10 +76,10 @@ class RazasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Razas  $razas
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Razas $razas)
     {
         //
     }

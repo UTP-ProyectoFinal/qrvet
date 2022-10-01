@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medicamentos;
 use Illuminate\Http\Request;
 
 class MedicamentosController extends Controller
@@ -24,17 +25,6 @@ class MedicamentosController extends Controller
     public function create()
     {
         return view('medicamentos.create');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view('medicamentos.edit');
 
     }
 
@@ -52,24 +42,34 @@ class MedicamentosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Medicamentos  $medicamentos
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Medicamentos $medicamentos)
     {
         //
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Medicamentos  $medicamentos
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Medicamentos $medicamentos)
+    {
+        return view('medicamentos.edit');
 
+    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Medicamentos  $medicamentos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Medicamentos $medicamentos)
     {
         //
     }
@@ -77,10 +77,10 @@ class MedicamentosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Medicamentos  $medicamentos
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Medicamentos $medicamentos)
     {
         //
     }
