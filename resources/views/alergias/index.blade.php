@@ -5,7 +5,7 @@
 @section('content_header')
     <h1>Alergias</h1>
     <div class="alineado">
-        <a href="{{route('Alergias.create')}}" class="btn btn-info">Nuevo Diagnostico</a>
+        <a href="{{route('Alergias.create')}}" class="btn btn-info">Nueva Alergia</a>
     </div>
 @stop
 
