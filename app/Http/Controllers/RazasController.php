@@ -13,7 +13,7 @@ class RazasController extends Controller
      */
     public function index()
     {
-        return view('razas.index');
+        return view('Razas.index');
     }
 
     /**

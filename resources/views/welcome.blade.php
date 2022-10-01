@@ -492,9 +492,9 @@
                         success: function (response) { 
                             console.log(response);
                             if(response.status == 200){
-                                alert('berhasil');
+                                alert('QR Valido');
                             }else{
-                                alert('gagal');
+                                alert('QR Invalido');
                             }
                             
                         }
