@@ -24,8 +24,8 @@
         <tbody>
             <tr>
                 <th scope="row">1</th>
-                <td>Dermatitis alimentaria</td>
-                <td>Dermatitis a causa de un componente de los alimentos</td>
+                <td>Baño Medicado.</td>
+                <td>Baño con medicacion	</td>
                 <td>Cristian</td>
                 <td>
                     <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
@@ -35,8 +35,8 @@
             </tr>
             <tr>
                 <th scope="row">2</th>
-                <td>Atopía</td>
-                <td>Alergia al ambiente, polen, moho, etc.</td>
+                <td>Cirugía Cesarea	</td>
+                <td>Cesarea como metodo de parto</td>
                 <td>Samir</td>
                 <td>
                     <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
@@ -46,8 +46,8 @@
             </tr>
             <tr>
                 <th scope="row">3</th>
-                <td>Dermatitis autoinmunes</td>
-                <td>Eritremas</td>
+                <td>Cirugía de Esterilizacion</td>
+                <td>Cirugía de esterilizacion y/o castración</td>
                 <td>Yaquelin</td>
                 <td>
                     <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>

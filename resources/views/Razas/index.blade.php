@@ -15,8 +15,8 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nombre de Raza</th>
-                <th scope="col">Información Extra</th>
+                <th scope="col">Especie</th>
+                <th scope="col">Raza</th>
                 <th scope="col">Creador</th>
                 <th scope="col">Acciones</th>
             </tr>
@@ -24,8 +24,8 @@
         <tbody>
             <tr>
                 <th scope="row">1</th>
-                <td>Dermatitis alimentaria</td>
-                <td>Dermatitis a causa de un componente de los alimentos</td>
+                <td>Ave</td>
+                <td>Periquito</td>
                 <td>Cristian</td>
                 <td>
                     <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
@@ -35,8 +35,8 @@
             </tr>
             <tr>
                 <th scope="row">2</th>
-                <td>Atopía</td>
-                <td>Alergia al ambiente, polen, moho, etc.</td>
+                <td>Canino</td>
+                <td>Labrador Retriever</td>
                 <td>Samir</td>
                 <td>
                     <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
@@ -46,8 +46,8 @@
             </tr>
             <tr>
                 <th scope="row">3</th>
-                <td>Dermatitis autoinmunes</td>
-                <td>Eritremas</td>
+                <td>Gato</td>
+                <td>Persa</td>
                 <td>Yaquelin</td>
                 <td>
                     <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
