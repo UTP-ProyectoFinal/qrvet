@@ -1,7 +1,5 @@
 @extends('adminlte::page')
-
 @section('title', 'Dashboard')
-
 @section('content_header')
     <h1>Alergias</h1>
     <div class="alineado">
@@ -61,7 +59,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link href="/css/admin_custom.css" rel="stylesheet" >
 @stop
 
 @section('js')

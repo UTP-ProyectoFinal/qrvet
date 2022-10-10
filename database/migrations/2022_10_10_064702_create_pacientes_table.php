@@ -28,7 +28,8 @@ return new class extends Migration
             $table->foreign('n_raza')->references('n_raza')->on('qrv_razas');
             $table->foreign('n_cliente')->references('n_cliente')->on('qrv_clientes');
 
-        });    }
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -38,6 +39,5 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('qrv_pacientes');
-
     }
 };

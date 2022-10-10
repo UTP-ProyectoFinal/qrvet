@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('qrv_especies', function (Blueprint $table) {
-            $table->id('n_especie');
+        Schema::create('qrv_tipodoc', function (Blueprint $table) {
+            $table->id('n_tipodoc');
             $table->string('v_decripc');
-
-        });    }
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -26,7 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qrv_especies');
-
+        Schema::dropIfExists('qrv_tipodoc');
     }
 };

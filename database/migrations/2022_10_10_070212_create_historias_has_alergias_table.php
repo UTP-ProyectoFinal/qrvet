@@ -34,6 +34,5 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('qrv_historias_has_alergias');
-
     }
 };

@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('v_apuntes');
             $table->unsignedBigInteger('n_especie')->constrained('qrv_especies');
             $table->unsignedBigInteger('a_n_iduser')->constrained('users');
-
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
             // Foraneas
             $table->foreign('n_especie')->references('n_especie')->on('qrv_especies');
             $table->foreign('a_n_iduser')->references('id')->on('users');

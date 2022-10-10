@@ -25,7 +25,6 @@ return new class extends Migration
 
             //Foraneas
             $table->foreign('n_cliente')->references('n_cliente')->on('qrv_clientes');
-
         });
     }
 
@@ -37,6 +36,5 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('qrv_direcciones');
-
     }
 };

@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('v_apuntes');
             $table->integer('n_notifica');
             $table->unsignedBigInteger('a_n_iduser')->constrained();
-
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
             //Foraneas
             $table->foreign('a_n_iduser')->references('id')->on('users');
 

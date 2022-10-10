@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alergias;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\QueryException;
 
 class AlergiasController extends Controller
 {
@@ -15,7 +18,6 @@ class AlergiasController extends Controller
     public function index()
     {
         return view('alergias.index');
-
     }
 
     /**
@@ -26,7 +28,6 @@ class AlergiasController extends Controller
     public function create()
     {
         return view('alergias.create');
-
     }
 
     /**
@@ -37,7 +38,32 @@ class AlergiasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $slug = substr($request->url, 23);
+        $request->validate([
+            'nombre' => 'required',
+            'apuntes' => 'required'
+        ],[
+            'nombre.required' => 'El nombre es requerido',
+            'apuntes.required' => 'Los apuntes es requerido'
+
+        ]);
+       // try {
+            $usuario = Auth::user();
+            $date = date('Y-m-d H:i:s');
+            $model = new Alergias;
+            $model->v_nombre = $request->nombre;
+            $model->v_apuntes = $request->apuntes;
+            $model->a_n_iduser = $usuario->id;
+            $model->updated_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
+                ->format('m/d/Y');
+            $model->created_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
+                ->format('m/d/Y');
+            $model->save();
+
+        //    return redirect()->route(empty('Alergias.create')? 'Alergias' :$slug)->with('success','Se ha registrado satisfactoriamente, en las proximas 24 horas nos estaremos comunicando con usted.');
+        //}catch (QueryException $e) {
+        //    return redirect()->route('Alergias.create');
+        //}
     }
 
     /**
