@@ -38,7 +38,6 @@ class AlergiasController extends Controller
      */
     public function store(Request $request)
     {
-        $slug = substr($request->url, 23);
         $request->validate([
             'nombre' => 'required',
             'apuntes' => 'required'
@@ -53,13 +52,13 @@ class AlergiasController extends Controller
             $model = new Alergias;
             $model->v_nombre = $request->nombre;
             $model->v_apuntes = $request->apuntes;
-            $model->a_n_iduser = $usuario->id;
+            $model->a_n_iduser = $usuario->getAuthIdentifier();
             $model->updated_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
-                ->format('m/d/Y');
+                ->format('Y-m-d H:i:s');
             $model->created_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
-                ->format('m/d/Y');
+                ->format('Y-m-d H:i:s');
             $model->save();
-
+        return redirect()->route('Alergias');
         //    return redirect()->route(empty('Alergias.create')? 'Alergias' :$slug)->with('success','Se ha registrado satisfactoriamente, en las proximas 24 horas nos estaremos comunicando con usted.');
         //}catch (QueryException $e) {
         //    return redirect()->route('Alergias.create');

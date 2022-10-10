@@ -11,17 +11,21 @@
         <div class="col">
             <label for="name" class="form-label">Nombre</label>
             <input type="text" name="nombre" class="form-control" placeholder="Nombre de la Alergia" aria-label="Nombres">
+            @error('nombre')
+            <p class="text-danger form-text">{{ $message }}</p>
+            @enderror
         </div>
     </div>
     <div>
         <div class="col">
             <label for="name" class="form-label">Apuntes</label>
             <textarea name="apuntes" class="form-control" placeholder="Descripción o comentarios" rows="3"></textarea>
+            @error('apuntes')
+            <p class="text-danger form-text">{{ $message }}</p>
+            @enderror
         </div>
     </div>
         <br>
-        <?php $url = $_SERVER["REQUEST_URI"]?>
-        <input type="hidden" name="url"  value="{{ $url }}">
             <button type="submit" class="btn btn-info">Guardar Alergia </button>
     </div>
   </form>

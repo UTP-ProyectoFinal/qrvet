@@ -36,4 +36,5 @@ Route::resource('Razas', 'App\Http\Controllers\RazasController');
 //Rutas para Acciones de la opcion Alergias
 Route::post('GuardarAlergia', [App\Http\Controllers\AlergiasController::class, 'store'])
     ->name('GuardarAlergia');
+Route::get('/Alergias', [App\Http\Controllers\AlergiasController::class, 'index'])->name('Alergias');
 

@@ -20,7 +20,7 @@ return new class extends Migration
 
             //Foraaneas
             $table->foreign('n_historia')->references('n_historia')->on('qrv_historias');
-            $table->foreign('n_alergia')->references('n_alergia')->on('qrv_alergias');
+            $table->foreign('n_alergia')->references('id')->on('qrv_alergias');
 
 
         });
