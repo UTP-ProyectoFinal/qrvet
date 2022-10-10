@@ -79,10 +79,7 @@
             <label for="name" class="form-label">Clinica</label>
             <select class="form-control" id="exampleFormControlSelect1">
                 <option>Seleccionar una clinica</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <option>Club Pet</option>
             </select>
             @error('name')
             <p class="text-danger form-text">{{ $message }}</p>
@@ -92,10 +89,8 @@
             <label for="name" class="form-label">Perfil</label>
                 <select class="form-control" id="exampleFormControlSelect1">
                     <option>Seleccionar una perfil</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option>Administrador</option>
+                    <option>Medico</option>
                 </select>
             @error('name')
             <p class="text-danger form-text">{{ $message }}</p>
