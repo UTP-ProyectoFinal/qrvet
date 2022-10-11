@@ -1,4 +1,9 @@
+
 .alineado{
     justify-content: flex-end;
     display: flex;
+}
+
+.sidebar-dark-primary{
+    background-color: #2e3a32 !important;
 }

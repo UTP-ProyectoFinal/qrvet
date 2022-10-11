@@ -57,13 +57,3 @@
         </tbody>
     </table>
 @stop
-
-@section('css')
-    <link href="/css/admin_custom.css" rel="stylesheet" >
-@stop
-
-@section('js')
-    <script>
-        console.log('Hi!');
-    </script>
-@stop

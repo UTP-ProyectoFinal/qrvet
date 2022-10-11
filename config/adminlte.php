@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Qr.Vet',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>QR</b>Vet',
-    'logo_img' => 'https://www.pethouse.com.pe/wp-content/uploads/2021/03/mascotas-1024x1024.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b>QR</b>.VET',
+    'logo_img' => 'vendor/adminlte/dist/img/403890.png',
+    'logo_img_class' => 'brand-image',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -86,8 +86,8 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'Auth Logo',
+            'path' => 'vendor/adminlte/dist/img/403890.png',
+            'alt' => '',
             'class' => '',
             'width' => 50,
             'height' => 50,
