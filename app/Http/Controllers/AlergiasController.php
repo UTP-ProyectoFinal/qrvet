@@ -17,7 +17,9 @@ class AlergiasController extends Controller
      */
     public function index()
     {
-        return view('alergias.index');
+        $alergias = Alergias::all();
+       // return view('alergias.index',compact('alergias', $alergias));
+        return view('alergias.index') ->with('alergias',$alergias);
     }
 
     /**
@@ -73,7 +75,7 @@ class AlergiasController extends Controller
      */
     public function show(Alergias $alergias)
     {
-        //
+       //
     }
 
     /**
