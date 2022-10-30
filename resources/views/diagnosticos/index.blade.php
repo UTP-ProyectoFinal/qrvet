@@ -22,39 +22,18 @@
             </tr>
         </thead>
         <tbody>
+        @foreach($diagnosticos as $row)
             <tr>
-                <th scope="row">1</th>
-                <td>Artrosis codo derecho</td>
-                <td>Sin apuntes</td>
-                <td>Cristian</td>
+                <th scope="row">{{$row->id}}</th>
+                <td>{{$row->v_nombre}}</td>
+                <td>{{$row->v_apuntes}}</td>
+                <td>{{$row->a_n_iduser}}</td>
                 <td>
-                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
-
+                    <a href="{{route('Diagnosticos.create')}}"><i class="fa fa-edit"></i></a>
                     <i class="fa fa-trash"></i>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Cushing</td>
-                <td>Sin apuntes</td>
-                <td>Samir</td>
-                <td>
-                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
-
-                    <i class="fa fa-trash"></i>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Ehrlichia</td>
-                <td>Sin apuntes</td>
-                <td>Yaquelin</td>
-                <td>
-                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
-
-                    <i class="fa fa-trash"></i>
-                </td>
-            </tr>
+        @endforeach
 
         </tbody>
     </table>

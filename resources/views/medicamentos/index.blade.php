@@ -22,40 +22,18 @@
             </tr>
         </thead>
         <tbody>
+        @foreach($medicamentos as $row)
             <tr>
-                <th scope="row">1</th>
-                <td>Carbón activado</td>
-                <td>reductor de toxinas.</td>
-                <td>Cristian</td>
+                <th scope="row">{{$row->id}}</th>
+                <td>{{$row->v_nombre}}</td>
+                <td>{{$row->v_apuntes}}</td>
+                <td>{{$row->a_n_iduser}}</td>
                 <td>
-                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
-
+                    <a href="{{route('Medicamentos.create')}}"><i class="fa fa-edit"></i></a>
                     <i class="fa fa-trash"></i>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Cambio de ALimento</td>
-                <td>en gatos ayuda a la agresión, aumenta el afecto y amistad hacia dueños, puede aumentar agresión en otros contextos.	</td>
-                <td>Samir</td>
-                <td>
-                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
-
-                    <i class="fa fa-trash"></i>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Broncophar plus</td>
-                <td>dextrometorfano + bromehixida + antihistaminico</td>
-                <td>Yaquelin</td>
-                <td>
-                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
-
-                    <i class="fa fa-trash"></i>
-                </td>
-            </tr>
-
+        @endforeach
         </tbody>
     </table>
 @stop

@@ -14,7 +14,9 @@ class VacunasController extends Controller
      */
     public function index()
     {
-        return view('vacunas.index');
+        $vacunas = Vacunas::all();
+        return view('vacunas.index') ->with('vacunas',$vacunas);
+        //return view('vacunas.index');
 
     }
 

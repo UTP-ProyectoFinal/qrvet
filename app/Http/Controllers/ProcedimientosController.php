@@ -14,7 +14,9 @@ class ProcedimientosController extends Controller
      */
     public function index()
     {
-        return view('procedimientos.index');
+        $procedimientos = Procedimientos::all();
+        return view('procedimientos.index') ->with('procedimientos',$procedimientos);
+      //  return view('procedimientos.index');
 
     }
 

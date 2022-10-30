@@ -15,47 +15,27 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nombre de Alergia</th>
+                <th scope="col">Nombre de Vacuna</th>
                 <th scope="col">Información Extra</th>
+                <th scope="col">Feccha Expiración</th>
                 <th scope="col">Creador</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
+        @foreach($vacunas as $row)
             <tr>
-                <th scope="row">1</th>
-                <td>Antirrabica Canina</td>
-                <td>Rabia</td>
-                <td>Cristian</td>
+                <th scope="row">{{$row->id}}</th>
+                <td>{{$row->v_nombre}}</td>
+                <td>{{$row->v_apuntes}}</td>
+                <td>{{$row->n_expira}}</td>
+                <td>{{$row->a_n_iduser}}</td>
                 <td>
-                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
-
+                    <a href="{{route('Vacunas.create')}}"><i class="fa fa-edit"></i></a>
                     <i class="fa fa-trash"></i>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Sextuple Canina</td>
-                <td>Rabia / Distemper / Parvovirus / Leptospira / Parainfluenza /Hepatitis	</td>
-                <td>Samir</td>
-                <td>
-                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
-
-                    <i class="fa fa-trash"></i>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Triple Felina.	</td>
-                <td>Calicivirus / Rinotraqueitis / Panleucopenia.	</td>
-                <td>Yaquelin</td>
-                <td>
-                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
-
-                    <i class="fa fa-trash"></i>
-                </td>
-            </tr>
-
+        @endforeach
         </tbody>
     </table>
 @stop

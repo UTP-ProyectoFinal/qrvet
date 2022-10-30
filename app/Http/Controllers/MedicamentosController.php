@@ -14,7 +14,9 @@ class MedicamentosController extends Controller
      */
     public function index()
     {
-        return view('medicamentos.index');
+        $medicamentos = Medicamentos::all();
+        return view('medicamentos.index') ->with('medicamentos',$medicamentos);
+        //return view('medicamentos.index');
     }
 
     /**

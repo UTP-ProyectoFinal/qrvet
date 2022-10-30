@@ -35,7 +35,7 @@ class SexoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      //
     }
 
     /**

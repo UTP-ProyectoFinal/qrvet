@@ -14,7 +14,9 @@ class RazasController extends Controller
      */
     public function index()
     {
-        return view('razas.index');
+        $razas = Razas::all();
+        return view('razas.index') ->with('razas',$razas);
+      //  return view('razas.index');
 
     }
 

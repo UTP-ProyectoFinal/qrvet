@@ -14,7 +14,9 @@ class DiagnosticosController extends Controller
      */
     public function index()
     {
-        return view('diagnosticos.index');
+        $diagnosticos = Diagnosticos::all();
+        return view('diagnosticos.index') ->with('diagnosticos',$diagnosticos);
+        //return view('diagnosticos.index');
     }
 
     /**

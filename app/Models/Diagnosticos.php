@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Diagnosticos extends Model
 {
     use HasFactory;
+
+
+    protected $table = 'qrv_diagnosticos';
+    public $timestamps = true;
 }
