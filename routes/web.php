@@ -43,5 +43,7 @@ Route::resource('Procedimientos', 'App\Http\Controllers\ProcedimientosController
 
 Route::resource('Razas', 'App\Http\Controllers\RazasController');
 
+Route::resource('users', 'App\Http\Controllers\UserController');
+
 
 
