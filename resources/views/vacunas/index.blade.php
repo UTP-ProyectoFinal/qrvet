@@ -17,7 +17,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Nombre de Vacuna</th>
                 <th scope="col">Información Extra</th>
-                <th scope="col">Feccha Expiración</th>
+                <th scope="col">Dias de Expiración</th>
                 <th scope="col">Creador</th>
                 <th scope="col">Acciones</th>
             </tr>

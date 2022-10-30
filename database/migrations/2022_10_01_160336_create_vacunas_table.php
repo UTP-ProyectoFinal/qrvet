@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_vacunas', function (Blueprint $table) {
-            $table->id('n_vacuna');
+            $table->id();
             $table->string('v_nombre');
             $table->string('v_apuntes');
-            $table->integer('n_expira');
+            $table->unsignedBigInteger('n_expira');
             $table->unsignedBigInteger('a_n_iduser')->constrained('users');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();

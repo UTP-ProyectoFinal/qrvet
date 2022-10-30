@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_atenciones', function (Blueprint $table) {
-            $table->id('n_atencion');
+            $table->id();
             $table->string('v_motivo');
             $table->integer('n_peso');
             $table->integer('n_temp');
@@ -27,9 +27,9 @@ return new class extends Migration
             $table->unsignedBigInteger('n_procedimiento')->constrained();
 
             // Foraneas
-            $table->foreign('n_historia')->references('n_historia')->on('qrv_historias');
-            $table->foreign('n_diagnos')->references('n_diagnos')->on('qrv_diagnosticos');
-            $table->foreign('n_procedimiento')->references('n_procedimiento')->on('qrv_procedimientos');
+            $table->foreign('n_historia')->references('id')->on('qrv_historias');
+            $table->foreign('n_diagnos')->references('id')->on('qrv_diagnosticos');
+            $table->foreign('n_procedimiento')->references('id')->on('qrv_procedimientos');
 
         });
     }

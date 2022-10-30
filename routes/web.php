@@ -38,3 +38,28 @@ Route::post('GuardarAlergia', [App\Http\Controllers\AlergiasController::class, '
     ->name('GuardarAlergia');
 Route::get('/Alergias', [App\Http\Controllers\AlergiasController::class, 'index'])->name('Alergias');
 
+//Rutas para Acciones de la opcion Medicamentos
+Route::post('GuardarMedicamento', [App\Http\Controllers\MedicamentosController::class, 'store'])
+    ->name('GuardarMedicamento');
+Route::get('/Medicamentos', [App\Http\Controllers\MedicamentosController::class, 'index'])->name('Medicamentos');
+
+//Rutas para Acciones de la opcion Diagnosticos
+Route::post('GuardarDiagnostico', [App\Http\Controllers\DiagnosticosController::class, 'store'])
+    ->name('GuardarDiagnostico');
+Route::get('/Diagnosticos', [App\Http\Controllers\DiagnosticosController::class, 'index'])->name('Diagnosticos');
+
+//Rutas para Acciones de la opcion Vacunas
+Route::post('GuardarVacuna', [App\Http\Controllers\VacunasController::class, 'store'])
+    ->name('GuardarVacuna');
+Route::get('/Vacunas', [App\Http\Controllers\VacunasController::class, 'index'])->name('Vacunas');
+
+//Rutas para Acciones de la opcion Procedimientos
+Route::post('GuardarProcedimiento', [App\Http\Controllers\ProcedimientosController::class, 'store'])
+    ->name('GuardarProcedimiento');
+Route::get('/Procedimientos', [App\Http\Controllers\ProcedimientosController::class, 'index'])->name('Procedimientos');
+
+//Rutas para Acciones de la opcion Razas
+Route::post('GuardarRaza', [App\Http\Controllers\RazasController::class, 'store'])
+    ->name('GuardarRaza');
+Route::get('/Razas', [App\Http\Controllers\RazasController::class, 'index'])->name('Razas');
+

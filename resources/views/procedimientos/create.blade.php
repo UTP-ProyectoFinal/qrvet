@@ -4,13 +4,14 @@
     <h1>Crear Procedimiento</h1>
 @stop
 @section('content')
-    <form method="POST">
+    <form method="POST" action="{{route('GuardarProcedimiento')}}">
+        @csrf
         <div class="container">
             <div class="row">
                 <div class="col">
                     <label for="name" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" placeholder="Nombre del Procedimiento" aria-label="Nombres">
-                    @error('name')
+                    <input type="text"  name="nombre" class="form-control" placeholder="Nombre del Procedimiento" aria-label="Nombres">
+                    @error('nombre')
                     <p class="text-danger form-text">{{ $message }}</p>
                     @enderror
                 </div>
@@ -18,8 +19,8 @@
             <div>
                 <div class="col">
                     <label for="name" class="form-label">Apuntes</label>
-                    <textarea class="form-control" placeholder="Descripción o comentarios" rows="3"></textarea>
-                    @error('name')
+                    <textarea name="apuntes" class="form-control" placeholder="Descripción o comentarios" rows="3"></textarea>
+                    @error('apuntes')
                     <p class="text-danger form-text">{{ $message }}</p>
                     @enderror
                 </div>
@@ -28,6 +29,21 @@
             <button type="submit" class="btn btn-info">Guardar Procedimiento </button>
         </div>
     </form>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 @stop
 
 @section('css')

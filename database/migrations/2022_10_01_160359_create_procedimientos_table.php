@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_procedimientos', function (Blueprint $table) {
-            $table->id('n_procedimiento');
+            $table->id();
             $table->string('v_nombre');
             $table->string('v_apuntes');
             $table->integer('n_notifica');

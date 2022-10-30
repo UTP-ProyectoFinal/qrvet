@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_medicamentos', function (Blueprint $table) {
-            $table->id('n_medica');
+            $table->id();
             $table->string('v_nombre');
             $table->string('v_apuntes');
             $table->unsignedBigInteger('a_n_iduser')->constrained();

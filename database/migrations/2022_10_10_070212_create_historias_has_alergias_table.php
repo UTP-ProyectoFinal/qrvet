@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_historias_has_alergias', function (Blueprint $table) {
-            $table->id('n_hist_aler');
+            $table->id();
             $table->unsignedBigInteger('n_historia')->constrained();
             $table->unsignedBigInteger('n_alergia')->constrained();
 
             //Foraaneas
-            $table->foreign('n_historia')->references('n_historia')->on('qrv_historias');
+            $table->foreign('n_historia')->references('id')->on('qrv_historias');
             $table->foreign('n_alergia')->references('id')->on('qrv_alergias');
 
 

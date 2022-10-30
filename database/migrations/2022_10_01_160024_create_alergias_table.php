@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('v_nombre');
             $table->string('v_apuntes');
-            $table->unsignedBigInteger('a_n_iduser')->constrained();
+            $table->unsignedBigInteger('a_n_iduser')->constrained('users');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
 

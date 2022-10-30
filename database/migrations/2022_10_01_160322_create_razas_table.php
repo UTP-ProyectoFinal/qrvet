@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_razas', function (Blueprint $table) {
-            $table->id('n_raza');
+            $table->id();
             $table->string('v_nombre');
             $table->string('v_apuntes');
             $table->unsignedBigInteger('n_especie')->constrained('qrv_especies');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
             // Foraneas
-            $table->foreign('n_especie')->references('n_especie')->on('qrv_especies');
+            $table->foreign('n_especie')->references('id')->on('qrv_especies');
             $table->foreign('a_n_iduser')->references('id')->on('users');
 
         });

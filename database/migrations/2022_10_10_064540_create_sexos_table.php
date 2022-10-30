@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_sexo', function (Blueprint $table) {
-            $table->id('n_sexo');
+            $table->id();
             $table->string('v_decripc');
         });
     }

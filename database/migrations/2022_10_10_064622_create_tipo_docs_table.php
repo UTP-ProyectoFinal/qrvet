@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_tipodoc', function (Blueprint $table) {
-            $table->id('n_tipodoc');
+            $table->id();
             $table->string('v_decripc');
         });
     }

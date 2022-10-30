@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qrv_direcciones', function (Blueprint $table) {
-            $table->id('n_direccion');
+            $table->id();
             $table->string('v_nombre');
             $table->string('v_calle');
             $table->string('v_distrito');
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('n_cliente')->constrained();
 
             //Foraneas
-            $table->foreign('n_cliente')->references('n_cliente')->on('qrv_clientes');
+            $table->foreign('n_cliente')->references('id')->on('qrv_clientes');
         });
     }
 
