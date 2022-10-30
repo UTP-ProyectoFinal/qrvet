@@ -22,50 +22,19 @@
             </tr>
         </thead>
         <tbody>
+        @foreach($procedimientos as $row)
             <tr>
-                <th scope="row">1</th>
-                <td>Dermatitis alimentaria</td>
-                <td>Dermatitis a causa de un componente de los alimentos</td>
-                <td>Cristian</td>
+                <th scope="row">{{$row->id}}</th>
+                <td>{{$row->v_nombre}}</td>
+                <td>{{$row->v_apuntes}}</td>
+                <td>{{$row->a_n_iduser}}</td>
                 <td>
-                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
-
+                    <a href="{{route('Procedimientos.create')}}"><i class="fa fa-edit"></i></a>
                     <i class="fa fa-trash"></i>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Atopía</td>
-                <td>Alergia al ambiente, polen, moho, etc.</td>
-                <td>Samir</td>
-                <td>
-                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
-
-                    <i class="fa fa-trash"></i>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Dermatitis autoinmunes</td>
-                <td>Eritremas</td>
-                <td>Yaquelin</td>
-                <td>
-                    <a href="{{route('qrv_clientes.create')}}"><i class="fa fa-edit"></i></a>
-
-                    <i class="fa fa-trash"></i>
-                </td>
-            </tr>
+        @endforeach
 
         </tbody>
     </table>
-@stop
-
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-    <script>
-        console.log('Hi!');
-    </script>
 @stop
