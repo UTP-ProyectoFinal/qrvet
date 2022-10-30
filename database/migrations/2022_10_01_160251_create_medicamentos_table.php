@@ -24,7 +24,8 @@ return new class extends Migration
             $table->foreign('a_n_iduser')->references('id')->on('users');
 
 
-        });    }
+        });
+    }
 
     /**
      * Reverse the migrations.

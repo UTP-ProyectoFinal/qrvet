@@ -5,6 +5,7 @@
 @stop
 @section('content')
     <form method="POST" action="{{route('GuardarVacuna')}}">
+        @csrf
         <div class="container">
             <div class="row">
                 <div class="col">
