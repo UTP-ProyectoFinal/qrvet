@@ -335,7 +335,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Medico',
-                    'url'  => 'users',
+                    'url'  => 'Detalles',
                 ]
             ],
         ],
