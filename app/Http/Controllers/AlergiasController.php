@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alergias;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +18,10 @@ class AlergiasController extends Controller
      */
     public function index()
     {
-        $alergias = Alergias::all();
-       // return view('alergias.index',compact('alergias', $alergias));
-        return view('alergias.index') ->with('alergias',$alergias);
+        $alergias = Alergias::paginate();
+
+        return view('Alergias.index', compact('alergias'))
+            ->with('i', (request()->input('page', 1) - 1) * $alergias->perPage());
     }
 
     /**
@@ -29,7 +31,9 @@ class AlergiasController extends Controller
      */
     public function create()
     {
-        return view('alergias.create');
+        $alergia=new Alergias();
+        $medico=User::pluck('name','id');
+        return view('Alergias.create',compact('alergia','medico'));
     }
 
     /**
@@ -40,31 +44,12 @@ class AlergiasController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'apuntes' => 'required'
-        ],[
-            'nombre.required' => 'El nombre es requerido',
-            'apuntes.required' => 'Los apuntes es requerido'
+        request()->validate(Alergias::$rules);
 
-        ]);
-       // try {
-            $usuario = Auth::user();
-            $date = date('Y-m-d H:i:s');
-            $model = new Alergias;
-            $model->v_nombre = $request->nombre;
-            $model->v_apuntes = $request->apuntes;
-            $model->a_n_iduser = $usuario->getAuthIdentifier();
-            $model->updated_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
-                ->format('Y-m-d H:i:s');
-            $model->created_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
-                ->format('Y-m-d H:i:s');
-            $model->save();
-        return redirect()->route('Alergias');
-        //    return redirect()->route(empty('Alergias.create')? 'Alergias' :$slug)->with('success','Se ha registrado satisfactoriamente, en las proximas 24 horas nos estaremos comunicando con usted.');
-        //}catch (QueryException $e) {
-        //    return redirect()->route('Alergias.create');
-        //}
+        $alergia = Alergias::create($request->all());
+
+        return redirect()->route('Alergias')
+            ->with('success', 'Alergia creada satisfactoriamente.');
     }
 
     /**
@@ -73,9 +58,11 @@ class AlergiasController extends Controller
      * @param  \App\Models\Alergias  $alergias
      * @return \Illuminate\Http\Response
      */
-    public function show(Alergias $alergias)
+    public function show($id)
     {
-       //
+        $user = Alergias::find($id);
+
+        return view('user.show', compact('user'));
     }
 
     /**
@@ -84,9 +71,12 @@ class AlergiasController extends Controller
      * @param  \App\Models\Alergias  $alergias
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alergias $alergias)
+    public function edit($id)
     {
-        return view('alergias.edit');
+        $alergia = Alergias::find($id);
+       
+        $medico = User::pluck('name','id');
+        return view('alergias.edit', compact('alergia','medico'));
 
     }
 
@@ -97,9 +87,13 @@ class AlergiasController extends Controller
      * @param  \App\Models\Alergias  $alergias
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alergias $alergias)
+    public function update(Request $request, $id)
     {
-        //
+        request()->validate(Alergias::$rules);
+        $alergia = Alergias::find($id);
+        $alergia->update($request->all());
+        return redirect()->route('Alergias')
+            ->with('success', 'Alergia actualizada satisfactoriamente');
     }
 
     /**
