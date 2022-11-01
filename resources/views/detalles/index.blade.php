@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('template_title')
-    Alergias
+    Nuestros Medicos
 @endsection
 
 @section('content')
@@ -13,13 +13,13 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Alergias') }}
+                                {{ __('Nuestros Medicos') }}
                             </span>
 
                             <div class="float-right">
-                                <a href="{{ route('Alergias.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('Detalles.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
-                                    {{ __('Crear Nuevo Alergia') }}
+                                    {{ __('Crear Nuevo Medico') }}
                                 </a>
                             </div>
                         </div>
@@ -38,28 +38,30 @@
                                         <th>Identificador</th>
 
                                         <th>Nombre</th>
-                                        <th>Descripcion</th>
-                                        <th>Especialista</th>
+                                        <th>Correo</th>
+                                        <th>Clinica</th>
+                                        <th>Perfil</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($alergias as $alergia)
+                                    @foreach ($detalles as $detalle)
                                         <tr>
                                             <td>{{ ++$i }}</td>
 
-                                            <td>{{ $alergia->v_nombre }}</td>
-                                            <td>{{ $alergia->v_apuntes }}</td>
-                                            <td>{{ $alergia->medicos->name}}</td>
+                                            <td>{{ $detalle->medicos->name }}</td>
+                                            <td>{{ $detalle->medicos->email }}</td>
+                                            <td>{{ $detalle->clinicas->v_nomclin}}</td>
+                                            <td>{{ $detalle->perfiles->v_apuntes}}</td>
 
                                             <td>
-                                                <form action="{{ route('Alergias.destroy', $alergia->id) }}" method="POST">
+                                                <form action="{{ route('Detalles.destroy', $detalle->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('Alergias.show', $alergia->id) }}"><i
+                                                        href="{{ route('Detalles.show', $detalle->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> Mostrar Datos</a>
                                                     <a class="btn btn-sm btn-success"
-                                                        href="{{ route('Alergias.edit', $alergia->id) }}"><i
+                                                        href="{{ route('Detalles.edit', $detalle->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> Editar Datos</a>
                                                     @csrf
                                                 </form>
@@ -71,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $alergias->links() !!}
+                {!! $detalles->links() !!}
             </div>
         </div>
     </div>

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Perfiles extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'v_apuntes',
+    ];
 }

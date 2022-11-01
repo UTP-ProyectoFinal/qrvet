@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('qrv_userdetalle', function (Blueprint $table) {
+        Schema::create('detalles', function (Blueprint $table) {
             $table->id();
             $table->string('v_nombres');
             $table->string('v_apellidos');
@@ -22,10 +22,12 @@ return new class extends Migration
             $table->boolean('n_estatus');
             $table->unsignedBigInteger('n_perfil')->constrained();
             $table->unsignedBigInteger('n_clinica')->constrained();
+            $table->unsignedBigInteger('n_user')->constrained();
 
             //Foraneas
-            $table->foreign('n_perfil')->references('id')->on('qrv_perfiles');
-            $table->foreign('n_clinica')->references('id')->on('qrv_clinicas');
+            $table->foreign('n_perfil')->references('id')->on('perfiles');
+            $table->foreign('n_clinica')->references('id')->on('clinicas');
+            $table->foreign('n_user')->references('id')->on('users');
 
         });
     }
@@ -37,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qrv_userdetalle');
+        Schema::dropIfExists('detalles');
     }
 };
