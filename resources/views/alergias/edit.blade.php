@@ -1,5 +1,8 @@
 @extends('adminlte::page')
-
+@section('title', 'Editar Alergia')
+@section('content_header')
+    <h1>Editar Alergias</h1>
+@stop
 @section('template_title')
     Actualizar Alergia
 @endsection
