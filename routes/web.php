@@ -32,7 +32,7 @@ Route::resource('qrv_client', 'App\Http\Controllers\qrv_clientController');
 
 Route::post('/validarqr', [App\Http\Controllers\HomeController::class, 'validarqr'])->name('validarqr');
 
-
+Route::resource('Medicos', 'App\Http\Controllers\UserController');
 Route::resource('Alergias', 'App\Http\Controllers\AlergiasController');
 Route::resource('Medicamentos', 'App\Http\Controllers\MedicamentosController');
 Route::resource('Diagnosticos', 'App\Http\Controllers\DiagnosticosController');

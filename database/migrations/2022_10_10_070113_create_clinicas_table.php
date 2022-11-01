@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('clinicas', function (Blueprint $table) {
+        Schema::create('qrv_clinicas', function (Blueprint $table) {
             $table->id();
             $table->string('v_nomclin');
             $table->string('v_pais');

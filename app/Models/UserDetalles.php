@@ -5,8 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class qrv_clientes extends Model
+class UserDetalles extends Model
 {
     use HasFactory;
-    protected $fillable=['nombre','apellidos','telefono','correo'];
+
+
+    protected $table = 'qrv_userdetalles';
+    public $timestamps = true;
 }

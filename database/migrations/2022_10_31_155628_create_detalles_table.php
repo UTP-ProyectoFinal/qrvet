@@ -25,8 +25,8 @@ return new class extends Migration
             $table->unsignedBigInteger('n_user')->constrained();
 
             //Foraneas
-            $table->foreign('n_perfil')->references('id')->on('perfiles');
-            $table->foreign('n_clinica')->references('id')->on('clinicas');
+            $table->foreign('n_perfil')->references('id')->on('qrv_perfiles');
+            $table->foreign('n_clinica')->references('id')->on('qrv_clinicas');
             $table->foreign('n_user')->references('id')->on('users');
 
         });

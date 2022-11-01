@@ -18,10 +18,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate();
+    /*    $users = User::paginate();
 
         return view('user.index', compact('users'))
-            ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
+            ->with('i', (request()->input('page', 1) - 1) * $users->perPage());*/
+
+        $users = User::all();
+        return view('user.index') ->with('users',$users);
     }
 
     /**
