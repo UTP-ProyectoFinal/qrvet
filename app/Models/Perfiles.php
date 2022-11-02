@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Perfiles extends Model
 {
     use HasFactory;
-    
-    protected $fillable = [
+
+    protected $table = 'qrv_perfiles';
+    public $timestamps = true;
+
+  /*  protected $fillable = [
         'v_apuntes',
-    ];
+    ];*/
 }
