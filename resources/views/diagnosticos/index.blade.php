@@ -1,40 +1,78 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
-
-@section('content_header')
-    <h1>Diagnosticos</h1>
-    <div class="alineado">
-        <a href="{{route('Diagnosticos.create')}}" class="btn btn-info">Nuevo Diagnostico</a>
-    </div>
-@stop
+@section('template_title')
+    Diagnosticos
+@endsection
 
 @section('content')
-    <table class="table">
-        <caption>Lista de Diagnosticos</caption>
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre de Alergia</th>
-                <th scope="col">Información Extra</th>
-                <th scope="col">Creador</th>
-                <th scope="col">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($diagnosticos as $row)
-            <tr>
-                <th scope="row">{{$row->id}}</th>
-                <td>{{$row->v_nombre}}</td>
-                <td>{{$row->v_apuntes}}</td>
-                <td>{{$row->a_n_iduser}}</td>
-                <td>
-                    <a href="{{route('Diagnosticos.create')}}"><i class="fa fa-edit"></i></a>
-                    <i class="fa fa-trash"></i>
-                </td>
-            </tr>
-        @endforeach
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
 
-        </tbody>
-    </table>
-@stop
+                            <span id="card_title">
+                                {{ __('Diagnosticos') }}
+                            </span>
+
+                            <div class="float-right">
+                                <a href="{{ route('Diagnosticos.create') }}" class="btn btn-primary btn-sm float-right"
+                                   data-placement="left">
+                                    {{ __('Crear Nuevo Diagnostico') }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="thead">
+                                <tr>
+                                    <th>Identificador</th>
+
+                                    <th>Nombre</th>
+                                    <th>Descripcion</th>
+                                    <th>Especialista</th>
+
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($diagnosticos as $diagnostico)
+                                    <tr>
+                                        <td>{{ ++$i }}</td>
+
+                                        <td>{{ $diagnostico->v_nombre }}</td>
+                                        <td>{{ $diagnostico->v_apuntes }}</td>
+                                        <td>{{ $diagnostico->medicos->name}}</td>
+
+                                        <td>
+                                            <form action="{{ route('Diagnosticos.destroy', $diagnostico->id) }}" method="POST">
+                                                <a class="btn btn-sm btn-primary "
+                                                   href="{{ route('Diagnosticos.show', $diagnostico->id) }}"><i
+                                                        class="fa fa-fw fa-eye"></i> Mostrar Datos</a>
+                                                <a class="btn btn-sm btn-success"
+                                                   href="{{ route('Diagnosticos.edit', $diagnostico->id) }}"><i
+                                                        class="fa fa-fw fa-edit"></i> Editar Datos</a>
+                                                @csrf
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                {!! $diagnosticos->links() !!}
+            </div>
+        </div>
+    </div>
+@endsection

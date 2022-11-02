@@ -45,10 +45,10 @@ class AlergiasController extends Controller
     public function store(Request $request)
     {
         request()->validate(Alergias::$rules);
-
+        $id = Auth::id();
         $alergias['v_nombre'] = $request['v_nombre'];
         $alergias['v_apuntes'] = $request['v_apuntes'];
-        $alergias['a_n_iduser'] = $request['a_n_iduser']; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $alergias['a_n_iduser'] =$id; /*** Este valor hay que cambiarlo por el usuario autenticado**/
         $alergias['n_estado'] = 1;
         Alergias::create($alergias);
 
@@ -93,8 +93,13 @@ class AlergiasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $ido = Auth::id();
         request()->validate(Alergias::$rules);
         $alergia = Alergias::find($id);
+        $alergia['v_nombre'] = $request['v_nombre'];
+        $alergia['v_apuntes'] = $request['v_apuntes'];
+        $alergia['a_n_iduser'] = $ido; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $alergia['n_estado'] = 1;
         $alergia->update($request->all());
         return redirect()->route('Alergias')
             ->with('success', 'Alergia actualizada satisfactoriamente');

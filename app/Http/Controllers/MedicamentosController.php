@@ -18,9 +18,9 @@ class MedicamentosController extends Controller
      */
     public function index()
     {
-        $medicamentos = Medicamentos::all();
-        return view('medicamentos.index') ->with('medicamentos',$medicamentos);
-        //return view('medicamentos.index');
+        $medicamentos = Medicamentos::paginate();
+        return view('Medicamentos.index', compact('medicamentos'))
+            ->with('i', (request()->input('page', 1) - 1) * $medicamentos->perPage());
     }
 
     /**
@@ -44,10 +44,11 @@ class MedicamentosController extends Controller
      */
     public function store(Request $request)
     {
-
+        request()->validate(Medicamentos::$rules);
+        $id = Auth::id();
         $medicamentos['v_nombre'] = $request['v_nombre'];
         $medicamentos['v_apuntes'] = $request['v_apuntes'];
-        $medicamentos['a_n_iduser'] = $request['a_n_iduser']; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $medicamentos['a_n_iduser'] = $id; /*** Este valor hay que cambiarlo por el usuario autenticado**/
         $medicamentos['n_estado'] = 1;
         Medicamentos::create($medicamentos);
 
@@ -61,9 +62,11 @@ class MedicamentosController extends Controller
      * @param  \App\Models\Medicamentos  $medicamentos
      * @return \Illuminate\Http\Response
      */
-    public function show(Medicamentos $medicamentos)
+    public function show($id)
     {
-        //
+        $medicamento = Medicamentos::find($id);
+
+        return view('medicamentos.show', compact('medicamento'));
     }
 
     /**
@@ -88,9 +91,13 @@ class MedicamentosController extends Controller
      * @param  \App\Models\Medicamentos  $medicamentos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Medicamentos $medicamentos)
+    public function update(Request $request, $id)
     {
-        //
+        request()->validate(Medicamentos::$rules);
+        $medicamento = Medicamentos::find($id);
+        $medicamento->update($request->all());
+        return redirect()->route('Medicamentos')
+            ->with('success', 'Medicamento actualizado satisfactoriamente');
     }
 
     /**

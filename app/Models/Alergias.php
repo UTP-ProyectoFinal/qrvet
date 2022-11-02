@@ -13,8 +13,7 @@ class Alergias extends Model
 
     static $rules = [
         'v_nombre' => 'required',
-        'v_apuntes' => 'required',
-        'a_n_iduser' => 'required',
+        'v_apuntes' => 'required'
     ];
     protected $fillable = [
         'v_nombre',

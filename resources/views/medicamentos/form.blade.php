@@ -11,11 +11,7 @@
             {{ Form::text('v_apuntes', $medicamento->v_apuntes, ['class' => 'form-control' . ($errors->has('v_apuntes') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion del Medicamento']) }}
             {!! $errors->first('v_apuntes', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
-            {{ Form::label('Medico encargado') }}
-            {{ Form::select('a_n_iduser',$medico, $medicamento->a_n_iduser, ['class' => 'form-control' . ($errors->has('a_n_iduser') ? ' is-invalid' : ''), 'placeholder' => 'Medico encargado']) }}
-            {!! $errors->first('a_n_iduser', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+
 
 
     </div>

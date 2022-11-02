@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alergias;
 use App\Models\Diagnosticos;
 use App\Models\Medicamentos;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +19,10 @@ class DiagnosticosController extends Controller
      */
     public function index()
     {
-        $diagnosticos = Diagnosticos::all();
-        return view('diagnosticos.index') ->with('diagnosticos',$diagnosticos);
-        //return view('diagnosticos.index');
+        $diagnosticos = Diagnosticos::paginate();
+
+        return view('Diagnosticos.index', compact('diagnosticos'))
+            ->with('i', (request()->input('page', 1) - 1) * $diagnosticos->perPage());
     }
 
     /**
@@ -29,7 +32,9 @@ class DiagnosticosController extends Controller
      */
     public function create()
     {
-        return view('diagnosticos.create');
+        $diagnostico=new Diagnosticos();
+        $medico=User::pluck('name','id');
+        return view('Diagnosticos.create',compact('diagnostico','medico'));
     }
 
     /**
@@ -40,31 +45,17 @@ class DiagnosticosController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'apuntes' => 'required'
-        ],[
-            'nombre.required' => 'El nombre es requerido',
-            'apuntes.required' => 'Los apuntes es requerido'
+        $user = Auth::user();
+        request()->validate(Diagnosticos::$rules);
+        $id = Auth::id();
+        $diagnosticos['v_nombre'] = $request['v_nombre'];
+        $diagnosticos['v_apuntes'] = $request['v_apuntes'];
+        $diagnosticos['a_n_iduser'] = $id; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $diagnosticos['n_estado'] = 1;
+        Diagnosticos::create($diagnosticos);
 
-        ]);
-        // try {
-        $usuario = Auth::user();
-        $date = date('Y-m-d H:i:s');
-        $model = new Diagnosticos;
-        $model->v_nombre = $request->nombre;
-        $model->v_apuntes = $request->apuntes;
-        $model->a_n_iduser = $usuario->getAuthIdentifier();
-        $model->updated_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
-            ->format('Y-m-d H:i:s');
-        $model->created_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
-            ->format('Y-m-d H:i:s');
-        $model->save();
-        return redirect()->route('Diagnosticos');
-        //    return redirect()->route(empty('Alergias.create')? 'Alergias' :$slug)->with('success','Se ha registrado satisfactoriamente, en las proximas 24 horas nos estaremos comunicando con usted.');
-        //}catch (QueryException $e) {
-        //    return redirect()->route('Alergias.create');
-        //}
+        return redirect()->route('Diagnosticos')
+            ->with('success', 'Diagnostico creado satisfactoriamente.');
     }
 
     /**
@@ -84,9 +75,12 @@ class DiagnosticosController extends Controller
      * @param  \App\Models\Diagnosticos  $diagnosticos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Diagnosticos $diagnosticos)
+    public function edit($id)
     {
-        return view('diagnosticos.edit');
+        $diagnostico = Diagnosticos::find($id);
+
+        $medico = User::pluck('name','id');
+        return view('diagnosticos.edit', compact('diagnostico','medico'));
     }
 
     /**
@@ -96,9 +90,18 @@ class DiagnosticosController extends Controller
      * @param  \App\Models\Diagnosticos  $diagnosticos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Diagnosticos $diagnosticos)
+    public function update(Request $request, $id)
     {
-        //
+        $ido = Auth::id();
+        request()->validate(Diagnosticos::$rules);
+        $diagnosticos = Diagnosticos::find($id);
+        $diagnosticos['v_nombre'] = $request['v_nombre'];
+        $diagnosticos['v_apuntes'] = $request['v_apuntes'];
+        $diagnosticos['a_n_iduser'] = $ido; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $diagnosticos['n_estado'] = 1;
+        $diagnosticos->update($request->all());
+        return redirect()->route('Diagnosticos')
+            ->with('success', 'Diagnostico actualizado satisfactoriamente');
     }
 
     /**

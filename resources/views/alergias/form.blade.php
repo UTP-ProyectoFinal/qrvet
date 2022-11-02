@@ -1,6 +1,6 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
+
         <div class="form-group">
             {{ Form::label('Nombre de la Alergia') }}
             {{ Form::text('v_nombre', $alergia->v_nombre, ['class' => 'form-control' . ($errors->has('v_nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre de la Alergia']) }}
@@ -10,11 +10,6 @@
             {{ Form::label('Descripcion breve de la alergia') }}
             {{ Form::text('v_apuntes', $alergia->v_apuntes, ['class' => 'form-control' . ($errors->has('v_apuntes') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion de la Alergia']) }}
             {!! $errors->first('v_apuntes', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('Medico encargado') }}
-            {{ Form::select('a_n_iduser',$medico, $alergia->a_n_iduser, ['class' => 'form-control' . ($errors->has('a_n_iduser') ? ' is-invalid' : ''), 'placeholder' => 'Medico encargado']) }}
-            {!! $errors->first('a_n_iduser', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>
