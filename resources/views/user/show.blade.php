@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('template_title')
-    {{ $user->name ?? 'Show User' }}
+    {{ $user->name ?? 'Mostrar Usuario' }}
 @endsection
 
 @section('content')

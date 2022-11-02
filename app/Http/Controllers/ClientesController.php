@@ -57,9 +57,10 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function show(Clientes $clientes)
+    public function show($id)
     {
-        //
+        $cliente = Clientes::find($id);
+        return view('clientes.show', compact('cliente'));
     }
 
     /**
@@ -71,9 +72,8 @@ class ClientesController extends Controller
     public function edit($id)
     {
         $cliente = Clientes::find($id);
-
         $tipo = TipoDoc::pluck('v_decripc','id');
-        return view('clientes.edit', compact('cliente','tipo'));
+        return view('clientes.editar', compact('cliente','tipo'));
     }
 
     /**

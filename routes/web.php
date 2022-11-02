@@ -44,7 +44,7 @@ Route::resource('qrv_clientes', 'App\Http\Controllers\qrv_clientesController');
 Route::resource('qrv_client', 'App\Http\Controllers\qrv_clientController');*/
 
 
-//Rutas para Acciones de la opcion Alergias
+//Rutas para Acciones de la opcion Clientes
 Route::post('GuardarCliente', [App\Http\Controllers\ClientesController::class, 'store'])
     ->name('GuardarCliente');
 Route::get('/Clientes', [App\Http\Controllers\ClientesController::class, 'index'])->name('Clientes');
