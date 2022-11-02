@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('template_title')
-    Create User
+    Añadir nuevo Medico
 @endsection
 
 @section('content')
@@ -13,10 +13,10 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create User</span>
+                        <span class="card-title">Añadir nuevo Medico</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('users.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('Medicos.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
                             @include('user.form')

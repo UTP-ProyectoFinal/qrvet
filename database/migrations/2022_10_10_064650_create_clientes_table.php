@@ -15,13 +15,15 @@ return new class extends Migration
     {
         Schema::create('qrv_clientes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('n_tipodoc')->constrained();
             $table->string('n_documento');
             $table->string('v_nombre');
             $table->string('v_apellido');
             $table->string('v_correo');
             $table->string('v_telefono');
             $table->string('v_telfijo');
-            $table->unsignedBigInteger('n_tipodoc')->constrained();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
 
             //Foraneas
             $table->foreign('n_tipodoc')->references('id')->on('qrv_tipodoc');

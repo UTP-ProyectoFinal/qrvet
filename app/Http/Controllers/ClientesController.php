@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alergias;
 use App\Models\Clientes;
+use App\Models\TipoDoc;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ClientesController extends Controller
@@ -27,7 +30,9 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        //
+        $cliente=new Clientes();
+        $tipo=TipoDoc::pluck('v_decripc','id');
+        return view('Clientes.create',compact('cliente','tipo'));
     }
 
     /**
@@ -38,7 +43,12 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate(Clientes::$rules);
+
+        $cliente = Clientes::create($request->all());
+
+        return redirect()->route('Clientes')
+            ->with('success', 'Cliente creado satisfactoriamente.');
     }
 
     /**
@@ -58,9 +68,12 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Clientes $clientes)
+    public function edit($id)
     {
-        //
+        $cliente = Clientes::find($id);
+
+        $tipo = TipoDoc::pluck('v_decripc','id');
+        return view('clientes.edit', compact('cliente','tipo'));
     }
 
     /**
@@ -70,9 +83,13 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Clientes $clientes)
+    public function update(Request $request, $id)
     {
-        //
+        request()->validate(Clientes::$rules);
+        $cliente = Clientes::find($id);
+        $cliente->update($request->all());
+        return redirect()->route('Clientes')
+            ->with('success', 'Cliente actualizado satisfactoriamente');
     }
 
     /**

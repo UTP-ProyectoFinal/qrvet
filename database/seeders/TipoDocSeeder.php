@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\TipoDoc;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class TipoDocSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -14,11 +15,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            SexoSeeder::class,
-            PerfilesSeeder::class,
-            EspeciesSeeder::class,
-            TipoDocSeeder::class,
+        TipoDoc::create([
+            'v_decripc' => 'DNI',
+        ]);
+        TipoDoc::create([
+            'v_decripc' => 'CE',
+        ]);
+        TipoDoc::create([
+            'v_decripc' => 'Otros',
         ]);
     }
 }
