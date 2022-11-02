@@ -93,8 +93,13 @@ class MedicamentosController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $ido = Auth::id();
         request()->validate(Medicamentos::$rules);
         $medicamento = Medicamentos::find($id);
+        $medicamento['v_nombre'] = $request['v_nombre'];
+        $medicamento['v_apuntes'] = $request['v_apuntes'];
+        $medicamento['a_n_iduser'] = $ido; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $medicamento['n_estado'] = 1;
         $medicamento->update($request->all());
         return redirect()->route('Medicamentos')
             ->with('success', 'Medicamento actualizado satisfactoriamente');
