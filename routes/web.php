@@ -25,24 +25,23 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Rutas del menú
-Route::resource('qrv_clientes', 'App\Http\Controllers\qrv_clientesController');
 
-
-Route::resource('qrv_client', 'App\Http\Controllers\qrv_clientController');
 
 Route::post('/validarqr', [App\Http\Controllers\HomeController::class, 'validarqr'])->name('validarqr');
 
 Route::resource('Medicos', 'App\Http\Controllers\UserController');
+Route::resource('Clientes', 'App\Http\Controllers\ClientesController');
 Route::resource('Alergias', 'App\Http\Controllers\AlergiasController');
 Route::resource('Medicamentos', 'App\Http\Controllers\MedicamentosController');
 Route::resource('Diagnosticos', 'App\Http\Controllers\DiagnosticosController');
 Route::resource('Vacunas', 'App\Http\Controllers\VacunasController');
 Route::resource('Procedimientos', 'App\Http\Controllers\ProcedimientosController');
 Route::resource('Razas', 'App\Http\Controllers\RazasController');
-Route::resource('Detalles', 'App\Http\Controllers\DetallesController');
 
-
+/*Route::resource('Detalles', 'App\Http\Controllers\DetallesController');
 Route::resource('users', 'App\Http\Controllers\UserController');
+Route::resource('qrv_clientes', 'App\Http\Controllers\qrv_clientesController');
+Route::resource('qrv_client', 'App\Http\Controllers\qrv_clientController');*/
 
 //Rutas para Acciones de la opcion Alergias
 Route::post('GuardarAlergia', [App\Http\Controllers\AlergiasController::class, 'store'])

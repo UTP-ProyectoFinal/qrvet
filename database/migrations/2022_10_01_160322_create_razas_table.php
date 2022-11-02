@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('v_apuntes');
             $table->unsignedBigInteger('n_especie')->constrained('qrv_especies');
             $table->unsignedBigInteger('a_n_iduser')->constrained('users');
+            $table->unsignedBigInteger('n_estado');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
             // Foraneas

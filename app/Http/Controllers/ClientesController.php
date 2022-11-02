@@ -14,7 +14,10 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        //
+        $clientes = Clientes::paginate();
+
+        return view('Clientes.index', compact('clientes'))
+            ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
     }
 
     /**

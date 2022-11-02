@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Perfiles;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class PerfilesSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -14,10 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            SexoSeeder::class,
-            PerfilesSeeder::class,
-            EspeciesSeeder::class,
+        Perfiles::create([
+            'v_decripc' => 'Administrador',
+        ]);
+        Perfiles::create([
+            'v_decripc' => 'Medico',
         ]);
     }
 }
