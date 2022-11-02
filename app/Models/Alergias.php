@@ -20,6 +20,7 @@ class Alergias extends Model
         'v_nombre',
         'v_apuntes',
         'a_n_iduser',
+        'n_estado',
     ];
     public function medicos()
     {

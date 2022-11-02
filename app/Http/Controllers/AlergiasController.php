@@ -46,7 +46,11 @@ class AlergiasController extends Controller
     {
         request()->validate(Alergias::$rules);
 
-        $alergia = Alergias::create($request->all());
+        $alergias['v_nombre'] = $request['v_nombre'];
+        $alergias['v_apuntes'] = $request['v_apuntes'];
+        $alergias['a_n_iduser'] = $request['a_n_iduser']; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $alergias['n_estado'] = 1;
+        Alergias::create($alergias);
 
         return redirect()->route('Alergias')
             ->with('success', 'Alergia creada satisfactoriamente.');
@@ -74,7 +78,7 @@ class AlergiasController extends Controller
     public function edit($id)
     {
         $alergia = Alergias::find($id);
-       
+
         $medico = User::pluck('name','id');
         return view('alergias.edit', compact('alergia','medico'));
 
