@@ -17,7 +17,8 @@
                 <th scope="col">#</th>
                 <th scope="col">Nombre de Medicamentos</th>
                 <th scope="col">Información Extra</th>
-                <th scope="col">Creador</th>
+                <th scope="col">Medico encargado</th>
+                <th scope="col">Estado</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
@@ -27,7 +28,8 @@
                 <th scope="row">{{$row->id}}</th>
                 <td>{{$row->v_nombre}}</td>
                 <td>{{$row->v_apuntes}}</td>
-                <td>{{$row->a_n_iduser}}</td>
+                <td>{{$row->medicos->name}}</td>
+                <td>{{$row->n_estado}}</td>
                 <td>
                     <a href="{{route('Medicamentos.create')}}"><i class="fa fa-edit"></i></a>
                     <i class="fa fa-trash"></i>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alergias;
 use App\Models\Medicamentos;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +30,9 @@ class MedicamentosController extends Controller
      */
     public function create()
     {
-        return view('medicamentos.create');
+        $medicamento=new Medicamentos();
+        $medico=User::pluck('name','id');
+        return view('Medicamentos.create',compact('medicamento','medico'));
 
     }
 
@@ -41,31 +44,15 @@ class MedicamentosController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'apuntes' => 'required'
-        ],[
-            'nombre.required' => 'El nombre es requerido',
-            'apuntes.required' => 'Los apuntes es requerido'
 
-        ]);
-        // try {
-        $usuario = Auth::user();
-        $date = date('Y-m-d H:i:s');
-        $model = new Medicamentos;
-        $model->v_nombre = $request->nombre;
-        $model->v_apuntes = $request->apuntes;
-        $model->a_n_iduser = $usuario->getAuthIdentifier();
-        $model->updated_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
-            ->format('Y-m-d H:i:s');
-        $model->created_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
-            ->format('Y-m-d H:i:s');
-        $model->save();
-        return redirect()->route('Medicamentos');
-        //    return redirect()->route(empty('Alergias.create')? 'Alergias' :$slug)->with('success','Se ha registrado satisfactoriamente, en las proximas 24 horas nos estaremos comunicando con usted.');
-        //}catch (QueryException $e) {
-        //    return redirect()->route('Alergias.create');
-        //}
+        $medicamentos['v_nombre'] = $request['v_nombre'];
+        $medicamentos['v_apuntes'] = $request['v_apuntes'];
+        $medicamentos['a_n_iduser'] = $request['a_n_iduser']; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $medicamentos['n_estado'] = 1;
+        Medicamentos::create($medicamentos);
+
+        return redirect()->route('Medicamentos')
+            ->with('success', 'Medicamento creado satisfactoriamente.');
     }
 
     /**
@@ -85,9 +72,12 @@ class MedicamentosController extends Controller
      * @param  \App\Models\Medicamentos  $medicamentos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Medicamentos $medicamentos)
+    public function edit($id)
     {
-        return view('medicamentos.edit');
+        $medicamento = Medicamentos::find($id);
+
+        $medico = User::pluck('name','id');
+        return view('medicamentos.edit', compact('medicamento','medico'));
 
     }
 
