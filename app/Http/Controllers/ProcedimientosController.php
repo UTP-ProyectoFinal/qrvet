@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medicamentos;
 use App\Models\Procedimientos;
+use App\Models\User;
 use App\Models\Vacunas;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,9 +19,9 @@ class ProcedimientosController extends Controller
      */
     public function index()
     {
-        $procedimientos = Procedimientos::all();
-        return view('procedimientos.index') ->with('procedimientos',$procedimientos);
-      //  return view('procedimientos.index');
+        $procedimientos = Procedimientos::paginate();
+        return view('Procedimientos.index', compact('procedimientos'))
+            ->with('i', (request()->input('page', 1) - 1) * $procedimientos->perPage());
 
     }
 
@@ -30,7 +32,9 @@ class ProcedimientosController extends Controller
      */
     public function create()
     {
-        return view('procedimientos.create');
+        $procedimiento=new Procedimientos();
+        $medico=User::pluck('name','id');
+        return view('Procedimientos.create',compact('procedimiento','medico'));
 
     }
 
@@ -42,31 +46,19 @@ class ProcedimientosController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'apuntes' => 'required',
-        ],[
-            'nombre.required' => 'El nombre es requerido',
-            'apuntes.required' => 'Los apuntes es requerido',
+        request()->validate(Procedimientos::$rules);
+        $id = Auth::id();
+        $procedimientos['v_nombre'] = $request['v_nombre'];
+        $procedimientos['v_apuntes'] = $request['v_apuntes'];
+        $procedimientos['n_notifica'] = $request['n_notifica'];
+        $procedimientos['a_n_iduser'] = $id; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $procedimientos['n_estado'] = 1;
 
-        ]);
-        // try {
-        $usuario = Auth::user();
-        $date = date('Y-m-d H:i:s');
-        $model = new Procedimientos;
-        $model->v_nombre = $request->nombre;
-        $model->v_apuntes = $request->apuntes;
-        $model->a_n_iduser = $usuario->getAuthIdentifier();
-        $model->updated_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
-            ->format('Y-m-d H:i:s');
-        $model->created_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
-            ->format('Y-m-d H:i:s');
-        $model->save();
-        return redirect()->route('Procedimientos');
-        //    return redirect()->route(empty('Alergias.create')? 'Alergias' :$slug)->with('success','Se ha registrado satisfactoriamente, en las proximas 24 horas nos estaremos comunicando con usted.');
-        //}catch (QueryException $e) {
-        //    return redirect()->route('Alergias.create');
-        //}
+
+        Procedimientos::create($procedimientos);
+
+        return redirect()->route('Procedimientos')
+            ->with('success', 'Procedimiento creado satisfactoriamente.');
     }
 
     /**
@@ -75,9 +67,11 @@ class ProcedimientosController extends Controller
      * @param  \App\Models\Procedimientos  $procedimientos
      * @return \Illuminate\Http\Response
      */
-    public function show(Procedimientos $procedimientos)
+    public function show($id)
     {
-        //
+        $procedimiento = Procedimientos::find($id);
+
+        return view('procedimientos.show', compact('procedimiento'));
     }
 
     /**
@@ -86,9 +80,12 @@ class ProcedimientosController extends Controller
      * @param  \App\Models\Procedimientos  $procedimientos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Procedimientos $procedimientos)
+    public function edit($id)
     {
-        return view('procedimientos.edit');
+        $procedimiento = Procedimientos::find($id);
+
+        $medico = User::pluck('name','id');
+        return view('procedimientos.edit', compact('procedimiento','medico'));
 
     }
 
@@ -99,9 +96,19 @@ class ProcedimientosController extends Controller
      * @param  \App\Models\Procedimientos  $procedimientos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Procedimientos $procedimientos)
+    public function update(Request $request, $id)
     {
-        //
+        $ido = Auth::id();
+        request()->validate(Procedimientos::$rules);
+        $procedimiento = Procedimientos::find($id);
+        $procedimiento['v_nombre'] = $request['v_nombre'];
+        $procedimiento['v_apuntes'] = $request['v_apuntes'];
+        $procedimiento['n_notifica'] = $request['n_notifica'];
+        $procedimiento['a_n_iduser'] = $ido; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $procedimiento['n_estado'] = 1;
+        $procedimiento->update($request->all());
+        return redirect()->route('Procedimientos')
+            ->with('success', 'Procedimiento actualizado satisfactoriamente');
     }
 
     /**

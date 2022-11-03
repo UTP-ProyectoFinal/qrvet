@@ -102,7 +102,7 @@ class VacunasController extends Controller
         $vacuna = Vacunas::find($id);
         $vacuna['v_nombre'] = $request['v_nombre'];
         $vacuna['v_apuntes'] = $request['v_apuntes'];
-        $vacunas['n_expira'] = $request['n_expira'];
+        $vacuna['n_expira'] = $request['n_expira'];
         $vacuna['a_n_iduser'] = $ido; /*** Este valor hay que cambiarlo por el usuario autenticado**/
         $vacuna['n_estado'] = 1;
         $vacuna->update($request->all());
