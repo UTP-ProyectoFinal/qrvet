@@ -13,9 +13,10 @@
         </div>
         <div class="form-group">
             {{ Form::label('Especie') }}
-            {{ Form::select('n_especie',$raza->n_especie, ['class' => 'form-control' . ($errors->has('n_notifica') ? ' is-invalid' : ''), 'placeholder' => 'Especie']) }}
+            {{ Form::select('n_especie',$especie,$raza->n_especie, ['class' => 'form-control' . ($errors->has('n_especie') ? ' is-invalid' : ''), 'placeholder' => 'Especie']) }}
             {!! $errors->first('n_especie', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        
 
 
 

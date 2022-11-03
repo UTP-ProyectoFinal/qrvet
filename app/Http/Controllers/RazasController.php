@@ -9,6 +9,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Termwind\Components\Raw;
 
 class RazasController extends Controller
 {
@@ -35,7 +36,8 @@ class RazasController extends Controller
     {
         $raza=new Razas();
         $medico=User::pluck('name','id');
-        return view('Razas.create',compact('raza','medico'));
+        $especie=Especies::pluck('v_decripc','id');
+        return view('Razas.create',compact('raza','medico','especie'));
     }
 
     /**
@@ -76,9 +78,12 @@ class RazasController extends Controller
      * @param  \App\Models\Razas  $razas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Razas $razas)
+    public function edit($id)
     {
-        return view('razas.edit');
+        $raza = Razas::find($id);
+        $medico = User::pluck('name','id');
+        $especie = Especies::pluck('v_decripc','id');
+        return view('razas.edit',compact('raza','medico','especie'));
     }
 
     /**
@@ -88,9 +93,19 @@ class RazasController extends Controller
      * @param  \App\Models\Razas  $razas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Razas $razas)
+    public function update(Request $request, $id)
     {
-        //
+        $ido = Auth::id();
+        request()->validate(Razas::$rules);
+        $raza = Razas::find($id);
+        $raza['v_nombre'] = $request['v_nombre'];
+        $raza['v_apuntes'] = $request['v_apuntes'];
+        $raza['n_especie'] = $request['n_especie'];
+        $raza['a_n_iduser'] = $ido; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $raza['n_estado'] = 1;
+        $raza->update($request->all());
+        return redirect()->route('Razas')
+            ->with('success', 'Raza actualizada satisfactoriamente');
     }
 
     /**
