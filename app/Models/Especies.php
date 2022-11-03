@@ -11,4 +11,10 @@ class Especies extends Model
 
     protected $table = 'qrv_especies';
     public $timestamps = true;
+    protected $fillable = [
+        'v_decripc',
+    ];
+    static $rules = [
+        'v_decripc' => 'required',
+    ];
 }

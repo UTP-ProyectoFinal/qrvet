@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Especies;
 use App\Models\Procedimientos;
 use App\Models\Razas;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +20,9 @@ class RazasController extends Controller
     public function index()
     {
 
-        $razas = Razas::all();
-        return view('razas.index') ->with('razas',$razas);
-      //  return view('razas.index');
+        $razas = Razas::paginate();
+        return view('Razas.index', compact('razas'))
+            ->with('i', (request()->input('page', 1) - 1) * $razas->perPage());
 
     }
 
@@ -31,7 +33,9 @@ class RazasController extends Controller
      */
     public function create()
     {
-        return view('razas.create');
+        $raza=new Razas();
+        $medico=User::pluck('name','id');
+        return view('Razas.create',compact('raza','medico'));
     }
 
     /**
@@ -42,34 +46,17 @@ class RazasController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'apuntes' => 'required',
-            'especie' => 'required',
-        ],[
-            'nombre.required' => 'El nombre es requerido',
-            'apuntes.required' => 'Los apuntes es requerido',
-            'especie.required' => 'Los apuntes es requerido',
+        request()->validate(Razas::$rules);
+        $id = Auth::id();
+        $razas['v_nombre'] = $request['v_nombre'];
+        $razas['v_apuntes'] = $request['v_apuntes'];
+        $razas['n_especie'] = $request['n_especie'];
+        $razas['a_n_iduser'] = $id; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $razas['n_estado'] = 1;
+        Razas::create($razas);
 
-        ]);
-        // try {
-        $usuario = Auth::user();
-        $date = date('Y-m-d H:i:s');
-        $model = new Razas;
-        $model->v_nombre = $request->nombre;
-        $model->v_apuntes = $request->apuntes;
-        $model->n_especie = $request->especie;
-        $model->a_n_iduser = $usuario->getAuthIdentifier();
-        $model->updated_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
-            ->format('Y-m-d H:i:s');
-        $model->created_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
-            ->format('Y-m-d H:i:s');
-        $model->save();
-        return redirect()->route('Razas');
-        //    return redirect()->route(empty('Alergias.create')? 'Alergias' :$slug)->with('success','Se ha registrado satisfactoriamente, en las proximas 24 horas nos estaremos comunicando con usted.');
-        //}catch (QueryException $e) {
-        //    return redirect()->route('Alergias.create');
-        //}
+        return redirect()->route('Razas')
+            ->with('success', 'Raza creada satisfactoriamente.');
     }
 
     /**
