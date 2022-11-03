@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alergias;
 use App\Models\Medicamentos;
+use App\Models\User;
 use App\Models\Vacunas;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,9 +19,10 @@ class VacunasController extends Controller
      */
     public function index()
     {
-        $vacunas = Vacunas::all();
-        return view('vacunas.index') ->with('vacunas',$vacunas);
-        //return view('vacunas.index');
+        $vacunas = Vacunas::paginate();
+
+        return view('Vacunas.index', compact('vacunas'))
+            ->with('i', (request()->input('page', 1) - 1) * $vacunas->perPage());
 
     }
 
@@ -30,7 +33,9 @@ class VacunasController extends Controller
      */
     public function create()
     {
-        return view('vacunas.create');
+        $vacuna=new Vacunas();
+        $medico=User::pluck('name','id');
+        return view('Vacunas.create',compact('vacuna','medico'));
 
     }
 
@@ -42,34 +47,17 @@ class VacunasController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'apuntes' => 'required',
-            'expira' => 'required'
-        ],[
-            'nombre.required' => 'El nombre es requerido',
-            'apuntes.required' => 'Los apuntes es requerido',
-            'expira.required' => 'La fecha de expiración es requerido'
+        request()->validate(Vacunas::$rules);
+        $id = Auth::id();
+        $vacunas['v_nombre'] = $request['v_nombre'];
+        $vacunas['v_apuntes'] = $request['v_apuntes'];
+        $vacunas['n_expira'] = $request['n_expira'];
+        $vacunas['a_n_iduser'] =$id; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $vacunas['n_estado'] = 1;
+        Vacunas::create($vacunas);
 
-        ]);
-        // try {
-        $usuario = Auth::user();
-        $date = date('Y-m-d H:i:s');
-        $model = new Vacunas;
-        $model->v_nombre = $request->nombre;
-        $model->v_apuntes = $request->apuntes;
-        $model->n_expira = $request->expira;
-        $model->a_n_iduser = $usuario->getAuthIdentifier();
-        $model->updated_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
-            ->format('Y-m-d H:i:s');
-        $model->created_at = Carbon::createFromFormat('Y-m-d H:i:s', $date)
-            ->format('Y-m-d H:i:s');
-        $model->save();
-        return redirect()->route('Vacunas');
-        //    return redirect()->route(empty('Alergias.create')? 'Alergias' :$slug)->with('success','Se ha registrado satisfactoriamente, en las proximas 24 horas nos estaremos comunicando con usted.');
-        //}catch (QueryException $e) {
-        //    return redirect()->route('Alergias.create');
-        //}
+        return redirect()->route('Vacunas')
+            ->with('success', 'Vacuna creada satisfactoriamente.');
     }
 
     /**
@@ -78,9 +66,11 @@ class VacunasController extends Controller
      * @param  \App\Models\Vacunas  $vacunas
      * @return \Illuminate\Http\Response
      */
-    public function show(Vacunas $vacunas)
+    public function show($id)
     {
-        //
+        $vacuna = Vacunas::find($id);
+
+        return view('Vacunas.show', compact('vacuna'));
     }
 
     /**
@@ -89,9 +79,12 @@ class VacunasController extends Controller
      * @param  \App\Models\Vacunas  $vacunas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vacunas $vacunas)
+    public function edit($id)
     {
-        return view('vacunas.edit');
+        $vacuna = Vacunas::find($id);
+
+        $medico = User::pluck('name','id');
+        return view('vacunas.edit', compact('vacuna','medico'));
 
     }
 
@@ -102,9 +95,19 @@ class VacunasController extends Controller
      * @param  \App\Models\Vacunas  $vacunas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vacunas $vacunas)
+    public function update(Request $request, $id)
     {
-        //
+        $ido = Auth::id();
+        request()->validate(Vacunas::$rules);
+        $vacuna = Vacunas::find($id);
+        $vacuna['v_nombre'] = $request['v_nombre'];
+        $vacuna['v_apuntes'] = $request['v_apuntes'];
+        $vacunas['n_expira'] = $request['n_expira'];
+        $vacuna['a_n_iduser'] = $ido; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $vacuna['n_estado'] = 1;
+        $vacuna->update($request->all());
+        return redirect()->route('Vacunas')
+            ->with('success', 'Vacuna actualizada satisfactoriamente');
     }
 
     /**

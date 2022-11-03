@@ -1,41 +1,80 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
-
-@section('content_header')
-    <h1>Vacunas</h1>
-    <div class="alineado">
-        <a href="{{route('Vacunas.create')}}" class="btn btn-info">Nueva Vacuna</a>
-    </div>
-@stop
+@section('template_title')
+    Vacunas
+@endsection
 
 @section('content')
-    <table class="table">
-        <caption>Lista de Vacunas</caption>
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre de Vacuna</th>
-                <th scope="col">Información Extra</th>
-                <th scope="col">Dias de Expiración</th>
-                <th scope="col">Creador</th>
-                <th scope="col">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($vacunas as $row)
-            <tr>
-                <th scope="row">{{$row->id}}</th>
-                <td>{{$row->v_nombre}}</td>
-                <td>{{$row->v_apuntes}}</td>
-                <td>{{$row->n_expira}}</td>
-                <td>{{$row->a_n_iduser}}</td>
-                <td>
-                    <a href="{{route('Vacunas.create')}}"><i class="fa fa-edit"></i></a>
-                    <i class="fa fa-trash"></i>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
-@stop
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+
+                            <span id="card_title">
+                                {{ __('Vacunas') }}
+                            </span>
+
+                            <div class="float-right">
+                                <a href="{{ route('Vacunas.create') }}" class="btn btn-primary btn-sm float-right"
+                                   data-placement="left">
+                                    {{ __('Crear Nueva Vacuna') }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="thead">
+                                <tr>
+                                    <th>Identificador</th>
+
+                                    <th>Nombre</th>
+                                    <th>Descripcion</th>
+                                    <th>Expiracion</th>
+                                    <th>Especialista</th>
+
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($vacunas as $vacuna)
+                                    <tr>
+                                        <td>{{ ++$i }}</td>
+
+                                        <td>{{ $vacuna->v_nombre }}</td>
+                                        <td>{{ $vacuna->v_apuntes }}</td>
+                                        <td>{{$vacuna->n_expira}}</td>
+                                        <td>{{ $vacuna->medicos->name}}</td>
+
+                                        <td>
+                                            <form action="{{ route('Vacunas.destroy', $vacuna->id) }}" method="POST">
+                                                <a class="btn btn-sm btn-primary "
+                                                   href="{{ route('Vacunas.show', $vacuna->id) }}"><i
+                                                        class="fa fa-fw fa-eye"></i> Mostrar Datos</a>
+                                                <a class="btn btn-sm btn-success"
+                                                   href="{{ route('Vacunas.edit', $vacuna->id) }}"><i
+                                                        class="fa fa-fw fa-edit"></i> Editar Datos</a>
+                                                @csrf
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                {!! $vacunas->links() !!}
+            </div>
+        </div>
+    </div>
+@endsection
