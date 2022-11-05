@@ -9,6 +9,7 @@ class Clinicas extends Model
 {
     
     use HasFactory;
+    protected $table = 'qrv_clinicas';
     protected $fillable = [
         'v_nomclin',
         'v_pais',

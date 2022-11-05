@@ -344,17 +344,19 @@ return [
             'icon' => 'fa fa-fw fa-lock',
             'submenu' => [
                 [
-                    'text' => 'Atenciones',
-                    'url'  => 'Atenciones',
+                    'text' => 'Mascotas',
+                    'url'  => 'Pacientes',
                 ],
                 [
                     'text' => 'Clientes',
                     'url'  => 'Clientes',
                 ],
                 [
-                    'text' => 'Mascotas',
-                    'url'  => 'Pacientes',
+                    'text' => 'Atenciones',
+                    'url'  => 'Atenciones',
                 ],
+                
+                
             ],
         ],
         [
