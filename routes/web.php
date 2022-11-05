@@ -31,6 +31,7 @@ Route::post('/validarqr', [App\Http\Controllers\HomeController::class, 'validarq
 
 Route::resource('Medicos', 'App\Http\Controllers\UserController');
 Route::resource('Clientes', 'App\Http\Controllers\ClientesController');
+Route::resource('Pacientes', 'App\Http\Controllers\PacientesController');
 Route::resource('Alergias', 'App\Http\Controllers\AlergiasController');
 Route::resource('Medicamentos', 'App\Http\Controllers\MedicamentosController');
 Route::resource('Diagnosticos', 'App\Http\Controllers\DiagnosticosController');
@@ -48,6 +49,11 @@ Route::resource('qrv_client', 'App\Http\Controllers\qrv_clientController');*/
 Route::post('GuardarCliente', [App\Http\Controllers\ClientesController::class, 'store'])
     ->name('GuardarCliente');
 Route::get('/Clientes', [App\Http\Controllers\ClientesController::class, 'index'])->name('Clientes');
+
+//Rutas para Acciones de la opcion Mascotas
+Route::post('GuardarPaciente', [App\Http\Controllers\PacientesController::class, 'store'])
+    ->name('GuardarPaciente');
+Route::get('/Pacientes', [App\Http\Controllers\PacientesController::class, 'index'])->name('Pacientes');
 
 
 //Rutas para Acciones de la opcion Alergias

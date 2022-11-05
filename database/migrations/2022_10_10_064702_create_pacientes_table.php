@@ -22,6 +22,8 @@ return new class extends Migration
             $table->unsignedBigInteger('n_sexo')->constrained();
             $table->unsignedBigInteger('n_raza')->constrained();
             $table->unsignedBigInteger('n_cliente')->constrained();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
 
             // Foraneas
             $table->foreign('n_sexo')->references('id')->on('qrv_sexo');

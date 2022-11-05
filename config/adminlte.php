@@ -353,7 +353,7 @@ return [
                 ],
                 [
                     'text' => 'Mascotas',
-                    'url'  => '#',
+                    'url'  => 'Pacientes',
                 ],
             ],
         ],

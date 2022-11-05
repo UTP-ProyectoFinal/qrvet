@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pacientes;
+use App\Models\Sexo;
 use Illuminate\Http\Request;
 
 class PacientesController extends Controller
@@ -14,7 +15,10 @@ class PacientesController extends Controller
      */
     public function index()
     {
-        //
+        $pacientes = Pacientes::paginate();
+
+        return view('Pacientes.index', compact('pacientes'))
+            ->with('i', (request()->input('page', 1) - 1) * $pacientes->perPage());
     }
 
     /**
@@ -24,7 +28,9 @@ class PacientesController extends Controller
      */
     public function create()
     {
-        //
+        $paciente=new Pacientes();
+        $sexo=Sexo::pluck('v_decripc','id');
+        return view('Pacientes.create',compact('paciente','sexo'));
     }
 
     /**
@@ -35,7 +41,12 @@ class PacientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate(Pacientes::$rules);
+
+        $paciente = Pacientes::create($request->all());
+
+        return redirect()->route('Pacientes')
+            ->with('success', 'Paciente creado satisfactoriamente.');
     }
 
     /**
@@ -44,9 +55,10 @@ class PacientesController extends Controller
      * @param  \App\Models\Pacientes  $pacientes
      * @return \Illuminate\Http\Response
      */
-    public function show(Pacientes $pacientes)
+    public function show($id)
     {
-        //
+        $paciente = Pacientes::find($id);
+        return view('pacientes.show', compact('paciente'));
     }
 
     /**
@@ -55,9 +67,11 @@ class PacientesController extends Controller
      * @param  \App\Models\Pacientes  $pacientes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pacientes $pacientes)
+    public function edit($id)
     {
-        //
+        $paciente = Pacientes::find($id);
+        $sexo=Sexo::pluck('v_decripc','id');
+        return view('pacientes.editar', compact('paciente','sexo'));
     }
 
     /**
@@ -67,9 +81,13 @@ class PacientesController extends Controller
      * @param  \App\Models\Pacientes  $pacientes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pacientes $pacientes)
+    public function update(Request $request, $id)
     {
-        //
+        request()->validate(Pacientes::$rules);
+        $paciente = Pacientes::find($id);
+        $paciente->update($request->all());
+        return redirect()->route('Pacientes')
+            ->with('success', 'Cliente actualizado satisfactoriamente');
     }
 
     /**
