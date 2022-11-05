@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('template_title')
-    Crear Cliente
+    Crear Paciente
 @endsection
 
 @section('content')
@@ -13,13 +13,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Crear Cliente</span>
+                        <span class="card-title">Crear Paciente</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('Clientes.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('Pacientes.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('clientes.form')
+                            @include('pacientes.form')
 
                         </form>
                     </div>

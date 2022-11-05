@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('template_title')
-    {{ $cliente->name ?? 'Ver Clientes' }}
+    {{ $paciente->name ?? 'Ver Paciente' }}
 @endsection
 
 @section('content')
@@ -11,42 +11,42 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Mostrar Cliente</span>
+                            <span class="card-title">Mostrar Paciente</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('Clientes') }}"> Volver atras</a>
+                            <a class="btn btn-primary" href="{{ route('Pacientes') }}"> Volver atras</a>
                         </div>
                     </div>
 
                     <div class="card-body">
 
                         <div class="form-group">
-                            <strong>Tipo de Documento:</strong>
-                            {{ $cliente->n_tipodoc }}
+                            <strong>Nro de Identificación:</strong>
+                            {{ $paciente->v_identifica }}
                         </div>
                         <div class="form-group">
-                            <strong>Documento de identidad:</strong>
-                            {{ $cliente->n_documento }}
+                            <strong>Nombre de la mascota:</strong>
+                            {{ $paciente->v_nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Nombres:</strong>
-                            {{ $cliente->v_nombre }}
+                            <strong>Apellido de la mascota:</strong>
+                            {{ $paciente->v_apellido }}
                         </div>
                         <div class="form-group">
-                            <strong>Apellidos:</strong>
-                            {{ $cliente->v_apellido }}
+                            <strong>Fecha de nacimiento de la mascota:</strong>
+                            {{ $paciente->d_fecnaci }}
                         </div>
                         <div class="form-group">
-                            <strong>Correo electronico:</strong>
-                            {{ $cliente->v_correo }}
+                            <strong>Sexo:</strong>
+                            {{ $paciente->sexo->v_decripc }}
                         </div>
                         <div class="form-group">
-                            <strong>Telefono Celular:</strong>
-                            {{ $cliente->v_telefono }}
+                            <strong>Raza:</strong>
+                            {{ $paciente->raza->v_nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Telefono Fijo:</strong>
-                            {{ $cliente->v_telfijo }}
+                            <strong>Dueño de la mascota:</strong>
+                            {{ $paciente->cliente->v_nombre }} {{ $paciente->cliente->v_apellido }}
                         </div>
 
                     </div>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Clientes;
 use App\Models\Pacientes;
+use App\Models\Razas;
 use App\Models\Sexo;
 use Illuminate\Http\Request;
 
@@ -30,7 +32,9 @@ class PacientesController extends Controller
     {
         $paciente=new Pacientes();
         $sexo=Sexo::pluck('v_decripc','id');
-        return view('Pacientes.create',compact('paciente','sexo'));
+        $raza=Razas::pluck('v_nombre','id');
+        $cliente=Clientes::pluck('v_nombre','id');
+        return view('Pacientes.create',compact('paciente','sexo','raza','cliente'));
     }
 
     /**
@@ -71,7 +75,9 @@ class PacientesController extends Controller
     {
         $paciente = Pacientes::find($id);
         $sexo=Sexo::pluck('v_decripc','id');
-        return view('pacientes.editar', compact('paciente','sexo'));
+        $raza=Razas::pluck('v_nombre','id');
+        $cliente=Clientes::pluck('v_nombre','id');
+        return view('pacientes.editar', compact('paciente','sexo','raza','cliente'));
     }
 
     /**

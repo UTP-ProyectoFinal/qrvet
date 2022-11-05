@@ -54,8 +54,9 @@
                                         <td>{{ $paciente->v_nombre }}</td>
                                         <td>{{ $paciente->v_apellido }}</td>
                                         <td>{{ $paciente->d_fecnaci}}</td>
-                                        <td>{{ $paciente->n_sexo}}</td>
-                                        <td>{{ $paciente->n_raza}}</td>
+                                        <td>{{ $paciente->sexo->v_decripc}}</td>
+                                        <td>{{ $paciente->raza->v_nombre}}</td>
+                                        <td>{{ $paciente->cliente->v_nombre}} {{ $paciente->cliente->v_apellido}}</td>
 
                                         <td>
                                             <form action="{{ route('Pacientes.destroy', $paciente->id) }}" method="POST">

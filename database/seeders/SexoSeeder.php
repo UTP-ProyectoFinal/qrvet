@@ -16,10 +16,10 @@ class SexoSeeder extends Seeder
     public function run()
     {
         Sexo::create([
-            'v_decripc' => 'Femenino',
+            'v_decripc' => 'Hembra',
         ]);
         Sexo::create([
-            'v_decripc' => 'Masculino',
+            'v_decripc' => 'Macho',
         ]);
     }
 }

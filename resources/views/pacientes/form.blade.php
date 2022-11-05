@@ -1,43 +1,52 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="form-group">
-            {{ Form::label('Tipo Documento') }}
-            {{ Form::select('n_tipodoc',$tipo, $cliente->n_tipodoc, ['class' => 'form-control' . ($errors->has('n_tipodoc') ? ' is-invalid' : ''), 'placeholder' => 'DNI, CE, ó Pasaporte']) }}
-            {!! $errors->first('n_tipodoc', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('Nro. de Identificación') }}
+            {{ Form::text('v_identifica', $paciente->v_identifica, ['class' => 'form-control' . ($errors->has('v_identifica') ? ' is-invalid' : ''), 'placeholder' => 'Nro. de Identificación']) }}
+            {!! $errors->first('v_identifica', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Nro. Identificación') }}
-            {{ Form::text('n_documento', $cliente->n_documento, ['class' => 'form-control' . ($errors->has('n_documento') ? ' is-invalid' : ''), 'placeholder' => 'N° de documento del cliente']) }}
+            {{ Form::label('Nombre de la mascota') }}
+            {{ Form::text('v_nombre', $paciente->v_nombre, ['class' => 'form-control' . ($errors->has('v_nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre de la mascota']) }}
             {!! $errors->first('v_nombre', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Nombre del cliente') }}
-            {{ Form::text('v_nombre', $cliente->v_nombre, ['class' => 'form-control' . ($errors->has('v_nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre del cliente']) }}
-            {!! $errors->first('v_nombre', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('Apellido del cliente') }}
-            {{ Form::text('v_apellido', $cliente->v_apellido, ['class' => 'form-control' . ($errors->has('v_apellido') ? ' is-invalid' : ''), 'placeholder' => 'Apellido del cliente']) }}
+            {{ Form::label('Apellido de la mascota') }}
+            {{ Form::text('v_apellido', $paciente->v_apellido, ['class' => 'form-control' . ($errors->has('v_apellido') ? ' is-invalid' : ''), 'placeholder' => 'Apellido de la mascota']) }}
             {!! $errors->first('v_apellido', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Correo electrónico') }}
-            {{ Form::text('v_correo', $cliente->v_correo, ['class' => 'form-control' . ($errors->has('v_correo') ? ' is-invalid' : ''), 'placeholder' => 'Correo electronico']) }}
-            {!! $errors->first('v_correo', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('Fecha de Nacimiento') }}
+            {{ Form::text('d_fecnaci', $paciente->d_fecnaci, ['class' => 'date form-control' . ($errors->has('d_fecnaci') ? ' is-invalid' : ''), 'placeholder' => 'Fecha de Nacimiento']) }}
+            {!! $errors->first('d_fecnaci', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Telefono Celular') }}
-            {{ Form::text('v_telefono', $cliente->v_telefono, ['class' => 'form-control' . ($errors->has('v_telefono') ? ' is-invalid' : ''), 'placeholder' => 'Telefono Celular']) }}
-            {!! $errors->first('v_telefono', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('Sexo') }}
+            {{ Form::select('n_sexo',$sexo, $paciente->n_sexo, ['class' => 'form-control' . ($errors->has('n_sexo') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione el Sexo']) }}
+            {!! $errors->first('n_sexo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Telefono Fijo') }}
-            {{ Form::text('v_telfijo', $cliente->v_telfijo, ['class' => 'form-control' . ($errors->has('v_telfijo') ? ' is-invalid' : ''), 'placeholder' => 'Telefono Fijo']) }}
-            {!! $errors->first('v_telfijo', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('Raza') }}
+            {{ Form::select('n_raza',$raza, $paciente->n_raza, ['class' => 'form-control' . ($errors->has('n_raza') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione la raza']) }}
+            {!! $errors->first('n_raza', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
+        <div class="form-group">
+            {{ Form::label('Dueño de mascota') }}
+            {{ Form::select('n_cliente',$cliente, $paciente->n_cliente, ['class' => 'form-control' . ($errors->has('n_cliente') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione el cliente']) }}
+            {!! $errors->first('n_cliente', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Enviar</button>
     </div>
 </div>
+
+<script type="text/javascript">
+    $('.date').datepicker({
+        format: 'yyyy-mm-dd'
+    });
+</script>
