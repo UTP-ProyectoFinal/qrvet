@@ -67,9 +67,10 @@ class RazasController extends Controller
      * @param  \App\Models\Razas  $razas
      * @return \Illuminate\Http\Response
      */
-    public function show(Razas $razas)
+    public function show($id)
     {
-        //
+        $raza = Razas::find($id);
+        return view('razas.show', compact('raza'));
     }
 
     /**
