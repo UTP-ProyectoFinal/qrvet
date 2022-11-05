@@ -19,6 +19,10 @@ class DatabaseSeeder extends Seeder
             PerfilesSeeder::class,
             EspeciesSeeder::class,
             TipoDocSeeder::class,
+            AlergiasSeeder::class,
+            UserSeeder::class,
+            MedicamentosSeeder::class,
+            VacunasSeeder::class,
         ]);
     }
 }
