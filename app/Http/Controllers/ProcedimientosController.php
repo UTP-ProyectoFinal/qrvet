@@ -20,7 +20,7 @@ class ProcedimientosController extends Controller
     public function index()
     {
         $procedimientos = Procedimientos::paginate();
-        return view('Procedimientos.index', compact('procedimientos'))
+        return view('procedimientos.index', compact('procedimientos'))
             ->with('i', (request()->input('page', 1) - 1) * $procedimientos->perPage());
 
     }
@@ -34,7 +34,7 @@ class ProcedimientosController extends Controller
     {
         $procedimiento=new Procedimientos();
         $medico=User::pluck('name','id');
-        return view('Procedimientos.create',compact('procedimiento','medico'));
+        return view('procedimientos.create',compact('procedimiento','medico'));
 
     }
 

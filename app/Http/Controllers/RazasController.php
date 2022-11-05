@@ -70,7 +70,7 @@ class RazasController extends Controller
     public function show($id)
     {
         $raza = Razas::find($id);
-        return view('razas.show', compact('raza'));
+        return view('Razas.show', compact('raza'));
     }
 
     /**
@@ -84,7 +84,7 @@ class RazasController extends Controller
         $raza = Razas::find($id);
         $medico = User::pluck('name','id');
         $especie = Especies::pluck('v_decripc','id');
-        return view('razas.edit',compact('raza','medico','especie'));
+        return view('Razas.edit',compact('raza','medico','especie'));
     }
 
     /**

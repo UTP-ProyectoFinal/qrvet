@@ -19,7 +19,7 @@ class PacientesController extends Controller
     {
         $pacientes = Pacientes::paginate();
 
-        return view('Pacientes.index', compact('pacientes'))
+        return view('pacientes.index', compact('pacientes'))
             ->with('i', (request()->input('page', 1) - 1) * $pacientes->perPage());
     }
 
@@ -34,7 +34,7 @@ class PacientesController extends Controller
         $sexo=Sexo::pluck('v_decripc','id');
         $raza=Razas::pluck('v_nombre','id');
         $cliente=Clientes::pluck('v_nombre','id');
-        return view('Pacientes.create',compact('paciente','sexo','raza','cliente'));
+        return view('pacientes.create',compact('paciente','sexo','raza','cliente'));
     }
 
     /**

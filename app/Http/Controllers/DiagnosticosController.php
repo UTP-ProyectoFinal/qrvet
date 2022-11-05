@@ -21,7 +21,7 @@ class DiagnosticosController extends Controller
     {
         $diagnosticos = Diagnosticos::paginate();
 
-        return view('Diagnosticos.index', compact('diagnosticos'))
+        return view('diagnosticos.index', compact('diagnosticos'))
             ->with('i', (request()->input('page', 1) - 1) * $diagnosticos->perPage());
     }
 
@@ -34,7 +34,7 @@ class DiagnosticosController extends Controller
     {
         $diagnostico=new Diagnosticos();
         $medico=User::pluck('name','id');
-        return view('Diagnosticos.create',compact('diagnostico','medico'));
+        return view('diagnosticos.create',compact('diagnostico','medico'));
     }
 
     /**

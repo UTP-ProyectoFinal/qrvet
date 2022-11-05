@@ -19,7 +19,7 @@ class MedicamentosController extends Controller
     public function index()
     {
         $medicamentos = Medicamentos::paginate();
-        return view('Medicamentos.index', compact('medicamentos'))
+        return view('medicamentos.index', compact('medicamentos'))
             ->with('i', (request()->input('page', 1) - 1) * $medicamentos->perPage());
     }
 
@@ -32,7 +32,7 @@ class MedicamentosController extends Controller
     {
         $medicamento=new Medicamentos();
         $medico=User::pluck('name','id');
-        return view('Medicamentos.create',compact('medicamento','medico'));
+        return view('medicamentos.create',compact('medicamento','medico'));
 
     }
 

@@ -21,7 +21,7 @@ class VacunasController extends Controller
     {
         $vacunas = Vacunas::paginate();
 
-        return view('Vacunas.index', compact('vacunas'))
+        return view('vacunas.index', compact('vacunas'))
             ->with('i', (request()->input('page', 1) - 1) * $vacunas->perPage());
 
     }
@@ -35,7 +35,7 @@ class VacunasController extends Controller
     {
         $vacuna=new Vacunas();
         $medico=User::pluck('name','id');
-        return view('Vacunas.create',compact('vacuna','medico'));
+        return view('vacunas.create',compact('vacuna','medico'));
 
     }
 
@@ -70,7 +70,7 @@ class VacunasController extends Controller
     {
         $vacuna = Vacunas::find($id);
 
-        return view('Vacunas.show', compact('vacuna'));
+        return view('vacunas.show', compact('vacuna'));
     }
 
     /**

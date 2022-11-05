@@ -20,7 +20,7 @@ class AlergiasController extends Controller
     {
         $alergias = Alergias::paginate();
 
-        return view('Alergias.index', compact('alergias'))
+        return view('alergias.index', compact('alergias'))
             ->with('i', (request()->input('page', 1) - 1) * $alergias->perPage());
     }
 
@@ -33,7 +33,7 @@ class AlergiasController extends Controller
     {
         $alergia=new Alergias();
         $medico=User::pluck('name','id');
-        return view('Alergias.create',compact('alergia','medico'));
+        return view('alergias.create',compact('alergia','medico'));
     }
 
     /**

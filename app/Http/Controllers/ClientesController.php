@@ -19,7 +19,7 @@ class ClientesController extends Controller
     {
         $clientes = Clientes::paginate();
 
-        return view('Clientes.index', compact('clientes'))
+        return view('clientes.index', compact('clientes'))
             ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
     }
 
@@ -32,7 +32,7 @@ class ClientesController extends Controller
     {
         $cliente=new Clientes();
         $tipo=TipoDoc::pluck('v_decripc','id');
-        return view('Clientes.create',compact('cliente','tipo'));
+        return view('clientes.create',compact('cliente','tipo'));
     }
 
     /**

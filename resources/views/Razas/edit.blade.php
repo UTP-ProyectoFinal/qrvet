@@ -23,7 +23,7 @@
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('razas.form')
+                            @include('Razas.form')
 
                         </form>
                     </div>
