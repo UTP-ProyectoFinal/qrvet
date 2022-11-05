@@ -17,7 +17,9 @@ class Atenciones extends Model
         'n_peso',
         'n_temp',
         'n_frecresp',
+        'n_freccard',
         'v_detproced',
+        'v_detdiagnos',
         'n_historia',
         'n_diagnos',
         'n_procedimiento',
@@ -27,9 +29,11 @@ class Atenciones extends Model
         'n_peso' => 'required',
         'n_temp' => 'required',
         'n_frecresp' => 'required',
+        'n_freccard' => 'required',
         'v_detproced' => 'required',
         'n_historia' => 'required',
         'n_diagnos' => 'required',
+        'v_detdiagnos' => 'required',
         'n_procedimiento' => 'required',
     ];
     public function historia()

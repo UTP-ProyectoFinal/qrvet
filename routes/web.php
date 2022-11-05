@@ -33,12 +33,19 @@ Route::resource('Medicos', 'App\Http\Controllers\UserController');
 Route::resource('Clientes', 'App\Http\Controllers\ClientesController');
 Route::resource('Pacientes', 'App\Http\Controllers\PacientesController');
 Route::resource('Atenciones', 'App\Http\Controllers\AtencionesController');
+Route::resource('Historias', 'App\Http\Controllers\HistoriasController');
 Route::resource('Alergias', 'App\Http\Controllers\AlergiasController');
 Route::resource('Medicamentos', 'App\Http\Controllers\MedicamentosController');
 Route::resource('Diagnosticos', 'App\Http\Controllers\DiagnosticosController');
 Route::resource('Vacunas', 'App\Http\Controllers\VacunasController');
 Route::resource('Procedimientos', 'App\Http\Controllers\ProcedimientosController');
 Route::resource('Razas', 'App\Http\Controllers\RazasController');
+
+
+//Rutas para Acciones de la opcion Historia
+Route::post('GuardarHistoria', [App\Http\Controllers\HistoriasController::class, 'Historia'])
+    ->name('GuardarHistoria');
+Route::get('/Historias', [App\Http\Controllers\HistoriasController::class, 'index'])->name('Historias');
 
 
 //Rutas para Acciones de la opcion Atenciones
