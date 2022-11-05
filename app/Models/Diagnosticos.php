@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Diagnosticos extends Model
 {
     use HasFactory;
+
+    protected $table = 'qrv_diagnosticos';
+    public $timestamps = true;
     static $rules = [
         'v_nombre' => 'required',
         'v_apuntes' => 'required'
@@ -19,8 +22,6 @@ class Diagnosticos extends Model
         'n_estado',
     ];
 
-    protected $table = 'qrv_diagnosticos';
-    public $timestamps = true;
     public function medicos()
     {
         return $this->hasOne(User::class,'id','a_n_iduser');

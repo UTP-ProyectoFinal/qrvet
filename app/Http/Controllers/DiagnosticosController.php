@@ -64,9 +64,10 @@ class DiagnosticosController extends Controller
      * @param  \App\Models\Diagnosticos  $diagnosticos
      * @return \Illuminate\Http\Response
      */
-    public function show(Diagnosticos $diagnosticos)
+    public function show($id)
     {
-        //
+        $diagnostico = Diagnosticos::find($id);
+        return view('diagnosticos.show', compact('diagnostico'));
     }
 
     /**
