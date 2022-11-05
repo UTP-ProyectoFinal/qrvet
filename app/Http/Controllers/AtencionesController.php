@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Atenciones;
+use App\Models\Historias;
 use Illuminate\Http\Request;
 
 class AtencionesController extends Controller
@@ -14,7 +15,9 @@ class AtencionesController extends Controller
      */
     public function index()
     {
-        //
+        $atenciones = Historias::paginate();
+        return view('Atenciones.index', compact('atenciones'))
+            ->with('i', (request()->input('page', 1) - 1) * $atenciones->perPage());
     }
 
     /**

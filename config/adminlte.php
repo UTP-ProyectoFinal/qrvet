@@ -345,7 +345,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Atenciones',
-                    'url'  => '#',
+                    'url'  => 'Atenciones',
                 ],
                 [
                     'text' => 'Clientes',

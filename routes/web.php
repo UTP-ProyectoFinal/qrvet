@@ -32,6 +32,7 @@ Route::post('/validarqr', [App\Http\Controllers\HomeController::class, 'validarq
 Route::resource('Medicos', 'App\Http\Controllers\UserController');
 Route::resource('Clientes', 'App\Http\Controllers\ClientesController');
 Route::resource('Pacientes', 'App\Http\Controllers\PacientesController');
+Route::resource('Atenciones', 'App\Http\Controllers\AtencionesController');
 Route::resource('Alergias', 'App\Http\Controllers\AlergiasController');
 Route::resource('Medicamentos', 'App\Http\Controllers\MedicamentosController');
 Route::resource('Diagnosticos', 'App\Http\Controllers\DiagnosticosController');
@@ -39,10 +40,7 @@ Route::resource('Vacunas', 'App\Http\Controllers\VacunasController');
 Route::resource('Procedimientos', 'App\Http\Controllers\ProcedimientosController');
 Route::resource('Razas', 'App\Http\Controllers\RazasController');
 
-/*Route::resource('Detalles', 'App\Http\Controllers\DetallesController');
-Route::resource('users', 'App\Http\Controllers\UserController');
-Route::resource('qrv_clientes', 'App\Http\Controllers\qrv_clientesController');
-Route::resource('qrv_client', 'App\Http\Controllers\qrv_clientController');*/
+
 
 
 //Rutas para Acciones de la opcion Clientes

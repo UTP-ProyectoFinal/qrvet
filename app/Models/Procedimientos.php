@@ -9,9 +9,9 @@ class Procedimientos extends Model
 {
     use HasFactory;
 
-
     protected $table = 'qrv_procedimientos';
     public $timestamps = true;
+
     protected $fillable = [
         'v_nombre',
         'v_apuntes',
