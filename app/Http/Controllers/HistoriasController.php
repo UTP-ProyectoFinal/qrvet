@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Atenciones;
+use App\Models\Diagnosticos;
 use App\Models\Historias;
+use App\Models\Procedimientos;
 use Illuminate\Http\Request;
 
 class HistoriasController extends Controller
@@ -24,7 +27,11 @@ class HistoriasController extends Controller
      */
     public function create()
     {
-        //
+        $historia=new Atenciones();
+        $atencion=Historias::pluck('n_paciente','id');
+        $diagnostico=Diagnosticos::pluck('v_nombre','id');
+        $procedimiento=Procedimientos::pluck('v_nombre','id');
+        return view('Historias.create',compact('historia','atencion','diagnostico','procedimiento'));
     }
 
     /**
@@ -35,7 +42,12 @@ class HistoriasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate(Atenciones::$rules);
+
+        $paciente = Atenciones::create($request->all());
+
+        return redirect()->route('Atenciones')
+            ->with('success', 'Historia creada satisfactoriamente.');
     }
 
     /**
