@@ -64,9 +64,9 @@ class AlergiasController extends Controller
      */
     public function show($id)
     {
-        $user = Alergias::find($id);
+        $alergia = Alergias::find($id);
 
-        return view('user.show', compact('user'));
+        return view('alergias.show', compact('alergia'));
     }
 
     /**
