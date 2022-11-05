@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('n_historia')->constrained();
             $table->unsignedBigInteger('n_alergia')->constrained();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
 
             //Foraaneas
             $table->foreign('n_historia')->references('id')->on('qrv_historias');

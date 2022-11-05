@@ -18,6 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('n_cliente')->constrained();
             $table->unsignedBigInteger('n_paciente')->constrained();
             $table->unsignedBigInteger('n_vacuna')->constrained();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
 
             //Foraneas
             $table->foreign('n_cliente')->references('id')->on('qrv_clientes');

@@ -40,6 +40,8 @@
                                     <th>Cliente</th>
                                     <th>Paciente</th>
                                     <th>Vacuna</th>
+                                    <th>Alergia</th>
+                                    <th>Historia</th>
                                     <th>Acciones</th>
                                 </tr>
                                 </thead>
@@ -48,16 +50,22 @@
                                     <tr>
                                         <td>{{ ++$i }}</td>
                                         <td>{{ $atencion->cliente->v_nombre}}</td>
-                                        <td>{{ $atencion->paciente-> v_nombre}}</td>
+                                        <td>{{ $atencion->paciente->v_nombre}}</td>
                                         <td>{{ $atencion->vacuna->v_nombre}}</td>
+                                        <td>Ninguna</td>
+                                        <td>No</td>
                                         <td>
                                             <form action="{{ route('Atenciones.destroy', $atencion->id) }}" method="POST">
+                                                <a class="btn btn-sm btn-success"
+                                                   href="{{ route('Atenciones.show', $atencion->id) }}"><i
+                                                        class="fa fa-fw fa-edit"></i> Editar Atencion</a>
                                                 <a class="btn btn-sm btn-primary "
                                                    href="{{ route('Atenciones.show', $atencion->id) }}"><i
-                                                        class="fa fa-fw fa-eye"></i> Mostrar Datos</a>
-                                                <a class="btn btn-sm btn-success"
-                                                   href="{{ route('Atenciones.edit', $atencion->id) }}"><i
-                                                        class="fa fa-fw fa-edit"></i> Editar Datos</a>
+                                                        class="fa fa-fw fa-edit"></i> Añadir Alergia</a>
+                                                <a class="btn btn-sm btn-primary "
+                                                   href="{{ route('Atenciones.show', $atencion->id) }}"><i
+                                                        class="fa fa-fw fa-edit"></i> Añadir Historia</a>
+
                                                 @csrf
                                             </form>
                                         </td>

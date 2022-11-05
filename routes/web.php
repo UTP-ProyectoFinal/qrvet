@@ -41,7 +41,10 @@ Route::resource('Procedimientos', 'App\Http\Controllers\ProcedimientosController
 Route::resource('Razas', 'App\Http\Controllers\RazasController');
 
 
-
+//Rutas para Acciones de la opcion Atenciones
+Route::post('GuardarAtencion', [App\Http\Controllers\AtencionesController::class, 'store'])
+    ->name('GuardarAtencion');
+Route::get('/Atenciones', [App\Http\Controllers\AtencionesController::class, 'index'])->name('Atenciones');
 
 //Rutas para Acciones de la opcion Clientes
 Route::post('GuardarCliente', [App\Http\Controllers\ClientesController::class, 'store'])

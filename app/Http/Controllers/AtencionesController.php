@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Atenciones;
+use App\Models\Clientes;
 use App\Models\Historias;
+use App\Models\Pacientes;
+use App\Models\Vacunas;
 use Illuminate\Http\Request;
 
 class AtencionesController extends Controller
@@ -27,7 +30,11 @@ class AtencionesController extends Controller
      */
     public function create()
     {
-        //
+        $atencion=new Historias();
+        $cliente=Clientes::pluck('v_nombre','id');
+        $paciente=Pacientes::pluck('v_nombre','id');
+        $vacuna=Vacunas::pluck('v_nombre','id');
+        return view('Atenciones.create',compact('atencion','cliente','paciente','vacuna'));
     }
 
     /**
@@ -38,7 +45,12 @@ class AtencionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate(Historias::$rules);
+
+        $paciente = Historias::create($request->all());
+
+        return redirect()->route('Atenciones')
+            ->with('success', 'Atencion creada satisfactoriamente.');
     }
 
     /**
