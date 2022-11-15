@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('qrv_historias_has_alergias', function (Blueprint $table) {
+        Schema::create('qrv_paciente_has_alergias', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('n_historia')->constrained();
             $table->unsignedBigInteger('n_alergia')->constrained();
+            $table->unsignedBigInteger('n_paciente')->constrained();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
 
             //Foraaneas
-            $table->foreign('n_historia')->references('id')->on('qrv_historias');
             $table->foreign('n_alergia')->references('id')->on('qrv_alergias');
+            $table->foreign('n_paciente')->references('id')->on('qrv_pacientes');
 
 
         });

@@ -5,28 +5,29 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HistoriasHasAlergias extends Model
+class PacienteHasAlergias extends Model
 {
     use HasFactory;
 
 
-    protected $table = 'qrv_historias_has_alergias';
+    protected $table = 'qrv_paciente_has_alergias';
     public $timestamps = true;
 
     protected $fillable = [
-        'n_historia',
         'n_alergia',
+        'n_paciente',
     ];
     static $rules = [
-        'n_historia' => 'required',
         'n_alergia' => 'required',
+        'n_paciente' => 'required',
     ];
-    public function historia()
-    {
-        return $this->hasOne(Historias::class,'id','n_historia');
-    }
+
     public function alergia()
     {
         return $this->hasOne(Alergias::class,'id','n_alergia');
+    }
+    public function paciente()
+    {
+        return $this->hasOne(Pacientes::class,'id','n_paciente');
     }
 }

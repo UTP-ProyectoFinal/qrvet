@@ -41,6 +41,10 @@ Route::resource('Vacunas', 'App\Http\Controllers\VacunasController');
 Route::resource('Procedimientos', 'App\Http\Controllers\ProcedimientosController');
 Route::resource('Razas', 'App\Http\Controllers\RazasController');
 
+Route::resource('PacienteHasAlergias', 'App\Http\Controllers\PacienteHasAlergiasController');
+Route::resource('PacientesHasVacunas', 'App\Http\Controllers\PacientesHasVacunasController');
+
+
 
 //Rutas para Acciones de la opcion Historia
 Route::post('GuardarHistoria', [App\Http\Controllers\HistoriasController::class, 'Historia'])

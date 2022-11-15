@@ -40,7 +40,9 @@
                                     <th>Cliente</th>
                                     <th>Paciente</th>
                                     <th>Vacuna</th>
+                                    <th></th>
                                     <th>Alergia</th>
+                                    <th></th>
                                     <th>Historia</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -53,22 +55,32 @@
                                         <td>{{ $atencion->cliente->v_nombre}}</td>
                                         <td>{{ $atencion->paciente->v_nombre}}</td>
                                         <td>Sin vacuna</td>
-                                        <td>Ninguna</td>
-                                        <td>No</td>
                                         <td>
-                                            <form action="{{ route('Atenciones.destroy', $atencion->id) }}" method="POST">
-                                                <a class="btn btn-sm btn-success"
-                                                   href="{{ route('Atenciones.show', $atencion->id) }}"><i
-                                                        class="fa fa-fw fa-edit"></i> Editar Atencion</a>
-                                                <a class="btn btn-sm btn-primary "
-                                                   href="{{ route('Atenciones.show', $atencion->id) }}"><i
-                                                        class="fa fa-fw fa-edit"></i> Añadir Alergia</a>
-                                                <a class="btn btn-sm btn-primary "
-                                                   href="{{ route('Historias.create', $atencion->id) }}"><i
-                                                        class="fa fa-fw fa-edit"></i> Añadir Historia</a>
+                                            <a class="btn btn-sm btn-success"
+                                               href="{{ route('PacienteHasAlergias.create', $atencion->id) }}"><i
+                                                    class="fa fa-fw fa-plus"></i></a>
+                                            <a class="btn btn-sm btn-primary "
+                                               href="{{ route('PacienteHasAlergias.create', $atencion->id) }}"><i
+                                                    class="fa fa-fw fa-eye"></i></a>
+                                        </td>
+                                        <td>Ninguna</td>
+                                        <td>
+                                            <a class="btn btn-sm btn-success"
+                                               href="{{ route('PacienteHasAlergias.create', $atencion->id) }}"><i
+                                                    class="fa fa-fw fa-plus"></i></a>
+                                            <a class="btn btn-sm btn-primary "
+                                               href="{{ route('PacienteHasAlergias.create', $atencion->id) }}"><i
+                                                    class="fa fa-fw fa-eye"></i></a>
+                                        </td>
+                                        <td>No</td>
 
-                                                @csrf
-                                            </form>
+                                        <td>
+                                            <a class="btn btn-sm btn-success "
+                                               href="{{ route('Historias.create', $atencion->id) }}"><i
+                                                    class="fa fa-fw fa-plus"></i> Añadir Historia</a>
+                                            <a class="btn btn-sm btn-primary "
+                                               href="{{ route('Historias.edit', $atencion->id) }}"><i
+                                                    class="fa fa-fw fa-edit"></i> Editar Historia</a>
                                         </td>
                                     </tr>
                                 @endforeach

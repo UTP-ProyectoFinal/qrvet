@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HistoriasHasAlergias;
+use App\Models\PacienteHasVacunas;
 use Illuminate\Http\Request;
 
-class HistoriasHasAlergiasController extends Controller
+class PacienteHasVacunasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class HistoriasHasAlergiasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\HistoriasHasAlergias  $historiasHasAlergias
+     * @param  \App\Models\PacienteHasAlergias  $pacienteHasAlergias
      * @return \Illuminate\Http\Response
      */
-    public function show(HistoriasHasAlergias $historiasHasAlergias)
+    public function show(PacienteHasAlergias $pacienteHasAlergias)
     {
         //
     }
@@ -52,10 +52,10 @@ class HistoriasHasAlergiasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\HistoriasHasAlergias  $historiasHasAlergias
+     * @param  \App\Models\PacienteHasAlergias  $pacienteHasAlergias
      * @return \Illuminate\Http\Response
      */
-    public function edit(HistoriasHasAlergias $historiasHasAlergias)
+    public function edit(PacienteHasAlergias $pacienteHasAlergias)
     {
         //
     }
@@ -64,10 +64,10 @@ class HistoriasHasAlergiasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\HistoriasHasAlergias  $historiasHasAlergias
+     * @param  \App\Models\PacienteHasAlergias  $pacienteHasAlergias
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, HistoriasHasAlergias $historiasHasAlergias)
+    public function update(Request $request, PacienteHasAlergias $pacienteHasAlergias)
     {
         //
     }
@@ -75,10 +75,10 @@ class HistoriasHasAlergiasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\HistoriasHasAlergias  $historiasHasAlergias
+     * @param  \App\Models\PacienteHasAlergias  $pacienteHasAlergias
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HistoriasHasAlergias $historiasHasAlergias)
+    public function destroy(PacienteHasAlergias $pacienteHasAlergias)
     {
         //
     }
