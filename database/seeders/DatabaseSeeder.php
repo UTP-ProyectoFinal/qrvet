@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
             AlergiasSeeder::class,
             MedicamentosSeeder::class,
             VacunasSeeder::class,
+            DiagnosticosSeeder::class,
+            ProcedimientosSeeder::class,
+            RazasSeeder::class,
         ]);
     }
 }

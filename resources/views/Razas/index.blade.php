@@ -35,13 +35,13 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                 <tr>
-                                    <th>Identificador</th>
+                                    <th>#</th>
 
                                     <th>Nombre</th>
                                     <th>Descripcion</th>
                                     <th>Especialista</th>
                                     <th>Especie</th>
-                                    
+
 
                                     <th></th>
                                 </tr>

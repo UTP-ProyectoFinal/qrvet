@@ -22,13 +22,12 @@ class HistoriasController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        $historia=new Atenciones();
-        $atencion=Historias::pluck('n_paciente','id');
+        $historia=new Historias();
+        $atencion=Atenciones::pluck('n_paciente','id');
         $diagnostico=Diagnosticos::pluck('v_nombre','id');
         $procedimiento=Procedimientos::pluck('v_nombre','id');
         return view('Historias.create',compact('historia','atencion','diagnostico','procedimiento'));
@@ -42,9 +41,9 @@ class HistoriasController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Atenciones::$rules);
+        request()->validate(Historias::$rules);
 
-        $paciente = Atenciones::create($request->all());
+        Historias::create($request->all());
 
         return redirect()->route('Atenciones')
             ->with('success', 'Historia creada satisfactoriamente.');

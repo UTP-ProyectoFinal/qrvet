@@ -13,18 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('qrv_historias', function (Blueprint $table) {
+        Schema::create('qrv_atenciones', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('n_cliente')->constrained();
             $table->unsignedBigInteger('n_paciente')->constrained();
-            $table->unsignedBigInteger('n_vacuna')->constrained();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
 
             //Foraneas
             $table->foreign('n_cliente')->references('id')->on('qrv_clientes');
             $table->foreign('n_paciente')->references('id')->on('qrv_pacientes');
-            $table->foreign('n_vacuna')->references('id')->on('qrv_vacunas');
         });
     }
 
@@ -35,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qrv_historias');
+        Schema::dropIfExists('qrv_atenciones');
     }
 };

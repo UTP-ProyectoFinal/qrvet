@@ -16,6 +16,13 @@ class VacunasSeeder extends Seeder
     public function run()
     {
         Vacunas::create([
+            'v_nombre' => 'Sin vacunas',
+            'v_apuntes' => '-',
+            'n_expira' => 0,
+            'a_n_iduser' => 1,
+            'n_estado' => 1,
+        ]);
+        Vacunas::create([
             'v_nombre' => 'Antirrabica Canina',
             'v_apuntes' => 'Rabia',
             'n_expira' => '360',

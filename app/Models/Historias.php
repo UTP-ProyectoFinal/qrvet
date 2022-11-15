@@ -13,25 +13,39 @@ class Historias extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'n_cliente',
-        'n_paciente',
-        'n_vacuna',
+        'v_motivo',
+        'n_peso',
+        'n_temp',
+        'n_frecresp',
+        'n_freccard',
+        'v_detproced',
+        'v_detdiagnos',
+        'n_atencion',
+        'n_diagnos',
+        'n_procedimiento',
     ];
     static $rules = [
-        'n_cliente' => 'required',
-        'n_paciente' => 'required',
-        'n_vacuna' => 'required',
+        'v_motivo' => 'required',
+        'n_peso' => 'required',
+        'n_temp' => 'required',
+        'n_frecresp' => 'required',
+        'n_freccard' => 'required',
+        'v_detproced' => 'required',
+        'n_atencion' => 'required',
+        'n_diagnos' => 'required',
+        'v_detdiagnos' => 'required',
+        'n_procedimiento' => 'required',
     ];
-    public function cliente()
+    public function atencion()
     {
-        return $this->hasOne(Clientes::class,'id','n_cliente');
+        return $this->hasOne(Atenciones::class,'id','n_atencion');
     }
-    public function paciente()
+    public function diagnostico()
     {
-        return $this->hasOne(Pacientes::class,'id','n_paciente');
+        return $this->hasOne(Diagnosticos::class,'id','n_diagnos');
     }
-    public function vacuna()
+    public function procedimiento()
     {
-        return $this->hasOne(Vacunas::class,'id','n_vacuna');
+        return $this->hasOne(Procedimientos::class,'id','n_procedimiento');
     }
 }

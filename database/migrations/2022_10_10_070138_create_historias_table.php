@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('qrv_atenciones', function (Blueprint $table) {
+        Schema::create('qrv_historias', function (Blueprint $table) {
             $table->id();
             $table->string('v_motivo');
             $table->integer('n_peso');
@@ -22,14 +22,14 @@ return new class extends Migration
             $table->integer('n_freccard');
             $table->string('v_detdiagnos');
             $table->string('v_detproced');
-            $table->unsignedBigInteger('n_historia')->constrained();
+            $table->unsignedBigInteger('n_atencion')->constrained();
             $table->unsignedBigInteger('n_diagnos')->constrained();
             $table->unsignedBigInteger('n_procedimiento')->constrained();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
 
             // Foraneas
-            $table->foreign('n_historia')->references('id')->on('qrv_historias');
+            $table->foreign('n_atencion')->references('id')->on('qrv_atenciones');
             $table->foreign('n_diagnos')->references('id')->on('qrv_diagnosticos');
             $table->foreign('n_procedimiento')->references('id')->on('qrv_procedimientos');
 
@@ -43,6 +43,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qrv_atenciones');
+        Schema::dropIfExists('qrv_historias');
     }
 };

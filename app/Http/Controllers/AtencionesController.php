@@ -18,7 +18,7 @@ class AtencionesController extends Controller
      */
     public function index()
     {
-        $atenciones = Historias::paginate();
+        $atenciones = Atenciones::paginate();
         return view('atenciones.index', compact('atenciones'))
             ->with('i', (request()->input('page', 1) - 1) * $atenciones->perPage());
     }
@@ -30,7 +30,7 @@ class AtencionesController extends Controller
      */
     public function create()
     {
-        $atencion=new Historias();
+        $atencion=new Atenciones();
         $cliente=Clientes::pluck('v_nombre','id');
         $paciente=Pacientes::pluck('v_nombre','id');
         $vacuna=Vacunas::pluck('v_nombre','id');
@@ -45,9 +45,9 @@ class AtencionesController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Historias::$rules);
+        request()->validate(Atenciones::$rules);
 
-        $paciente = Historias::create($request->all());
+        Atenciones::create($request->all());
 
         return redirect()->route('Atenciones')
             ->with('success', 'Atencion creada satisfactoriamente.');

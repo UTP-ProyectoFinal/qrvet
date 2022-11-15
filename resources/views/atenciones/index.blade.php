@@ -36,7 +36,7 @@
                                 <thead class="thead">
                                 <tr>
                                     <th>#</th>
-
+                                    <th>Fecha Atención</th>
                                     <th>Cliente</th>
                                     <th>Paciente</th>
                                     <th>Vacuna</th>
@@ -49,9 +49,10 @@
                                 @foreach ($atenciones as $atencion)
                                     <tr>
                                         <td>{{ ++$i }}</td>
+                                        <td>{{ $atencion->created_at}}</td>
                                         <td>{{ $atencion->cliente->v_nombre}}</td>
                                         <td>{{ $atencion->paciente->v_nombre}}</td>
-                                        <td>{{ $atencion->vacuna->v_nombre}}</td>
+                                        <td>Sin vacuna</td>
                                         <td>Ninguna</td>
                                         <td>No</td>
                                         <td>

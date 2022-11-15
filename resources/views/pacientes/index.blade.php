@@ -43,6 +43,7 @@
                                     <th>Fecha de Nacimiento</th>
                                     <th>Sexo</th>
                                     <th>Raza</th>
+                                    <th>Dueño de mascota</th>
                                     <th>Acciones</th>
                                 </tr>
                                 </thead>
