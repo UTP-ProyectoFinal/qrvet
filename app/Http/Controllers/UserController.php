@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserController
@@ -50,7 +51,7 @@ class UserController extends Controller
 
         $user = User::create($request->all());
 
-        return redirect()->route('users.index')
+        return redirect()->route('Medicos.index')
             ->with('success', 'Medico creado satisfactoriamente.');
     }
 
@@ -87,13 +88,23 @@ class UserController extends Controller
      * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        request()->validate(User::$rules);
+        request()->validate(User::$rulesEdit);
 
-        $user->update($request->all());
+        $user = User::find($id);
 
-        return redirect()->route('users.index')
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if( !is_null($request->password) && !empty($request->password) )
+        {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->route('Medicos.index')
             ->with('success', 'Medico actualizado satisfactoriamente');
     }
 
