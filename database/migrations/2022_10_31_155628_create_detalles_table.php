@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('qrv_userdetalles', function (Blueprint $table) {
             $table->id();
-            $table->string('v_nombres');
-            $table->string('v_apellidos');
             $table->string('v_telefono');
             $table->string('v_codcolegio');
             $table->boolean('n_estatus');
             $table->unsignedBigInteger('n_perfil')->constrained();
-            $table->unsignedBigInteger('n_clinica')->constrained();
+            $table->unsignedBigInteger('n_clinica')->constrained(); /** crear la semilla npara clinica***/
             $table->unsignedBigInteger('n_user')->constrained();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
 
             //Foraneas
             $table->foreign('n_perfil')->references('id')->on('qrv_perfiles');
@@ -39,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detalles');
+        Schema::dropIfExists('qrv_userdetalles');
     }
 };
