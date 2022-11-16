@@ -42,7 +42,7 @@ Route::resource('Procedimientos', 'App\Http\Controllers\ProcedimientosController
 Route::resource('Razas', 'App\Http\Controllers\RazasController');
 
 Route::resource('PacienteHasAlergias', 'App\Http\Controllers\PacienteHasAlergiasController');
-Route::resource('PacientesHasVacunas', 'App\Http\Controllers\PacientesHasVacunasController');
+Route::resource('PacienteHasVacunas', 'App\Http\Controllers\PacienteHasVacunasController');
 
 
 

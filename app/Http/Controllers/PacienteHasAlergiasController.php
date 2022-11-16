@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\Alergias;
 use App\Models\PacienteHasAlergias;
 use Illuminate\Http\Request;
 
@@ -24,7 +26,9 @@ class PacienteHasAlergiasController extends Controller
      */
     public function create()
     {
-        //
+        $pacienteHasAlergia =new PacienteHasAlergias();
+        $alergia =Alergias::pluck('v_nombre','id');
+        return view('PacienteHasAlergias.create',compact('pacienteHasAlergia','alergia'));
     }
 
     /**
@@ -35,7 +39,15 @@ class PacienteHasAlergiasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate(PacienteHasAlergias::$rules);
+        $id = Auth::id();
+        $pacienteHasAlergia['n_alergia'] = $request['n_alergia'];
+        $pacienteHasAlergia['n_paciente'] = $request['n_paciente'];
+        $pacienteHasAlergia['a_n_iduser'] = $id;
+        PacienteHasAlergias::create($pacienteHasAlergia);
+
+        return redirect()->route('Atenciones')
+            ->with('success', 'Alergias de paciente se ha añadido satisfactoriamente.');
     }
 
     /**

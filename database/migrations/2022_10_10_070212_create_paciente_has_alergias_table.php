@@ -17,12 +17,14 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('n_alergia')->constrained();
             $table->unsignedBigInteger('n_paciente')->constrained();
+            $table->unsignedBigInteger('a_n_iduser')->constrained();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
 
             //Foraaneas
             $table->foreign('n_alergia')->references('id')->on('qrv_alergias');
             $table->foreign('n_paciente')->references('id')->on('qrv_pacientes');
+            $table->foreign('a_n_iduser')->references('id')->on('users');
 
 
         });

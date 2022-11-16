@@ -16,10 +16,12 @@ class PacienteHasAlergias extends Model
     protected $fillable = [
         'n_alergia',
         'n_paciente',
+        'a_n_iduser',
     ];
     static $rules = [
         'n_alergia' => 'required',
         'n_paciente' => 'required',
+        'a_n_iduser' => 'required',
     ];
 
     public function alergia()
@@ -29,5 +31,9 @@ class PacienteHasAlergias extends Model
     public function paciente()
     {
         return $this->hasOne(Pacientes::class,'id','n_paciente');
+    }
+    public function medico()
+    {
+        return $this->hasOne(User::class,'id','a_n_iduser');
     }
 }
