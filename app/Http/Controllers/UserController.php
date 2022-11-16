@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Clinicas;
+use App\Models\Perfiles;
 use App\Models\User;
+use App\Models\UserDetalles;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserController
@@ -35,7 +39,10 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        return view('user.create', compact('user'));
+        $userDetalle = new UserDetalles();
+        $clinicas = Clinicas::pluck('v_nomclin','id');
+        $perfiles = Perfiles::pluck('v_decripc','id');
+        return view('user.create', compact('user','userDetalle','clinicas','perfiles'));
     }
 
     /**
@@ -49,8 +56,21 @@ class UserController extends Controller
         request()->validate(User::$rules);
 
         $user = User::create($request->all());
+        $userDetalle = new UserDetalles();
+        if( is_null($request->n_estatus) )
+        {
+            $userDetalle->n_estatus = 0;
+        } else{
+            $userDetalle->n_estatus = $request->n_estatus;
+        }
+        $userDetalle->v_telefono = $request->v_telefono;
+        $userDetalle->v_codcolegio = $request->v_codcolegio;
+        $userDetalle->n_perfil = $request->n_perfil;
+        $userDetalle->n_clinica = $request->n_clinica;
+        $userDetalle->n_user = $user->id;
+        $userDetalle->save();
 
-        return redirect()->route('users.index')
+        return redirect()->route('Medicos.index')
             ->with('success', 'Medico creado satisfactoriamente.');
     }
 
@@ -76,8 +96,15 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        $userDetalle = UserDetalles::where('n_user', $id)->first();
+        if( is_null($userDetalle) )
+        {
+            $userDetalle = new UserDetalles();
+        }
+        $clinicas = Clinicas::pluck('v_nomclin','id');
+        $perfiles = Perfiles::pluck('v_decripc','id');
 
-        return view('user.edit', compact('user'));
+        return view('user.edit', compact('user', 'clinicas', 'perfiles', 'userDetalle'));
     }
 
     /**
@@ -87,13 +114,43 @@ class UserController extends Controller
      * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        request()->validate(User::$rules);
+        request()->validate(User::$rulesEdit);
 
-        $user->update($request->all());
+        $user = User::find($id);
+        $userDetalle = UserDetalles::where('n_user', $id)->first();
+        if( is_null($userDetalle) )
+        {
+            $userDetalle = new UserDetalles();
+        }
 
-        return redirect()->route('users.index')
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if( !is_null($request->password) && !empty($request->password) )
+        {
+            $user->password = Hash::make($request->password);
+        }
+
+        if( is_null($request->n_estatus) )
+        {
+            $userDetalle->n_estatus = 0;
+        } else{
+            $userDetalle->n_estatus = $request->n_estatus;
+        }
+
+        $userDetalle->v_telefono = $request->v_telefono;
+        $userDetalle->v_codcolegio = $request->v_codcolegio;
+        $userDetalle->n_perfil = $request->n_perfil;
+        $userDetalle->n_clinica = $request->n_clinica;
+        $userDetalle->n_user = $id;
+
+
+        $user->save();
+        $userDetalle->save();
+
+        return redirect()->route('Medicos.index')
             ->with('success', 'Medico actualizado satisfactoriamente');
     }
 
