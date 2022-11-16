@@ -17,6 +17,29 @@
             {!! $errors->first('password', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
+        <div class="form-group">
+            {{ Form::label('Telefono') }}
+            {{ Form::text('v_telefono', $userDetalle->v_telefono, ['class' => 'form-control']) }}
+        </div>
+        <div class="form-group">
+            {{ Form::label('Cod. colegio') }}
+            {{ Form::text('v_codcolegio', $userDetalle->v_codcolegio, ['class' => 'form-control']) }}
+        </div>
+        <div class="form-group">
+            {{ Form::label('Activo') }}
+            {{ Form::checkbox('n_estatus', 1, $userDetalle->n_estatus, []) }}
+        </div>
+
+        <div class="form-group">
+            {{ Form::label('Clinica') }}
+            {{ Form::select('n_clinica', $clinicas, $userDetalle->n_clinica, ['class' => 'form-control']) }}
+        </div>
+
+        <div class="form-group">
+            {{ Form::label('Perfiles') }}
+            {{ Form::select('n_perfil', $perfiles, $userDetalle->n_perfil, ['class' => 'form-control']) }}
+        </div>
+
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Enviar</button>
