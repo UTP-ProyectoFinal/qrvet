@@ -54,13 +54,18 @@
                                         <td>{{ $atencion->created_at}}</td>
                                         <td>{{ $atencion->cliente->v_nombre}}</td>
                                         <td>{{ $atencion->paciente->v_nombre}}</td>
-                                        <td>Sin vacuna</td>
+                                        <td>@if( $atencion->paciente->vacunas->count() > 0 )
+                                                Si
+                                            @else
+                                                Sin vacuna
+                                            @endif
+                                        </td>
                                         <td>
                                             <a class="btn btn-sm btn-success"
-                                               href="{{ route('PacienteHasAlergias.create', ['id' => $atencion->id]) }}"><i
+                                               href="{{ route('PacienteHasVacunas.create', ['id' => $atencion->id]) }}"><i
                                                     class="fa fa-fw fa-plus"></i></a>
                                             <a class="btn btn-sm btn-primary "
-                                               href="{{ route('PacienteHasAlergias.create', ['id' => $atencion->id]) }}"><i
+                                               href="{{ route('PacienteHasVacunas.create', ['id' => $atencion->id]) }}"><i
                                                     class="fa fa-fw fa-eye"></i></a>
                                         </td>
                                         <td>
@@ -69,7 +74,6 @@
                                             @else
                                                 Ninguna
                                             @endif
-
                                         </td>
                                         <td>
                                             <a class="btn btn-sm btn-success"

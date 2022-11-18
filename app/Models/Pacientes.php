@@ -48,4 +48,9 @@ class Pacientes extends Model
     {
         return $this->belongsToMany(Alergias::class, 'qrv_paciente_has_alergias', 'n_paciente', 'n_alergia');
     }
+
+    public function vacunas()
+    {
+        return $this->belongsToMany(Vacunas::class, 'qrv_paciente_has_vacuna', 'n_paciente', 'n_vacuna');
+    }
 }

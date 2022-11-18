@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alergias;
+use App\Models\Atenciones;
+use App\Models\PacienteHasAlergias;
 use App\Models\PacienteHasVacunas;
+use App\Models\Vacunas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PacienteHasVacunasController extends Controller
 {
@@ -24,7 +29,13 @@ class PacienteHasVacunasController extends Controller
      */
     public function create()
     {
-        //
+        $id = $_GET['id'];
+        $atencion = Atenciones::find($id);
+        $pacienteHasVacunas = PacienteHasVacunas::where('n_paciente', $atencion->n_paciente)->get();
+        $cliente = $atencion->cliente;
+        $paciente = $atencion->paciente;
+        $vacunas =Vacunas::pluck('v_nombre','id');
+        return view('PacienteHasVacunas.create',compact('pacienteHasVacunas','vacunas','cliente','paciente'));
     }
 
     /**
@@ -35,7 +46,17 @@ class PacienteHasVacunasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate(PacienteHasVacunas::$rules);
+        $id = Auth::id();
+        $pacienteHasVacunas = new PacienteHasVacunas();
+        $pacienteHasVacunas['n_vacuna'] = $request->n_vacuna;
+        $pacienteHasVacunas['n_paciente'] = $request->paciente_id;
+        $pacienteHasVacunas['a_n_iduser'] = $id;
+
+        $pacienteHasVacunas->save();
+
+        return redirect()->route('Atenciones')
+            ->with('success', 'Alergias de paciente se ha añadido satisfactoriamente.');
     }
 
     /**
