@@ -30,6 +30,9 @@ class Atenciones extends Model
     {
         return $this->hasOne(Pacientes::class,'id','n_paciente');
     }
+    public function historia(){
+        return $this->belongsTo(Historias::class, 'id', 'n_atencion');
+    }
   /*  public function vacuna()
     {
         return $this->hasOne(Vacunas::class,'id','n_vacuna');

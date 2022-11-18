@@ -19,7 +19,7 @@
                         <span class="card-title">Editar Cliente</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('Clientes.update', $cliente->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('Historias.update', $historia->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 

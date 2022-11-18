@@ -1,5 +1,8 @@
 <div class="box box-info padding-1">
     <div class="box-body">
+
+        {{ Form::hidden('n_atencion', $id) }}
+
         <div class="form-group">
             {{ Form::label('Motivo de la consulta') }}
             {{ Form::text('v_motivo', $historia->v_motivo, ['class' => 'form-control' . ($errors->has('v_motivo') ? ' is-invalid' : ''), 'placeholder' => 'Motivo de la consulta']) }}
@@ -44,11 +47,6 @@
             {{ Form::label('Detalle del Procedimiento del paciente') }}
             {{ Form::text('v_detproced', $historia->v_detproced, ['class' => 'form-control' . ($errors->has('v_detproced') ? ' is-invalid' : ''), 'placeholder' => 'Detalle del procedimiento del paciente']) }}
             {!! $errors->first('v_detproced', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('Nro de Atencion del Paciente') }}
-            {{ Form::select('n_historia', $atencion, $historia->n_cliente, ['class' => 'form-control' . ($errors->has('n_historia') ? ' is-invalid' : ''), 'placeholder' => 'Nro de Atencion']) }}
-            {!! $errors->first('n_historia', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>

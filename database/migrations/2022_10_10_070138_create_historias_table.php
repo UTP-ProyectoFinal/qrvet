@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('qrv_historias', function (Blueprint $table) {
             $table->id();
             $table->string('v_motivo');
-            $table->integer('n_peso');
-            $table->integer('n_temp');
-            $table->integer('n_frecresp');
-            $table->integer('n_freccard');
+            $table->decimal('n_peso', $precision = 6, $scale = 2);
+            $table->decimal('n_temp', $precision = 6, $scale = 2);
+            $table->decimal('n_frecresp', $precision = 6, $scale = 2);
+            $table->decimal('n_freccard', $precision = 6, $scale = 2);
             $table->string('v_detdiagnos');
             $table->string('v_detproced');
             $table->unsignedBigInteger('n_atencion')->constrained();

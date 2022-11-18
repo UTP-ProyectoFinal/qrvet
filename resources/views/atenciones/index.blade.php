@@ -86,12 +86,15 @@
                                         <td>No</td>
 
                                         <td>
-                                            <a class="btn btn-sm btn-success "
-                                               href="{{ route('Historias.create', $atencion->id) }}"><i
-                                                    class="fa fa-fw fa-plus"></i> Añadir Historia</a>
-                                            <a class="btn btn-sm btn-primary "
-                                               href="{{ route('Historias.edit', $atencion->id) }}"><i
-                                                    class="fa fa-fw fa-edit"></i> Editar Historia</a>
+                                            @if( !isset($atencion->historia) )
+                                                <a class="btn btn-sm btn-success "
+                                                   href="{{ route('Historias.create', ['id' => $atencion->id]) }}"><i
+                                                        class="fa fa-fw fa-plus"></i> Añadir Historia</a>
+                                            @else
+                                                <a class="btn btn-sm btn-primary "
+                                                   href="{{ route('Historias.edit', $atencion->historia->id) }}"><i
+                                                        class="fa fa-fw fa-edit"></i> Editar Historia</a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
