@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Atenciones;
+use App\Models\Clientes;
+use App\Models\Pacientes;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Alergias;
 use App\Models\PacienteHasAlergias;
@@ -26,9 +29,13 @@ class PacienteHasAlergiasController extends Controller
      */
     public function create()
     {
-        $pacienteHasAlergia =new PacienteHasAlergias();
+        $id = $_GET['id'];
+        $atencion = Atenciones::find($id);
+        $pacienteHasAlergias = PacienteHasAlergias::where('n_paciente', $atencion->n_paciente)->get();
+        $cliente = $atencion->cliente;
+        $paciente = $atencion->paciente;
         $alergia =Alergias::pluck('v_nombre','id');
-        return view('PacienteHasAlergias.create',compact('pacienteHasAlergia','alergia'));
+        return view('PacienteHasAlergias.create',compact('pacienteHasAlergias','alergia','cliente','paciente'));
     }
 
     /**
@@ -41,10 +48,12 @@ class PacienteHasAlergiasController extends Controller
     {
         request()->validate(PacienteHasAlergias::$rules);
         $id = Auth::id();
-        $pacienteHasAlergia['n_alergia'] = $request['n_alergia'];
-        $pacienteHasAlergia['n_paciente'] = $request['n_paciente'];
-        $pacienteHasAlergia['a_n_iduser'] = $id;
-        PacienteHasAlergias::create($pacienteHasAlergia);
+        $pacienteHasAlergias = new PacienteHasAlergias();
+        $pacienteHasAlergias['n_alergia'] = $request->n_alergia;
+        $pacienteHasAlergias['n_paciente'] = $request->paciente_id;
+        $pacienteHasAlergias['a_n_iduser'] = $id;
+
+        $pacienteHasAlergias->save();
 
         return redirect()->route('Atenciones')
             ->with('success', 'Alergias de paciente se ha añadido satisfactoriamente.');

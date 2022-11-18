@@ -21,7 +21,6 @@ class PacienteHasAlergias extends Model
     static $rules = [
         'n_alergia' => 'required',
         'n_paciente' => 'required',
-        'a_n_iduser' => 'required',
     ];
 
     public function alergia()

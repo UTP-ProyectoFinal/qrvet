@@ -43,4 +43,9 @@ class Pacientes extends Model
     {
         return $this->hasOne(Clientes::class,'id','n_cliente');
     }
+
+    public function alergias()
+    {
+        return $this->belongsToMany(Alergias::class, 'qrv_paciente_has_alergias', 'n_paciente', 'n_alergia');
+    }
 }
