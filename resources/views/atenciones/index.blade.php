@@ -83,7 +83,13 @@
                                                href="{{ route('PacienteHasAlergias.create', ['id' => $atencion->id]) }}"><i
                                                     class="fa fa-fw fa-eye"></i></a>
                                         </td>
-                                        <td>No</td>
+                                        <td>
+                                            @if( !isset($atencion->historia) )
+                                                No
+                                            @else
+                                                Si
+                                            @endif
+                                        </td>
 
                                         <td>
                                             @if( !isset($atencion->historia) )
