@@ -48,12 +48,9 @@
                             <strong>Dueño de la mascota:</strong>
                             {{ $paciente->cliente->v_nombre }} {{ $paciente->cliente->v_apellido }}
                         </div>
-
+                        QR de identificación del paciente<br/>
+                        {!!QrCode::size(150)->generate(env('APP_URL', 'http://localhost/qrvet/public/').'Pacientes/qr/'.$paciente->v_identifica) !!}
                     </div>
-                </div>
-                <div style="position:absolute;right: 0px;">
-                    QR de identificación del paciente<br/>
-                    {!!QrCode::size(150)->generate(env('APP_URL', 'http://localhost/qrvet/public/').'Pacientes/qr/'.$paciente->v_identifica) !!}
                 </div>
             </div>
         </div>
