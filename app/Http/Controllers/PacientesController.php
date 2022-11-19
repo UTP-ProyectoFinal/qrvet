@@ -42,7 +42,13 @@ class PacientesController extends Controller
         $month = date("m");
         $year = date("Y");
         $data = Pacientes::latest('id')->first();
-        $paciente->v_identifica = $primerCaracter.$month.$year.$data->id+1;
+        if ( is_null($data) ){
+            $data = 1;
+        }else{
+            $data = $data->id+1;
+        }
+
+        $paciente->v_identifica = $primerCaracter.$month.$year.$data;
 
         return view('pacientes.create',compact('paciente','sexo','raza','cliente'));
     }
