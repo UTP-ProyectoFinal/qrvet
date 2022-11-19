@@ -61,9 +61,6 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a class="btn btn-sm btn-success"
-                                               href="{{ route('PacienteHasVacunas.create', ['id' => $atencion->id]) }}"><i
-                                                    class="fa fa-fw fa-plus"></i></a>
                                             <a class="btn btn-sm btn-primary "
                                                href="{{ route('PacienteHasVacunas.create', ['id' => $atencion->id]) }}"><i
                                                     class="fa fa-fw fa-eye"></i></a>
@@ -76,9 +73,6 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a class="btn btn-sm btn-success"
-                                               href="{{ route('PacienteHasAlergias.create', ['id' => $atencion->id]) }}"><i
-                                                    class="fa fa-fw fa-plus"></i></a>
                                             <a class="btn btn-sm btn-primary "
                                                href="{{ route('PacienteHasAlergias.create', ['id' => $atencion->id]) }}"><i
                                                     class="fa fa-fw fa-eye"></i></a>
