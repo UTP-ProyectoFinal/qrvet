@@ -494,6 +494,7 @@
                             console.log(response);
                             if(response.status == 200){
                                 alert('QR Valido');
+                                window.location.href = "http://localhost/qrvet/public/Pacientes/"+response.id;
                             }else{
                                 alert('QR Invalido');
                             }

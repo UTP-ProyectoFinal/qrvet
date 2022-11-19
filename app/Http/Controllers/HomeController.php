@@ -32,6 +32,6 @@ class HomeController extends Controller
         if( is_null($paciente) ) {
             return response()->json(['status' => 400,]);
         }
-        return response()->json(['status'=>200,]);
+        return response()->json(['status'=>200,'id'=>$paciente->id]);
     }
 }
