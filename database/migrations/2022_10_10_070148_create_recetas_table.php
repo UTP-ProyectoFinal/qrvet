@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('v_dosis');
             $table->unsignedBigInteger('n_medica')->constrained();
             $table->unsignedBigInteger('n_atencion')->constrained();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
 
             //Foraneas
             $table->foreign('n_medica')->references('id')->on('qrv_medicamentos');

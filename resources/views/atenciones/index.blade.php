@@ -44,6 +44,7 @@
                                     <th>Alergia</th>
                                     <th></th>
                                     <th>Historia</th>
+                                    <th>Receta</th>
                                     <th>Acciones</th>
                                 </tr>
                                 </thead>
@@ -92,6 +93,14 @@
                                         </td>
 
                                         <td>
+                                            @if( !isset($atencion->receta) )
+                                                No
+                                            @else
+                                                Si
+                                            @endif
+                                        </td>
+
+                                        <td>
                                             @if( !isset($atencion->historia) )
                                                 <a class="btn btn-sm btn-success "
                                                    href="{{ route('Historias.create', ['id' => $atencion->id]) }}"><i
@@ -101,6 +110,17 @@
                                                    href="{{ route('Historias.edit', $atencion->historia->id) }}"><i
                                                         class="fa fa-fw fa-edit"></i> Editar Historia</a>
                                             @endif
+
+                                            @if( !isset($atencion->receta) )
+                                                <a class="btn btn-sm btn-success "
+                                                    href="{{ route('Recetas.create', ['id' => $atencion->id]) }}"><i
+                                                        class="fa fa-fw fa-plus"></i> Añadir Receta</a>
+                                            @else
+                                                <a class="btn btn-sm btn-primary "
+                                                   href="{{ route('Recetas.edit', $atencion->receta->id) }}"><i
+                                                        class="fa fa-fw fa-edit"></i> Editar Receta</a>
+                                            @endif
+
                                         </td>
                                     </tr>
                                 @endforeach

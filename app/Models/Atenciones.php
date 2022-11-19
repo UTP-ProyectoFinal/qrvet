@@ -15,12 +15,10 @@ class Atenciones extends Model
     protected $fillable = [
         'n_cliente',
         'n_paciente',
-    /*    'n_vacuna', */
     ];
     static $rules = [
         'n_cliente' => 'required',
         'n_paciente' => 'required',
-      /*  'n_vacuna' => 'required',*/
     ];
     public function cliente()
     {
@@ -33,8 +31,7 @@ class Atenciones extends Model
     public function historia(){
         return $this->belongsTo(Historias::class, 'id', 'n_atencion');
     }
-  /*  public function vacuna()
-    {
-        return $this->hasOne(Vacunas::class,'id','n_vacuna');
-    }*/
+    public function receta(){
+        return $this->belongsTo(Recetas::class, 'id', 'n_atencion');
+    }
 }
