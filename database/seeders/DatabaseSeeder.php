@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\UserDetalles;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,9 +15,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UserSeeder::class,
-            SexoSeeder::class,
+            ClinicasSeeder::class,
             PerfilesSeeder::class,
+            UserSeeder::class,
+            UserDetalleSeeder::class,
+            SexoSeeder::class,
             EspeciesSeeder::class,
             TipoDocSeeder::class,
             AlergiasSeeder::class,
@@ -25,7 +28,6 @@ class DatabaseSeeder extends Seeder
             DiagnosticosSeeder::class,
             ProcedimientosSeeder::class,
             RazasSeeder::class,
-            ClinicasSeeder::class
         ]);
     }
 }
