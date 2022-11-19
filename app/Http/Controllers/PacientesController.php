@@ -7,6 +7,7 @@ use App\Models\Pacientes;
 use App\Models\Razas;
 use App\Models\Sexo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PacientesController extends Controller
 {
@@ -31,9 +32,18 @@ class PacientesController extends Controller
     public function create()
     {
         $paciente=new Pacientes();
+
         $sexo=Sexo::pluck('v_decripc','id');
         $raza=Razas::pluck('v_nombre','id');
         $cliente=Clientes::pluck('v_nombre','id');
+
+        $user = Auth::user();
+        $primerCaracter = $user->detalle->clinica->v_nomclin[0];
+        $month = date("m");
+        $year = date("Y");
+        $data = Pacientes::latest('id')->first();
+        $paciente->v_identifica = $primerCaracter.$month.$year.$data->id+1;
+
         return view('pacientes.create',compact('paciente','sexo','raza','cliente'));
     }
 

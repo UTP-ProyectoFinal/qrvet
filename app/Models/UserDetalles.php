@@ -12,4 +12,9 @@ class UserDetalles extends Model
 
     protected $table = 'qrv_userdetalles';
     public $timestamps = true;
+
+    public function clinica()
+    {
+        return $this->hasOne(Clinicas::class,'id','n_clinica');
+    }
 }
