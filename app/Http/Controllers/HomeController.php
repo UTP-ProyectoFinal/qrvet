@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pacientes;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,11 +28,10 @@ class HomeController extends Controller
     }
     public function validarqr(Request $request){
         $qr=$request->qr_code;
-        $data='123';
-        if($qr==$data){
-            return response()->json(['statuss'=>200,]);
-    }else {
-        return response()->json(['statuss'=>400,]);
+        $paciente = Pacientes::where('v_identifica', $qr)->first();
+        if( is_null($paciente) ) {
+            return response()->json(['status' => 400,]);
+        }
+        return response()->json(['status'=>200,]);
     }
-}
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Laravel</title>
 
     <!-- Fonts -->
@@ -436,7 +436,6 @@
                 <div class="grid grid-cols-1 md:grid-cols-2">
                 </div>
             </div>
-
             <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
                 <div class="text-center text-sm text-gray-500 sm:text-left">
                     <div class="flex items-center">
@@ -463,7 +462,7 @@
                         </a>
                     </div>
                 </div>
-                <input type="hidden" name="result" id="result">    
+                <input type="hidden" name="result" id="result">
                 <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
                     Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                 </div>
@@ -476,29 +475,31 @@
 </script>
 <script>
     function onScanSuccess(decodedText, decodedResult) {
+        debugger;
         $('#result').val(decodedText);
-                let id = decodedText;                
+                let id = decodedText;
                 html5QrcodeScanner.clear().then(_ => {
+                    debugger;
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                     $.ajax({
-                        
+
                         url: "{{ route('validarqr') }}",
-                        type: 'POST',            
+                        type: 'POST',
                         data: {
                             _methode : "POST",
-                            _token: CSRF_TOKEN, 
+                            _token: CSRF_TOKEN,
                             qr_code : id
-                        },            
-                        success: function (response) { 
+                        },
+                        success: function (response) {
                             console.log(response);
                             if(response.status == 200){
                                 alert('QR Valido');
                             }else{
                                 alert('QR Invalido');
                             }
-                            
+
                         }
-                    });   
+                    });
                 }).catch(error => {
                     alert('something wrong');
                 });

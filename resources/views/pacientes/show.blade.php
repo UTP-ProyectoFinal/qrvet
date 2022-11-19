@@ -49,7 +49,7 @@
                             {{ $paciente->cliente->v_nombre }} {{ $paciente->cliente->v_apellido }}
                         </div>
                         QR de identificación del paciente<br/>
-                        {!!QrCode::size(150)->generate(env('APP_URL', 'http://localhost/qrvet/public/').'Pacientes/qr/'.$paciente->v_identifica) !!}
+                        {!!QrCode::size(150)->generate($paciente->v_identifica) !!}
                     </div>
                 </div>
             </div>
