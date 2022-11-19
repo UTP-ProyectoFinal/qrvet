@@ -44,6 +44,7 @@ Route::resource('Razas', 'App\Http\Controllers\RazasController');
 Route::resource('PacienteHasAlergias', 'App\Http\Controllers\PacienteHasAlergiasController');
 Route::resource('PacienteHasVacunas', 'App\Http\Controllers\PacienteHasVacunasController');
 
+Route::resource('Recetas', 'App\Http\Controllers\RecetasController');
 
 
 //Rutas para Acciones de la opcion Historia

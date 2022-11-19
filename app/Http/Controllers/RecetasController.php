@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medicamentos;
 use App\Models\Recetas;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,10 @@ class RecetasController extends Controller
      */
     public function create()
     {
-        //
+        $id = $_GET['id'];
+        $medicamentos = Medicamentos::pluck('v_nombre','id');
+        $receta = new Recetas();
+        return view('Recetas.create',compact('id', 'medicamentos', 'receta'));
     }
 
     /**
@@ -35,7 +39,16 @@ class RecetasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $receta = new Recetas();
+        $receta->n_cantidad = $request->n_cantidad;
+        $receta->v_dosis = $request->v_dosis;
+        $receta->n_medica = $request->n_medica;
+        $receta->n_atencion = $request->n_atencion;
+
+        $receta->save();
+
+        return redirect()->route('Atenciones')
+            ->with('success', 'Receta de paciente se ha añadido satisfactoriamente.');
     }
 
     /**
@@ -55,9 +68,12 @@ class RecetasController extends Controller
      * @param  \App\Models\Recetas  $recetas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Recetas $recetas)
+    public function edit(string $id)
     {
-        //
+        $receta = Recetas::find($id);
+        $id = $receta->n_atencion;
+        $medicamentos = Medicamentos::pluck('v_nombre','id');
+        return view('Recetas.create',compact('id', 'medicamentos', 'receta'));
     }
 
     /**

@@ -6,7 +6,7 @@
     <div class="box-body">
         <div class="form-group">
             {{ Form::label('Nro. de Identificación') }}
-            {{ Form::text('v_identifica', $paciente->v_identifica, ['class' => 'form-control' . ($errors->has('v_identifica') ? ' is-invalid' : ''), 'placeholder' => 'Nro. de Identificación']) }}
+            {{ Form::text('v_identifica', $paciente->v_identifica, ['readonly' => true, 'class' => 'form-control' . ($errors->has('v_identifica') ? ' is-invalid' : ''), 'placeholder' => 'Nro. de Identificación']) }}
             {!! $errors->first('v_identifica', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

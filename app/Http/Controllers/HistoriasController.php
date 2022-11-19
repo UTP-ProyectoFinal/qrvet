@@ -96,7 +96,7 @@ class HistoriasController extends Controller
         $historia->n_diagnos = $request->n_diagnos;
         $historia->v_detdiagnos = $request->v_detdiagnos;
         $historia->n_procedimiento = $request->n_procedimiento;
-        
+
         $historia->save();
 
         return redirect()->route('Atenciones')
