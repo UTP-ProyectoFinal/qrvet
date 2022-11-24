@@ -16,13 +16,20 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConnectController;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/welcome', [ConnectController::class, 'getLogin']);
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Ruta Inicial
+Route::get('/', function () { return view('welcome'); });
 
+// Formulario de inicio de sesión
+Route::get('/iniciar-sesion', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+// Iniciar sesión
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+// Cerrar sesión
+Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
+
+Route::get('/welcome', [ConnectController::class, 'getLogin']);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/validarqr', [App\Http\Controllers\HomeController::class, 'validarqr'])->name('validarqr');
 
 Route::middleware(['auth'])->group(function () {
