@@ -4,19 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Pacientes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -26,12 +17,19 @@ class HomeController extends Controller
     {
         return view('admin.dashboard');
     }
+
     public function validarqr(Request $request){
         $qr=$request->qr_code;
         $paciente = Pacientes::where('v_identifica', $qr)->first();
         if( is_null($paciente) ) {
             return response()->json(['status' => 400,]);
         }
-        return response()->json(['status'=>200,'id'=>$paciente->id]);
+        $id = Auth::id();
+        $url = env('APP_URL', 'http://localhost/qrvet/public/');
+        if( is_null($id) )
+        {
+            return response()->json(['status'=>200, 'url' => $url.'Pacientes/nologin/'.$paciente->id]);
+        }
+        return response()->json(['status'=>200, 'url' => $url.'Pacientes/'.$paciente->id]);
     }
 }

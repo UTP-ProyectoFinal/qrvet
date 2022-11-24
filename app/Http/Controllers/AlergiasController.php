@@ -48,7 +48,7 @@ class AlergiasController extends Controller
         $id = Auth::id();
         $alergias['v_nombre'] = $request['v_nombre'];
         $alergias['v_apuntes'] = $request['v_apuntes'];
-        $alergias['a_n_iduser'] =$id; /*** Este valor hay que cambiarlo por el usuario autenticado**/
+        $alergias['a_n_iduser'] =$id;
         $alergias['n_estado'] = 1;
         Alergias::create($alergias);
 

@@ -13,26 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\ConnectController;
-use Illuminate\Support\Facades\Auth;
-
 // Ruta Inicial
 Route::get('/', function () { return view('welcome'); });
 
-// Formulario de inicio de sesión
-Route::get('/iniciar-sesion', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-// Iniciar sesión
-Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
-// Cerrar sesión
-Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+// Rutas de Login
+include_once('routesLogin.php');
 
-
-Route::get('/welcome', [ConnectController::class, 'getLogin']);
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Validar URL
 Route::post('/validarqr', [App\Http\Controllers\HomeController::class, 'validarqr'])->name('validarqr');
 
+// Resultado de Scanneo sin login
+Route::get('/Pacientes/nologin/{id}', function(){ echo 'Mostramos algo!'; });
+
 Route::middleware(['auth'])->group(function () {
+    // Inicio
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
     //Rutas del menú
     Route::resource('Medicos', 'App\Http\Controllers\UserController');
     Route::resource('Clientes', 'App\Http\Controllers\ClientesController');
@@ -50,55 +46,45 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('Recetas', 'App\Http\Controllers\RecetasController');
 
     //Rutas para Acciones de la opcion Historia
-    Route::post('GuardarHistoria', [App\Http\Controllers\HistoriasController::class, 'Historia'])
-        ->name('GuardarHistoria');
+    Route::post('GuardarHistoria', [App\Http\Controllers\HistoriasController::class, 'Historia'])->name('GuardarHistoria');
     Route::get('/Historias', [App\Http\Controllers\HistoriasController::class, 'index'])->name('Historias');
 
     //Rutas para Acciones de la opcion Atenciones
-    Route::post('GuardarAtencion', [App\Http\Controllers\AtencionesController::class, 'store'])
-        ->name('GuardarAtencion');
+    Route::post('GuardarAtencion', [App\Http\Controllers\AtencionesController::class, 'store'])->name('GuardarAtencion');
     Route::get('/Atenciones', [App\Http\Controllers\AtencionesController::class, 'index'])->name('Atenciones');
 
     //Rutas para Acciones de la opcion Clientes
-    Route::post('GuardarCliente', [App\Http\Controllers\ClientesController::class, 'store'])
-        ->name('GuardarCliente');
+    Route::post('GuardarCliente', [App\Http\Controllers\ClientesController::class, 'store'])->name('GuardarCliente');
     Route::get('/Clientes', [App\Http\Controllers\ClientesController::class, 'index'])->name('Clientes');
 
     //Rutas para Acciones de la opcion Mascotas
-    Route::post('GuardarPaciente', [App\Http\Controllers\PacientesController::class, 'store'])
-        ->name('GuardarPaciente');
+    Route::post('GuardarPaciente', [App\Http\Controllers\PacientesController::class, 'store'])->name('GuardarPaciente');
     Route::get('/Pacientes', [App\Http\Controllers\PacientesController::class, 'index'])->name('Pacientes');
 
 
     //Rutas para Acciones de la opcion Alergias
-    Route::post('GuardarAlergia', [App\Http\Controllers\AlergiasController::class, 'store'])
-        ->name('GuardarAlergia');
+    Route::post('GuardarAlergia', [App\Http\Controllers\AlergiasController::class, 'store'])->name('GuardarAlergia');
     Route::get('/Alergias', [App\Http\Controllers\AlergiasController::class, 'index'])->name('Alergias');
 
 
     //Rutas para Acciones de la opcion Medicamentos
-    Route::post('GuardarMedicamento', [App\Http\Controllers\MedicamentosController::class, 'store'])
-        ->name('GuardarMedicamento');
+    Route::post('GuardarMedicamento', [App\Http\Controllers\MedicamentosController::class, 'store'])->name('GuardarMedicamento');
     Route::get('/Medicamentos', [App\Http\Controllers\MedicamentosController::class, 'index'])->name('Medicamentos');
 
     //Rutas para Acciones de la opcion Diagnosticos
-    Route::post('GuardarDiagnostico', [App\Http\Controllers\DiagnosticosController::class, 'store'])
-        ->name('GuardarDiagnostico');
+    Route::post('GuardarDiagnostico', [App\Http\Controllers\DiagnosticosController::class, 'store'])->name('GuardarDiagnostico');
     Route::get('/Diagnosticos', [App\Http\Controllers\DiagnosticosController::class, 'index'])->name('Diagnosticos');
 
     //Rutas para Acciones de la opcion Vacunas
-    Route::post('GuardarVacuna', [App\Http\Controllers\VacunasController::class, 'store'])
-        ->name('GuardarVacuna');
+    Route::post('GuardarVacuna', [App\Http\Controllers\VacunasController::class, 'store'])->name('GuardarVacuna');
     Route::get('/Vacunas', [App\Http\Controllers\VacunasController::class, 'index'])->name('Vacunas');
 
     //Rutas para Acciones de la opcion Procedimientos
-    Route::post('GuardarProcedimiento', [App\Http\Controllers\ProcedimientosController::class, 'store'])
-        ->name('GuardarProcedimiento');
+    Route::post('GuardarProcedimiento', [App\Http\Controllers\ProcedimientosController::class, 'store'])->name('GuardarProcedimiento');
     Route::get('/Procedimientos', [App\Http\Controllers\ProcedimientosController::class, 'index'])->name('Procedimientos');
 
     //Rutas para Acciones de la opcion Razas
-    Route::post('GuardarRaza', [App\Http\Controllers\RazasController::class, 'store'])
-        ->name('GuardarRaza');
+    Route::post('GuardarRaza', [App\Http\Controllers\RazasController::class, 'store'])->name('GuardarRaza');
     Route::get('/Razas', [App\Http\Controllers\RazasController::class, 'index'])->name('Razas');
 });
 
