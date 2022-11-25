@@ -395,7 +395,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Graficos',
-                    'url'  => '#',
+                    'url'  => 'Graficos',
                 ]
             ],
         ],

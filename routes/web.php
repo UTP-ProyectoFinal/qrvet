@@ -44,6 +44,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('PacienteHasAlergias', 'App\Http\Controllers\PacienteHasAlergiasController');
     Route::resource('PacienteHasVacunas', 'App\Http\Controllers\PacienteHasVacunasController');
     Route::resource('Recetas', 'App\Http\Controllers\RecetasController');
+    //Ruta para los graficos estadisticos
+    Route::resource('Graficos', 'App\Http\Controllers\Graficos');
 
     //Rutas para Acciones de la opcion Historia
     Route::post('GuardarHistoria', [App\Http\Controllers\HistoriasController::class, 'Historia'])->name('GuardarHistoria');
