@@ -42,8 +42,8 @@ class HomeController extends Controller
         $url = env('APP_URL', 'http://localhost/qrvet/public/');
         if( is_null($id) )
         {
-            return response()->json(['status'=>200, 'url' => $url.'Pacientes/nologin/'.$paciente->id]);
+            return redirect()->route('noLogueado', ['id' => $paciente->id]);
         }
-        return response()->json(['status'=>200, 'url' => $url.'Pacientes/'.$paciente->id]);
+        return redirect()->route('Pacientes.show', ['id' => $paciente->id]);
     }
 }
