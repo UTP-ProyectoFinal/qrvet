@@ -14,6 +14,11 @@ class Recetas extends Model
 
     public function atencion()
     {
-        return $this->hasOne(Atenciones::class,'id','n_atencion');
+        return $this->belongsTo(Atenciones::class, 'n_atencion','id');
+    }
+
+    public function medicamento()
+    {
+        return $this->hasOne(Medicamentos::class, 'id', 'n_medica');
     }
 }

@@ -31,7 +31,7 @@ class Atenciones extends Model
     public function historia(){
         return $this->belongsTo(Historias::class, 'id', 'n_atencion');
     }
-    public function receta(){
-        return $this->belongsTo(Recetas::class, 'id', 'n_atencion');
+    public function recetas(){
+        return $this->hasMany(Recetas::class,'n_atencion', 'id');
     }
 }

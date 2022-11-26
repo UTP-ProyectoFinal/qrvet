@@ -105,13 +105,13 @@
                                                         class="fa fa-fw fa-edit"></i> Editar Historia</a>
                                             @endif
 
-                                            @if( !isset($atencion->receta) )
+                                            @if( !isset($atencion->recetas) )
                                                 <a class="btn btn-sm btn-success "
                                                     href="{{ route('Recetas.create', ['id' => $atencion->id]) }}"><i
                                                         class="fa fa-fw fa-plus"></i> Añadir Receta</a>
                                             @else
                                                 <a class="btn btn-sm btn-primary "
-                                                   href="{{ route('Recetas.edit', $atencion->receta->id) }}"><i
+                                                   href="{{ route('Recetas.create', ['id' => $atencion->id]) }}"><i
                                                         class="fa fa-fw fa-edit"></i> Editar Receta</a>
                                             @endif
 
