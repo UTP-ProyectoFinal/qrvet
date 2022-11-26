@@ -44,6 +44,6 @@ class HomeController extends Controller
         {
             return redirect()->route('noLogueado', ['id' => $paciente->id]);
         }
-        return redirect()->route('Pacientes.show', ['id' => $paciente->id]);
+        return redirect()->route('Pacientes.show', ['Paciente' => $paciente->id]);
     }
 }
