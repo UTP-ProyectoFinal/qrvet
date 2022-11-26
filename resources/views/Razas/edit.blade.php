@@ -1,7 +1,6 @@
 @extends('adminlte::page')
 @section('title', 'Editar Razas')
 @section('content_header')
-    <h1>Editar Raza</h1>
 @stop
 @section('template_title')
     Actualizar Raza
