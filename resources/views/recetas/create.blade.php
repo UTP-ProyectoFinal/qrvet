@@ -47,9 +47,23 @@
                             @include('recetas.form')
 
                         </form>
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <input type="button" value="Imprimir" class="printbutton btn btn-info">
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <script>
+        document.querySelectorAll('.printbutton').forEach(function(element) {
+            element.addEventListener('click', function() {
+                print();
+            });
+        });
+    </script>
 @endsection
