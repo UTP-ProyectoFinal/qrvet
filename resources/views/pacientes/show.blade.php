@@ -52,6 +52,8 @@
                         QR de identificación del paciente<br/>
                             {!!QrCode::size(150)->generate( env('APP_URL', 'http://localhost/qrvet/public/').'validarqr/'.$paciente->v_identifica) !!}
                             <br><br>
+                            {!!QrCode::size(70)->generate( env('APP_URL', 'http://localhost/qrvet/public/').'validarqr/'.$paciente->v_identifica) !!}
+                            <br><br>
                             <input type="button" value="Imprimir" class="printbutton btn btn-info">
                         </div>
 
