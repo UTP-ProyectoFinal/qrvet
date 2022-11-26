@@ -133,6 +133,7 @@ class PacientesController extends Controller
 
     public function sendAlert(Request $request)
     {
+        request()->validate(Pacientes::$rules2);
         $identificador = $request->identificador;
         $phone = $request->phone;
         $paciente = Pacientes::where('v_identifica', $identificador)->first();

@@ -48,20 +48,28 @@
                             <strong>Dueño de la mascota:</strong>
                             {{ $paciente->cliente->v_nombre }} {{ $paciente->cliente->v_apellido }}
                         </div>
-                        <form method="POST" action="{{ route('sendAlert') }}"  role="form">
-                            @csrf
-                            <input id="identificador" name="identificador" type="hidden" value="{{ $paciente->v_identifica }}">
-                            Enviar alerta<br/>
-                            <div class="form-group">
-                                {{ Form::label('Número telefonico para contactarte') }}
-                                {{ Form::text('phone', null, ['class' => 'form-control', 'placeholder' => '+51 999 888 777']) }}
+                        <div class="row">
+                            <div class="col-md-7">
+                                QR de identificación del paciente<br/>
+                                {!!QrCode::size(150)->generate($paciente->v_identifica) !!}
                             </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            <div class="col-md-5 text-right">
+                                <form method="POST" action="{{ route('sendAlert') }}"  role="form">
+                                    @csrf
+                                    <input id="identificador" name="identificador" type="hidden" value="{{ $paciente->v_identifica }}">
+                                    Hola, ¿Me encontraste y no sabes quien es mi dueño/a?<br/>
+                                    <b>Por favor, ingresa tu número de teléfono para que mi dueño/a pueda contactarte.</b>
+                                    <div class="form-group">
+                                        {{ Form::text('phone', null, ['class' => 'form-control'. ($errors->has('phone') ? ' is-invalid' : ''), 'placeholder' => '+51 999 888 777']) }}
+                                        {!! $errors->first('phone', '<div class="invalid-feedback">:message</div>') !!}
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-lg btn-block btn-danger">REPORTAR MASCOTA PERDIDA</button>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
-                        QR de identificación del paciente<br/>
-                        {!!QrCode::size(150)->generate($paciente->v_identifica) !!}
+                        </div>
+
                     </div>
                 </div>
             </div>

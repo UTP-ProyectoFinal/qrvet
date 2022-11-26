@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('template_title')
-    Actualizar Medico
+    Editar Medico
 @endsection
 
 @section('content')

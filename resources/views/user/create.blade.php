@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('template_title')
-    Añadir nuevo Medico
+    Añadir Nuevo Medico
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Añadir nuevo Medico</span>
+                        <span class="card-title">Añadir Nuevo Medico</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('Medicos.store') }}"  role="form" enctype="multipart/form-data">

@@ -21,6 +21,10 @@ class Pacientes extends Model
         'n_cliente' => 'required',
     ];
 
+    static $rules2 = [
+        'phone' => 'required|integer|min:900000000|max:999999999',
+    ];
+
     protected $fillable = [
         'v_identifica',
         'v_nombre',

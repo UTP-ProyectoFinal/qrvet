@@ -1,10 +1,9 @@
 @extends('adminlte::page')
 @section('title', 'Editar Paciente')
 @section('content_header')
-    <h1>Editar Paciente</h1>
 @stop
 @section('template_title')
-    Actualizar Paciente
+    Editar Paciente
 @endsection
 
 @section('content')
