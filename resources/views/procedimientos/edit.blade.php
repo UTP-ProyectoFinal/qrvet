@@ -1,7 +1,6 @@
 @extends('adminlte::page')
 @section('title', 'Editar Procedimiento')
 @section('content_header')
-    <h1>Editar Procedimiento</h1>
 @stop
 @section('template_title')
     Actualizar Procedimiento

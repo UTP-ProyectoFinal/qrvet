@@ -1,7 +1,6 @@
 @extends('adminlte::page')
 @section('title', 'Editar Vacuna')
 @section('content_header')
-    <h1>Editar Vacunas</h1>
 @stop
 @section('template_title')
     Actualizar Vacuna
