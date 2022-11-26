@@ -21,6 +21,7 @@ include_once('routesLogin.php');
 
 // Validar URL
 Route::post('/validarqr', [App\Http\Controllers\HomeController::class, 'validarqr'])->name('validarqr');
+Route::get('/validarqr/{identificador}', [App\Http\Controllers\HomeController::class, 'validarqr2'])->name('validarqr2');
 
 // Resultado de Scanneo sin login
 Route::get('/Pacientes/nologin/{id}', [App\Http\Controllers\PacientesController::class, 'noLogueado'] )->name('noLogueado');
