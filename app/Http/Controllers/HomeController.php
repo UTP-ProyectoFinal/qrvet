@@ -32,4 +32,18 @@ class HomeController extends Controller
         }
         return response()->json(['status'=>200, 'url' => $url.'Pacientes/'.$paciente->id]);
     }
+
+    public function validarqr2(string $identificador){
+        $paciente = Pacientes::where('v_identifica', $identificador)->first();
+        if( is_null($paciente) ) {
+            return response()->json(['status' => 400,]);
+        }
+        $id = Auth::id();
+        $url = env('APP_URL', 'http://localhost/qrvet/public/');
+        if( is_null($id) )
+        {
+            return response()->json(['status'=>200, 'url' => $url.'Pacientes/nologin/'.$paciente->id]);
+        }
+        return response()->json(['status'=>200, 'url' => $url.'Pacientes/'.$paciente->id]);
+    }
 }
