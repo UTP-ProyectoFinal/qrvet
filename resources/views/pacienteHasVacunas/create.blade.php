@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('template_title')
-    Añadir Alergia al paciente
+    Añadir Vacunas al paciente
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Añadir Alergia al paciente</span>
+                        <span class="card-title">Añadir Vacunas al paciente</span>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -21,10 +21,10 @@
                                 <thead class="thead">
                                 <tr>
                                     <th>#</th>
-                                    <th>Fecha Atención2</th>
+                                    <th>Fecha Atención</th>
                                     <th>Vacuna</th>
-                                    <th>Medico2</th>
-                                    <th>Paciente2</th>
+                                    <th>Medico</th>
+                                    <th>Paciente</th>
                                 </tr>
                                 </thead>
                                 <tbody>

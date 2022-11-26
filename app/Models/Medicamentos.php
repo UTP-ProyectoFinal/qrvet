@@ -26,4 +26,9 @@ class Medicamentos extends Model
     {
         return $this->hasOne(User::class,'id','a_n_iduser');
     }
+
+    public function recetas()
+    {
+        return $this->belongsTo(Recetas::class, 'n_medica', 'id');
+    }
 }
