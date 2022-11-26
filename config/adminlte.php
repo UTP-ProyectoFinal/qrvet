@@ -396,6 +396,10 @@ return [
                 [
                     'text' => 'Graficos',
                     'url'  => 'Graficos',
+                ],
+                [
+                    'text' => 'FindMyPet',
+                    'url'  => 'Mapas',
                 ]
             ],
         ],

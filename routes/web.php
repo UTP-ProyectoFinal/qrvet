@@ -48,6 +48,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('Recetas', 'App\Http\Controllers\RecetasController');
     //Ruta para los graficos estadisticos
     Route::resource('Graficos', 'App\Http\Controllers\Graficos');
+    //Ruta para los mapas
+    Route::resource('Mapas', 'App\Http\Controllers\Mapas');
 
     //Rutas para Acciones de la opcion Historia
     Route::post('GuardarHistoria', [App\Http\Controllers\HistoriasController::class, 'Historia'])->name('GuardarHistoria');

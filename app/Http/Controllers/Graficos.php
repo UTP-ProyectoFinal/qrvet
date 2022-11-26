@@ -19,7 +19,7 @@ class Graficos extends Controller
         'group_by_period' => 'month',
         'chart_type' => 'bar',
         'filter_field' => 'created_at',
-        'filter_days' => 30, // show only last 30 days
+        'filter_days' => 30, 
     ];
 
     $chart1 = new LaravelChart($chart_options);
@@ -32,7 +32,7 @@ class Graficos extends Controller
         'group_by_field' => 'name',
         'chart_type' => 'pie',
         'filter_field' => 'created_at',
-        'filter_period' => 'month', // show users only registered this month
+        'filter_period' => 'month', 
     ];
 
     $chart2 = new LaravelChart($chart_options);
