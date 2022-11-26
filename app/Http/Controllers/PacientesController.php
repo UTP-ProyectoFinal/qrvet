@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Alert;
 use App\Models\Clientes;
 use App\Models\Pacientes;
 use App\Models\Razas;
 use App\Models\Sexo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class PacientesController extends Controller
 {
@@ -31,32 +33,32 @@ class PacientesController extends Controller
      */
     public function create()
     {
-        $paciente=new Pacientes();
+        $paciente = new Pacientes();
 
-        $sexo=Sexo::pluck('v_decripc','id');
-        $raza=Razas::pluck('v_nombre','id');
-        $cliente=Clientes::pluck('v_nombre','id');
+        $sexo = Sexo::pluck('v_decripc', 'id');
+        $raza = Razas::pluck('v_nombre', 'id');
+        $cliente = Clientes::pluck('v_nombre', 'id');
 
         $user = Auth::user();
         $primerCaracter = $user->detalle->clinica->v_nomclin[0];
         $month = date("m");
         $year = date("Y");
         $data = Pacientes::latest('id')->first();
-        if ( is_null($data) ){
+        if (is_null($data)) {
             $data = 1;
-        }else{
-            $data = $data->id+1;
+        } else {
+            $data = $data->id + 1;
         }
 
-        $paciente->v_identifica = $primerCaracter.$month.$year.$data;
+        $paciente->v_identifica = $primerCaracter . $month . $year . $data;
 
-        return view('pacientes.create',compact('paciente','sexo','raza','cliente'));
+        return view('pacientes.create', compact('paciente', 'sexo', 'raza', 'cliente'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -72,7 +74,7 @@ class PacientesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pacientes  $pacientes
+     * @param \App\Models\Pacientes $pacientes
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -84,23 +86,23 @@ class PacientesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pacientes  $pacientes
+     * @param \App\Models\Pacientes $pacientes
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $paciente = Pacientes::find($id);
-        $sexo=Sexo::pluck('v_decripc','id');
-        $raza=Razas::pluck('v_nombre','id');
-        $cliente=Clientes::pluck('v_nombre','id');
-        return view('pacientes.editar', compact('paciente','sexo','raza','cliente'));
+        $sexo = Sexo::pluck('v_decripc', 'id');
+        $raza = Razas::pluck('v_nombre', 'id');
+        $cliente = Clientes::pluck('v_nombre', 'id');
+        return view('pacientes.editar', compact('paciente', 'sexo', 'raza', 'cliente'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pacientes  $pacientes
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Pacientes $pacientes
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -115,11 +117,27 @@ class PacientesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pacientes  $pacientes
+     * @param \App\Models\Pacientes $pacientes
      * @return \Illuminate\Http\Response
      */
     public function destroy(Pacientes $pacientes)
     {
         //
+    }
+
+    public function noLogueado($id)
+    {
+        $paciente = Pacientes::find($id);
+        return view('pacienteNoLogueado.show', compact('paciente'));
+    }
+
+    public function sendAlert(Request $request)
+    {
+        $identificador = $request->identificador;
+        $phone = $request->phone;
+        $paciente = Pacientes::where('v_identifica', $identificador)->first();
+        $cliente = $paciente->cliente;
+        Mail::to($cliente->v_correo)->send(new Alert($cliente->v_correo, compact('cliente', 'phone', 'paciente')));
+        return redirect()->route('noLogueado', ['id' => $paciente->id]);
     }
 }

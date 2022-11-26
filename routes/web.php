@@ -23,7 +23,8 @@ include_once('routesLogin.php');
 Route::post('/validarqr', [App\Http\Controllers\HomeController::class, 'validarqr'])->name('validarqr');
 
 // Resultado de Scanneo sin login
-Route::get('/Pacientes/nologin/{id}', function(){ echo 'Mostramos algo!'; });
+Route::get('/Pacientes/nologin/{id}', [App\Http\Controllers\PacientesController::class, 'noLogueado'] )->name('noLogueado');
+Route::post('/Alerta/send', [App\Http\Controllers\PacientesController::class, 'sendAlert'])->name('sendAlert');
 
 Route::middleware(['auth'])->group(function () {
     // Inicio
