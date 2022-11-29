@@ -408,7 +408,7 @@ return [
             'icon' => 'fa fa-fw fa-phone',
             'submenu' => [
                 [
-                    'text' => 'Live Chat',
+                    'text' => 'Foros',
                     'url'  => 'Graficos',
                 ],
                 [
