@@ -3,9 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <center>
-        <h1>GRAFICOS ESTADISTICOS</h1>
-    </center>
+        <h1 class="text-center">GRAFICOS ESTADISTICOS</h1>
 @stop
 
 @section('content')
