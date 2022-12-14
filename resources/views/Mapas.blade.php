@@ -32,7 +32,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
         // Map initialization 
-        var map = L.map('map').setView([14.0860746, 100.608406], 6);
+        var map = L.map('map').setView([-12.0464, -77.0428], 6);
 
         //osm layer
         var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

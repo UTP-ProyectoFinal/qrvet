@@ -403,6 +403,24 @@ return [
                 ]
             ],
         ],
+        [
+            'text' => 'COMUNICATE CON NOSOTROS',
+            'icon' => 'fa fa-fw fa-phone',
+            'submenu' => [
+                [
+                    'text' => 'Foros',
+                    'url'  => 'Graficos',
+                ],
+                [
+                    'text' => 'Whatsapp',
+                    'url'  => 'Mapas',
+                ],
+                [
+                    'text' => 'Telegram',
+                    'url'  => 'Mapas',
+                ]
+            ],
+        ],
         /*
         [
             'text'    => 'multilevel',
