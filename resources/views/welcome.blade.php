@@ -273,6 +273,8 @@
         debugger;
         $('#result').val(decodedText);
         let id = decodedText;
+        window.location.href = id;
+        /*
         html5QrcodeScanner.clear().then(_ => {
             debugger;
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -298,6 +300,7 @@
         }).catch(error => {
             alert('something wrong');
         });
+        */
     }
 
     function onScanFailure(error) {

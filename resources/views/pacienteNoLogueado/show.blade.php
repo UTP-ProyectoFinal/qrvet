@@ -51,7 +51,7 @@
                         <div class="row">
                             <div class="col-md-7">
                                 QR de identificación del paciente<br/>
-                                {!!QrCode::size(150)->generate($paciente->v_identifica) !!}
+                                {!!QrCode::size(150)->generate( env('APP_URL', 'http://localhost/qrvet/public/').'validarqr/'.$paciente->v_identifica) !!}
                             </div>
                             <div class="col-md-5 text-right">
                                 <form method="POST" action="{{ route('sendAlert') }}"  role="form">
