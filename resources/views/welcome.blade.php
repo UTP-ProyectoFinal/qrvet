@@ -233,7 +233,6 @@
         }
     </style>
 </head>
-
 <body class="antialiased">
 <div
     class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0" style="background: #e9ecef;">
@@ -250,7 +249,7 @@
 
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <div class="login-logo">
-            <a href="http://localhost/qrvet/public/home">
+            <a href="http://localhost:8000/qrvet/public/static/">
                 <img src="http://localhost/qrvet/public/vendor/adminlte/dist/img/403890.png" alt="" height="50">
                 <b>QR</b>.VET
             </a>
