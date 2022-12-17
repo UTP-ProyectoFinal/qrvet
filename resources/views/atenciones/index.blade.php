@@ -110,9 +110,9 @@
                                                     href="{{ route('Recetas.create', ['id' => $atencion->id]) }}"><i
                                                         class="fa fa-fw fa-plus"></i> Añadir Receta</a>
                                             @else
-                                                <a class="btn btn-sm btn-primary "
+                                                <a class="btn btn-sm btn-info "
                                                    href="{{ route('Recetas.create', ['id' => $atencion->id]) }}"><i
-                                                        class="fa fa-fw fa-edit"></i> Editar Receta</a>
+                                                        class="fa fa-fw fa-edit"></i> Escribir Receta</a>
                                             @endif
 
                                         </td>

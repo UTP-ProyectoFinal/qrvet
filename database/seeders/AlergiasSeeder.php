@@ -43,7 +43,7 @@ class AlergiasSeeder extends Seeder
 
         Alergias::create([
             'v_nombre' => 'Dermatitis atópica	',
-            'v_apuntes' => 'Dermatitis causada por algún elemento que no se puede identificar y que se encuentra dentro del ambiente',
+            'v_apuntes' => 'Dermatitis causada por algún elemento que no se puede identificar.',
             'a_n_iduser' => 1,
             'n_estado' => 1,
         ]);
