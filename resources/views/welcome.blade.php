@@ -243,6 +243,7 @@
                 <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
             @else
                 <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Iniciar sesión</a>
+                <a href="http://localhost:8001" class="text-sm text-gray-700 dark:text-gray-500 underline">FAQ-Foro Clientes</a>
             @endauth
         </div>
     @endif
