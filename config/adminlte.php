@@ -403,7 +403,7 @@ return [
                 ]
             ],
         ],
-        [
+       /* [
             'text' => 'COMUNICATE CON NOSOTROS',
             'icon' => 'fa fa-fw fa-phone',
             'submenu' => [
@@ -420,7 +420,7 @@ return [
                     'url'  => 'Mapas',
                 ]
             ],
-        ],
+        ],*/
         /*
         [
             'text'    => 'multilevel',

@@ -277,7 +277,6 @@
             debugger;
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             $.ajax({
-
                 url: "{{ route('validarqr') }}",
                 type: 'POST',
                 data: {
@@ -331,6 +330,6 @@
     s0.parentNode.insertBefore(s1,s0);
     })();
     </script>
-    
+
 
 </html>
